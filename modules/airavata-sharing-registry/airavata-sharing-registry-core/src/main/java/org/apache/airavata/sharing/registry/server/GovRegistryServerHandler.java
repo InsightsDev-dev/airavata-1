@@ -64,6 +64,9 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
      */
     @Override
     public String createDomain(Domain domain) throws GovRegistryException, TException {
+        if(domainRepository.get(domain.domainId) != null)
+            throw new GovRegistryException("There exist domain with given domain id");
+
         domain.setCreatedTime(System.currentTimeMillis());
         domain.setUpdatedTime(System.currentTimeMillis());
         domainRepository.create(domain);
@@ -113,6 +116,9 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
      */
     @Override
     public String createUser(User user) throws GovRegistryException, TException {
+        if(userRepository.get(user.userId) != null)
+            throw new GovRegistryException("There exist user with given user id");
+
         user.setCreatedTime(System.currentTimeMillis());
         user.setUpdatedTime(System.currentTimeMillis());
         userRepository.create(user);
@@ -169,6 +175,9 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
      */
     @Override
     public String createGroup(UserGroup group) throws GovRegistryException, TException {
+        if(userGroupRepository.get(group.groupId) != null)
+            throw new GovRegistryException("There exist group with given group id");
+
         group.setCreatedTime(System.currentTimeMillis());
         group.setUpdatedTime(System.currentTimeMillis());
         userGroupRepository.create(group);
@@ -266,6 +275,9 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
      */
     @Override
     public String createEntityType(EntityType entityType) throws GovRegistryException, TException {
+        if(entityTypeRepository.get(entityType.entityTypeId) != null)
+            throw new GovRegistryException("There exist EntityType with given EntityType id");
+
         entityType.setCreatedTime(System.currentTimeMillis());
         entityType.setUpdatedTime(System.currentTimeMillis());
         entityTypeRepository.create(entityType);
@@ -306,6 +318,8 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
      */
     @Override
     public String createPermissionType(PermissionType permissionType) throws GovRegistryException, TException {
+        if(permissionTypeRepository.get(permissionType.permissionTypeId) != null)
+            throw new GovRegistryException("There exist PermissionType with given PermissionType id");
         permissionType.setCreatedTime(System.currentTimeMillis());
         permissionType.setUpdatedTime(System.currentTimeMillis());
         permissionTypeRepository.create(permissionType);
@@ -345,6 +359,9 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
      */
     @Override
     public String createEntity(Entity entity) throws GovRegistryException, TException {
+        if(entityRepository.get(entity.entityId) != null)
+            throw new GovRegistryException("There exist Entity with given Entity id");
+
         entity.setCreatedTime(System.currentTimeMillis());
         entity.setUpdatedTime(System.currentTimeMillis());
         entityRepository.create(entity);

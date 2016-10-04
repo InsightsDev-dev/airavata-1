@@ -84,6 +84,8 @@ public abstract class AbstractRepository<T, E, Id> {
         E entity = JPAUtils.execute(entityManager -> entityManager
                 .find(dbEntityGenericClass, id));
         Mapper mapper = ObjectMapperSingleton.getInstance();
+        if(entity == null)
+            return null;
         return mapper.map(entity, thriftGenericClass);
     }
 
