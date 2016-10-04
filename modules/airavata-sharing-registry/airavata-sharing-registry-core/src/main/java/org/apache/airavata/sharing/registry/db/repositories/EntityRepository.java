@@ -21,14 +21,25 @@
 package org.apache.airavata.sharing.registry.db.repositories;
 
 import org.apache.airavata.sharing.registry.db.entities.EntityEntity;
+import org.apache.airavata.sharing.registry.db.utils.DBConstants;
 import org.apache.airavata.sharing.registry.models.Entity;
+import org.apache.airavata.sharing.registry.models.GovRegistryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class EntityRepository extends AbstractRepository<Entity, EntityEntity, String> {
     private final static Logger logger = LoggerFactory.getLogger(EntityRepository.class);
 
     public EntityRepository() {
         super(Entity.class, EntityEntity.class);
+    }
+
+    public List<Entity> getChildEntities(String parentId) throws GovRegistryException {
+        HashMap<String, String> filters = new HashMap<>();
+        filters.put(DBConstants.EntityTable.PARENT_ENTITY_ID, parentId);
+        return select(filters, 0, -1);
     }
 }

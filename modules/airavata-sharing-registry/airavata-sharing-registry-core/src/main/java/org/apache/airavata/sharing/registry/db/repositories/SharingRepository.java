@@ -21,14 +21,36 @@
 package org.apache.airavata.sharing.registry.db.repositories;
 
 import org.apache.airavata.sharing.registry.db.entities.SharingEntity;
+import org.apache.airavata.sharing.registry.db.entities.SharingEntityPK;
+import org.apache.airavata.sharing.registry.db.utils.DBConstants;
+import org.apache.airavata.sharing.registry.models.GovRegistryException;
 import org.apache.airavata.sharing.registry.models.Sharing;
+import org.apache.airavata.sharing.registry.models.SharingType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SharingRepository extends AbstractRepository<Sharing, SharingEntity, String> {
+import java.util.HashMap;
+import java.util.List;
+
+public class SharingRepository extends AbstractRepository<Sharing, SharingEntity, SharingEntityPK> {
     private final static Logger logger = LoggerFactory.getLogger(SharingRepository.class);
 
     public SharingRepository() {
         super(Sharing.class, SharingEntity.class);
+    }
+
+    public List<Sharing> getIndirectSharedChildren(String parentId, String permissionTypeId) throws GovRegistryException {
+        HashMap<String, String> filters = new HashMap<>();
+        filters.put(DBConstants.SharingTable.INHERITED_PARENT_ID, parentId);
+        filters.put(DBConstants.SharingTable.SHARING_TYPE, SharingType.INHERITED.toString());
+        filters.put(DBConstants.SharingTable.PERMISSION_TYPE_ID, permissionTypeId);
+
+        return select(filters, 0, -1);
+    }
+
+    public List<Sharing> getPermissionsForEntity(String entityId) throws GovRegistryException {
+        HashMap<String, String> filters = new HashMap<>();
+        filters.put(DBConstants.SharingTable.ENTITY_ID, entityId);
+        return select(filters, 0, -1);
     }
 }

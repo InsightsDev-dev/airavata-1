@@ -35,11 +35,9 @@ public class SharingEntity {
     private String groupId;
     private String groupType;
     private String sharingType;
-    private String inheritedPermissionTypeId;
+    private String inheritedParentId;
     private Long createdTime;
     private Long updatedTime;
-    private PermissionTypeEntity permissionTypeByPermissionTypeId;
-    private EntityTypeEntity entityTypeByEntityTypeId;
 
     @Id
     @Column(name = "PERMISSION_TYPE_ID")
@@ -92,13 +90,13 @@ public class SharingEntity {
     }
 
     @Basic
-    @Column(name = "INHERITED_PARENT_PERMISSION_ID")
-    public String getInheritedPermissionTypeId() {
-        return inheritedPermissionTypeId;
+    @Column(name = "INHERITED_PARENT_ID")
+    public String getInheritedParentId() {
+        return inheritedParentId;
     }
 
-    public void setInheritedPermissionTypeId(String inheritedPermissionTypeId) {
-        this.inheritedPermissionTypeId = inheritedPermissionTypeId;
+    public void setInheritedParentId(String inheritedParentId) {
+        this.inheritedParentId = inheritedParentId;
     }
 
     @Basic
@@ -144,25 +142,5 @@ public class SharingEntity {
         result = 31 * result + (entityId != null ? entityId.hashCode() : 0);
         result = 31 * result + (groupId != null ? groupId.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "PERMISSION_TYPE_ID", referencedColumnName = "PERMISSION_TYPE_ID", nullable = false)
-    public PermissionTypeEntity getPermissionTypeByPermissionTypeId() {
-        return permissionTypeByPermissionTypeId;
-    }
-
-    public void setPermissionTypeByPermissionTypeId(PermissionTypeEntity permissionTypeByPermissionTypeId) {
-        this.permissionTypeByPermissionTypeId = permissionTypeByPermissionTypeId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "ENTITY_TYPE_ID", referencedColumnName = "ENTITY_TYPE_ID")
-    public EntityTypeEntity getEntityTypeByEntityTypeId() {
-        return entityTypeByEntityTypeId;
-    }
-
-    public void setEntityTypeByEntityTypeId(EntityTypeEntity entityTypeByEntityTypeId) {
-        this.entityTypeByEntityTypeId = entityTypeByEntityTypeId;
     }
 }

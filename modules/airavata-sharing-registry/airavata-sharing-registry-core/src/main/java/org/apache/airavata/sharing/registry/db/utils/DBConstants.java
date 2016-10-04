@@ -64,4 +64,17 @@ public class DBConstants {
         public static String ENTITY_TYPE_ID = "permissionTypeId";
         public static String DOMAIN_ID = "domainId";
     }
+
+    public static class EntityTable {
+        public static String ENTITY_ID = "entityId";
+        public static String PARENT_ENTITY_ID = "parentEntityId";
+    }
+
+    public static class SharingTable {
+        public static String PERMISSION_TYPE_ID = "permissionTypeId";
+        public static String ENTITY_ID = "entityId";
+        public static String GROUP_ID = "groupId";
+        public static String INHERITED_PARENT_ID = "inheritedParentId";
+        public static final String SHARING_TYPE = "sharingType";
+    }
 }

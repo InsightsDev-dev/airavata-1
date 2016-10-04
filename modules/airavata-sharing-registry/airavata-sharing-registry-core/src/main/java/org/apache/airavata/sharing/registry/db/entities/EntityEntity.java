@@ -41,8 +41,6 @@ public class EntityEntity {
     private String fullText;
     private Long createdTime;
     private Long updatedTime;
-    private DomainEntity domainByDomainId;
-    private EntityEntity entityByParentEntityId;
 
     @Id
     @Column(name = "ENTITY_ID")
@@ -190,25 +188,5 @@ public class EntityEntity {
         result = 31 * result + (createdTime != null ? createdTime.hashCode() : 0);
         result = 31 * result + (updatedTime != null ? updatedTime.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "DOMAIN_ID", referencedColumnName = "DOMAIN_ID")
-    public DomainEntity getDomainByDomainId() {
-        return domainByDomainId;
-    }
-
-    public void setDomainByDomainId(DomainEntity domainByDomainId) {
-        this.domainByDomainId = domainByDomainId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "PARENT_ENTITY_ID", referencedColumnName = "ENTITY_ID")
-    public EntityEntity getEntityByParentEntityId() {
-        return entityByParentEntityId;
-    }
-
-    public void setEntityByParentEntityId(EntityEntity entityByParentEntityId) {
-        this.entityByParentEntityId = entityByParentEntityId;
     }
 }

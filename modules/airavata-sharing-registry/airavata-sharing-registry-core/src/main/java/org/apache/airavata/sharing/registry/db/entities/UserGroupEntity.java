@@ -37,8 +37,6 @@ public class UserGroupEntity {
     private String groupType;
     private Long createdTime;
     private Long updatedTime;
-    private DomainEntity domainByDomainId;
-    private UserEntity userByOwnerId;
 
     @Id
     @Column(name = "GROUP_ID")
@@ -148,25 +146,5 @@ public class UserGroupEntity {
         result = 31 * result + (createdTime != null ? createdTime.hashCode() : 0);
         result = 31 * result + (updatedTime != null ? updatedTime.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "DOMAIN_ID", referencedColumnName = "DOMAIN_ID")
-    public DomainEntity getDomainByDomainId() {
-        return domainByDomainId;
-    }
-
-    public void setDomainByDomainId(DomainEntity domainByDomainId) {
-        this.domainByDomainId = domainByDomainId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "OWNER_ID", referencedColumnName = "USER_ID")
-    public UserEntity getUserByOwnerId() {
-        return userByOwnerId;
-    }
-
-    public void setUserByOwnerId(UserEntity userByOwnerId) {
-        this.userByOwnerId = userByOwnerId;
     }
 }

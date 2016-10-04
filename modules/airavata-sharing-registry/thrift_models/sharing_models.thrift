@@ -113,7 +113,7 @@ struct Sharing {
     3: optional string groupId,
     4: optional GroupType groupType,
     5: optional SharingType sharingType,
-    6: optional string inheritedPermissionTypeId,
+    6: optional string inheritedParentId,
     7: optional i64 createdTime,
     8: optional i64 updatedTime
 }

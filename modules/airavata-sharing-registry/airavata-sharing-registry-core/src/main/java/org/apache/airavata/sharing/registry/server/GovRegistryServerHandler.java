@@ -21,6 +21,7 @@
 package org.apache.airavata.sharing.registry.server;
 
 import org.apache.airavata.sharing.registry.db.entities.GroupMembershipEntityPK;
+import org.apache.airavata.sharing.registry.db.entities.SharingEntityPK;
 import org.apache.airavata.sharing.registry.db.repositories.*;
 import org.apache.airavata.sharing.registry.db.utils.DBConstants;
 import org.apache.airavata.sharing.registry.models.*;
@@ -30,10 +31,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GovRegistryServerHandler implements GovRegistryService.Iface{
     private final static Logger logger = LoggerFactory.getLogger(GovRegistryServerHandler.class);
@@ -45,6 +43,7 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
     private EntityTypeRepository entityTypeRepository;
     private PermissionTypeRepository permissionTypeRepository;
     private EntityRepository entityRepository;
+    private SharingRepository sharingRepository;
 
     public GovRegistryServerHandler(){
         this.domainRepository = new DomainRepository();
@@ -54,6 +53,7 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
         this.entityTypeRepository = new EntityTypeRepository();
         this.permissionTypeRepository = new PermissionTypeRepository();
         this.entityRepository = new EntityRepository();
+        this.sharingRepository = new SharingRepository();
     }
 
     /**
@@ -62,7 +62,6 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
      */
     @Override
     public String createDomain(Domain domain) throws GovRegistryException, TException {
-        domain.setDomainId(domain.name);
         domain.setCreatedTime(System.currentTimeMillis());
         domain.setUpdatedTime(System.currentTimeMillis());
         domainRepository.create(domain);
@@ -101,7 +100,6 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
      */
     @Override
     public String createUser(User user) throws GovRegistryException, TException {
-        user.setUserId(user.domainId + ":" + user.userName);
         user.setCreatedTime(System.currentTimeMillis());
         user.setUpdatedTime(System.currentTimeMillis());
         userRepository.create(user);
@@ -158,7 +156,6 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
      */
     @Override
     public String createGroup(UserGroup group) throws GovRegistryException, TException {
-        group.setGroupId(group.domainId+":"+group.name);
         group.setCreatedTime(System.currentTimeMillis());
         group.setUpdatedTime(System.currentTimeMillis());
         userGroupRepository.create(group);
@@ -256,7 +253,6 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
      */
     @Override
     public String createEntityType(EntityType entityType) throws GovRegistryException, TException {
-        entityType.setEntityTypeId(entityType.domainId + ":" + entityType.name);
         entityType.setCreatedTime(System.currentTimeMillis());
         entityType.setUpdatedTime(System.currentTimeMillis());
         entityTypeRepository.create(entityType);
@@ -297,7 +293,6 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
      */
     @Override
     public String createPermissionType(PermissionType permissionType) throws GovRegistryException, TException {
-        permissionType.setPermissionTypeId(permissionType.domainId+":"+permissionType.name);
         permissionType.setCreatedTime(System.currentTimeMillis());
         permissionType.setUpdatedTime(System.currentTimeMillis());
         permissionTypeRepository.create(permissionType);
@@ -337,15 +332,33 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
      */
     @Override
     public String createEntity(Entity entity) throws GovRegistryException, TException {
-        entity.setEntityId(entity.domainId + ":" + entity.name);
         entity.setCreatedTime(System.currentTimeMillis());
         entity.setUpdatedTime(System.currentTimeMillis());
         entityRepository.create(entity);
+
+        //creating records for inherited permissions
+        if(entity.getParentEntityId() != null && entity.getParentEntityId() != ""){
+            List<Sharing> sharings = sharingRepository.getPermissionsForEntity(entity.parentEntityId);
+            for(Sharing sharing : sharings){
+                Sharing newSharing = new Sharing();
+                newSharing.setPermissionTypeId(sharing.permissionTypeId);
+                newSharing.setEntityId(entity.entityId);
+                newSharing.setGroupId(sharing.groupId);
+                newSharing.setGroupType(sharing.groupType);
+                newSharing.setSharingType(SharingType.INHERITED);
+                newSharing.setCreatedTime(System.currentTimeMillis());
+                newSharing.setUpdatedTime(System.currentTimeMillis());
+
+                sharingRepository.create(newSharing);
+            }
+        }
+
         return entity.entityId;
     }
 
     @Override
     public boolean updateEntity(Entity entity) throws GovRegistryException, TException {
+        //TODO Check for permission changes
         entity.setUpdatedTime(System.currentTimeMillis());
         Entity oldEntity = entityRepository.get(entity.getEntityId());
         entity.setCreatedTime(oldEntity.createdTime);
@@ -356,6 +369,7 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
 
     @Override
     public boolean deleteEntity(String entityId) throws GovRegistryException, TException {
+        //TODO Check for permission changes
         entityRepository.delete(entityId);
         return true;
     }
@@ -368,6 +382,104 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
     @Override
     public List<Entity> searchEntities(String domain, String entityType, Map<String, String> filters, int offset, int limit) throws GovRegistryException, TException {
         return null;
+    }
+
+    /**
+     * * Sharing Entity with Users and Groups
+     * *
+     *
+     * @param entityId
+     * @param userList
+     * @param permissionType
+     */
+    @Override
+    public boolean shareEntityWithUsers(String entityId, List<String> userList, String permissionTypeId) throws GovRegistryException, TException {
+        return shareEntity(entityId, userList, permissionTypeId, GroupType.SINGLE_USER);
+    }
+
+    @Override
+    public boolean shareEntityWithGroups(String entityId, List<String> groupList, String permissionTypeId) throws GovRegistryException, TException {
+        return shareEntity(entityId, groupList, permissionTypeId, GroupType.MULTI_USER);
+    }
+
+    private boolean shareEntity(String entityId, List<String> groupOrUserList, String permissionTypeId, GroupType groupType)  throws GovRegistryException, TException {
+        //Adding permission for the specified users/groups for the specified entity
+        LinkedList<Entity> temp = new LinkedList<>();
+        for(String userId : groupOrUserList){
+            Sharing sharing = new Sharing();
+            sharing.setPermissionTypeId(permissionTypeId);
+            sharing.setEntityId(entityId);
+            sharing.setGroupId(userId);
+            sharing.setGroupType(groupType);
+            sharing.setSharingType(SharingType.DIRECT);
+            sharing.setCreatedTime(System.currentTimeMillis());
+            sharing.setUpdatedTime(System.currentTimeMillis());
+
+            sharingRepository.create(sharing);
+        }
+
+        //Adding permission for the specified users/groups for all child entities
+        entityRepository.getChildEntities(entityId).stream().forEach(e-> temp.addLast(e));
+        while(temp.size() > 0){
+            Entity entity = temp.pop();
+            String childEntityId = entity.entityId;
+            String parentEntityId = entity.parentEntityId;
+            for(String userId : groupOrUserList){
+                Sharing sharing = new Sharing();
+                sharing.setPermissionTypeId(permissionTypeId);
+                sharing.setEntityId(childEntityId);
+                sharing.setGroupId(userId);
+                sharing.setGroupType(groupType);
+                sharing.setSharingType(SharingType.INHERITED);
+                sharing.setInheritedParentId(parentEntityId);
+                sharing.setCreatedTime(System.currentTimeMillis());
+                sharing.setUpdatedTime(System.currentTimeMillis());
+                sharingRepository.create(sharing);
+                entityRepository.getChildEntities(childEntityId).stream().forEach(e-> temp.addLast(e));
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public boolean revokeEntitySharingFromUsers(String entityId, List<String> userList, String permissionTypeId) throws GovRegistryException, TException {
+        return revokeEntitySharing(entityId, userList, permissionTypeId);
+    }
+
+
+    @Override
+    public boolean revokeEntitySharingFromGroups(String entityId, List<String> groupList, String permissionTypeId) throws GovRegistryException, TException {
+        return revokeEntitySharing(entityId, groupList, permissionTypeId);
+    }
+
+    public boolean revokeEntitySharing(String entityId, List<String> groupOrUserList, String permissionTypeId) throws GovRegistryException {
+        //revoking permission for the entity
+        LinkedList<Sharing> temp = new LinkedList<>();
+        sharingRepository.getIndirectSharedChildren(entityId, permissionTypeId).stream().forEach(s->temp.addLast(s));
+        for(String groupId : groupOrUserList){
+            SharingEntityPK sharingEntityPK = new SharingEntityPK();
+            sharingEntityPK.setEntityId(entityId);
+            sharingEntityPK.setGroupId(groupId);
+            sharingEntityPK.setPermissionTypeId(permissionTypeId);
+
+            sharingRepository.delete(sharingEntityPK);
+        }
+
+        //revoking permission from inheritance
+        while(temp.size() > 0){
+            Sharing sharing = temp.pop();
+            String childEntityId = sharing.entityId;
+            sharingRepository.getIndirectSharedChildren(sharing.entityId, permissionTypeId).stream().forEach(s->temp.addLast(s));
+            for(String groupId : groupOrUserList){
+                SharingEntityPK sharingEntityPK = new SharingEntityPK();
+                sharingEntityPK.setEntityId(childEntityId);
+                sharingEntityPK.setGroupId(groupId);
+                sharingEntityPK.setPermissionTypeId(permissionTypeId);
+
+                sharingRepository.delete(sharingEntityPK);
+            }
+        }
+        return true;
     }
 
 
@@ -412,33 +524,5 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
             }
         }
         return hashtable;
-    }
-
-    /**
-     * * Sharing Entity with Users and Groups
-     * *
-     *
-     * @param entityId
-     * @param userList
-     * @param permissionType
-     */
-    @Override
-    public boolean shareEntityWithUsers(String entityId, List<String> userList, PermissionType perssionType) throws GovRegistryException, TException {
-        return false;
-    }
-
-    @Override
-    public boolean revokeEntitySharingFromUsers(String entityId, List<String> userList, PermissionType perssionType) throws GovRegistryException, TException {
-        return false;
-    }
-
-    @Override
-    public boolean shareEntityWithGroups(String entityId, List<String> groupList, PermissionType perssionType) throws GovRegistryException, TException {
-        return false;
-    }
-
-    @Override
-    public boolean revokeEntitySharingFromGroups(String entityId, List<String> groupList, PermissionType perssionType) throws GovRegistryException, TException {
-        return false;
     }
 }

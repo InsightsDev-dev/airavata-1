@@ -128,6 +128,7 @@ public class GovRegistryServerHandlerTest {
         //Creating permission types
         PermissionType permissionType1 = new PermissionType();
         String permissionName1 = "READ";
+        permissionType1.setPermissionTypeId(domainId+":"+permissionName1);
         permissionType1.setDomainId(domainId);
         permissionType1.setName(permissionName1);
         permissionType1.setDescription("READ description");
@@ -138,6 +139,7 @@ public class GovRegistryServerHandlerTest {
 
         PermissionType permissionType2 = new PermissionType();
         String permissionName2 = "WRITE";
+        permissionType2.setPermissionTypeId(domainId+":"+permissionName2);
         permissionType2.setDomainId(domainId);
         permissionType2.setName(permissionName2);
         permissionType2.setDescription("WRITE description");
@@ -149,6 +151,7 @@ public class GovRegistryServerHandlerTest {
         //Creating entity types
         EntityType entityType1 = new EntityType();
         String entityType1Name = "Project";
+        entityType1.setEntityTypeId(domainId+":"+entityType1Name);
         entityType1.setDomainId(domainId);
         entityType1.setName(entityType1Name);
         entityType1.setDescription("test entity type");
@@ -159,6 +162,7 @@ public class GovRegistryServerHandlerTest {
 
         EntityType entityType2 = new EntityType();
         String entityType2Name = "Experiment";
+        entityType2.setEntityTypeId(domainId+":"+entityType2Name);
         entityType2.setDomainId(domainId);
         entityType2.setName(entityType2Name);
         entityType2.setDescription("test entity type");
@@ -167,12 +171,24 @@ public class GovRegistryServerHandlerTest {
         String entityTypeId2 = govRegistryServerHandler.createEntityType(entityType2);
         Assert.assertNotNull(entityTypeId2);
 
+        EntityType entityType3 = new EntityType();
+        String entityType3Name = "FileInput";
+        entityType3.setEntityTypeId(domainId+":"+entityType3Name);
+        entityType3.setDomainId(domainId);
+        entityType3.setName(entityType3Name);
+        entityType3.setDescription("file input type");
+        entityType3.setCreatedTime(System.currentTimeMillis());
+        entityType3.setUpdatedTime(System.currentTimeMillis());
+        String entityTypeId3 = govRegistryServerHandler.createEntityType(entityType3);
+        Assert.assertNotNull(entityTypeId3);
+
         //Creating Entities
         Entity entity1 = new Entity();
+        entity1.setEntityId(domainId+":Entity1");
         entity1.setDomainId(domainId);
         entity1.setEntityTypeId(entityTypeId1);
         entity1.setOwnerId(userId1);
-        entity1.setName("Project name");
+        entity1.setName("Project name 1");
         entity1.setDescription("Project description");
         Map<String, String> metadataMap = new HashMap<>();
         metadataMap.put("key", "val");
@@ -185,6 +201,7 @@ public class GovRegistryServerHandlerTest {
         Assert.assertNotNull(entityId1);
 
         Entity entity2 = new Entity();
+        entity2.setEntityId(domainId+":Entity2");
         entity2.setDomainId(domainId);
         entity2.setEntityTypeId(entityTypeId2);
         entity2.setOwnerId(userId1);
@@ -202,6 +219,7 @@ public class GovRegistryServerHandlerTest {
         Assert.assertNotNull(entityId2);
 
         Entity entity3 = new Entity();
+        entity3.setEntityId(domainId+":Entity3");
         entity3.setDomainId(domainId);
         entity3.setEntityTypeId(entityTypeId2);
         entity3.setOwnerId(userId1);
@@ -217,5 +235,30 @@ public class GovRegistryServerHandlerTest {
 
         String entityId3 = govRegistryServerHandler.createEntity(entity3);
         Assert.assertNotNull(entityId3);
+
+        govRegistryServerHandler.shareEntityWithUsers(entityId1, Arrays.asList(userId2), permissionTypeId1);
+        govRegistryServerHandler.shareEntityWithGroups(entityId3, Arrays.asList(groupId2), permissionTypeId1);
+
+        Entity entity4 = new Entity();
+        entity4.setEntityId(domainId+":Entity4");
+        entity4.setDomainId(domainId);
+        entity4.setEntityTypeId(entityTypeId3);
+        entity4.setOwnerId(userId1);
+        entity4.setName("Input name");
+        entity4.setDescription("Input file description");
+        entity4.setParentEntityId(entityId3);
+        metadataMap = new HashMap<>();
+        metadataMap.put("key", "val");
+        entity4.setMetadata(metadataMap);
+        entity4.setFullText("Input File");
+        entity4.setCreatedTime(System.currentTimeMillis());
+        entity4.setUpdatedTime(System.currentTimeMillis());
+
+        String entityId4 = govRegistryServerHandler.createEntity(entity4);
+        Assert.assertNotNull(entityId4);
+
+
+//        govRegistryServerHandler.revokeEntitySharingFromUsers(entityId1, Arrays.asList(userId2), permissionTypeId1);
+//        govRegistryServerHandler.revokeEntitySharingFromGroups(entityId3, Arrays.asList(groupId2), permissionTypeId1);
     }
 }
