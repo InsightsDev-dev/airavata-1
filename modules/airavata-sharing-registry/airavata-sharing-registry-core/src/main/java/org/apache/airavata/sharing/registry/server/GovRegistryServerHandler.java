@@ -36,6 +36,8 @@ import java.util.*;
 public class GovRegistryServerHandler implements GovRegistryService.Iface{
     private final static Logger logger = LoggerFactory.getLogger(GovRegistryServerHandler.class);
 
+    public static String GLOBAL_PERMISSION_NAME = "GLOBAL";
+
     private DomainRepository domainRepository;
     private UserRepository userRepository;
     private UserGroupRepository userGroupRepository;
@@ -65,6 +67,17 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
         domain.setCreatedTime(System.currentTimeMillis());
         domain.setUpdatedTime(System.currentTimeMillis());
         domainRepository.create(domain);
+
+        //create the global permission for the domain
+        PermissionType permissionType = new PermissionType();
+        permissionType.setPermissionTypeId(domain.domainId+":"+GLOBAL_PERMISSION_NAME);
+        permissionType.setDomainId(domain.domainId);
+        permissionType.setName(GLOBAL_PERMISSION_NAME);
+        permissionType.setDescription("GLOBAL permission to " + domain.domainId);
+        permissionType.setCreatedTime(System.currentTimeMillis());
+        permissionType.setUpdatedTime(System.currentTimeMillis());
+        permissionTypeRepository.create(permissionType);
+
         return domain.domainId;
     }
 
@@ -336,11 +349,23 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
         entity.setUpdatedTime(System.currentTimeMillis());
         entityRepository.create(entity);
 
+        //Assigning global permission for the owner
+        Sharing newSharing = new Sharing();
+        newSharing.setPermissionTypeId(permissionTypeRepository.getGlobalPermissionTypeIdForDomain(entity.domainId));
+        newSharing.setEntityId(entity.entityId);
+        newSharing.setGroupId(entity.ownerId);
+        newSharing.setGroupType(GroupType.SINGLE_USER);
+        newSharing.setSharingType(SharingType.DIRECT);
+        newSharing.setCreatedTime(System.currentTimeMillis());
+        newSharing.setUpdatedTime(System.currentTimeMillis());
+
+        sharingRepository.create(newSharing);
+
         //creating records for inherited permissions
         if(entity.getParentEntityId() != null && entity.getParentEntityId() != ""){
             List<Sharing> sharings = sharingRepository.getPermissionsForEntity(entity.parentEntityId);
             for(Sharing sharing : sharings){
-                Sharing newSharing = new Sharing();
+                newSharing = new Sharing();
                 newSharing.setPermissionTypeId(sharing.permissionTypeId);
                 newSharing.setEntityId(entity.entityId);
                 newSharing.setGroupId(sharing.groupId);
@@ -450,6 +475,17 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
     @Override
     public boolean revokeEntitySharingFromGroups(String entityId, List<String> groupList, String permissionTypeId) throws GovRegistryException, TException {
         return revokeEntitySharing(entityId, groupList, permissionTypeId);
+    }
+
+    @Override
+    public boolean userHasAccess(String domainId, String userId, String entityId, String permissionTypeId) throws GovRegistryException, TException {
+        //check whether the user has permission directly or indirectly
+        List<GroupMembership> parentMemberships = groupMembershipRepository.getAllParentMembershipsForChild(userId);
+        List<String> groupIds = new ArrayList<>();
+        parentMemberships.stream().forEach(pm->groupIds.add(pm.parentId));
+        groupIds.add(userId);
+        return sharingRepository.hasAccess(entityId, groupIds, Arrays.asList(permissionTypeId,
+                permissionTypeRepository.getGlobalPermissionTypeIdForDomain(domainId)));
     }
 
     public boolean revokeEntitySharing(String entityId, List<String> groupOrUserList, String permissionTypeId) throws GovRegistryException {

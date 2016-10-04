@@ -120,7 +120,7 @@ public abstract class AbstractRepository<T, E, Id> {
         if(filters != null && filters.size() != 0){
             query += " WHERE ";
             for(String k : filters.keySet()){
-                query += "p." + k + " LIKE '%" + filters.get(k) + "%' AND ";
+                query += "p." + k + " = '" + filters.get(k) + "' AND ";
             }
             query = query.substring(0, query.length()-5);
         }

@@ -21,14 +21,32 @@
 package org.apache.airavata.sharing.registry.db.repositories;
 
 import org.apache.airavata.sharing.registry.db.entities.PermissionTypeEntity;
+import org.apache.airavata.sharing.registry.db.utils.DBConstants;
+import org.apache.airavata.sharing.registry.models.GovRegistryException;
 import org.apache.airavata.sharing.registry.models.PermissionType;
+import org.apache.airavata.sharing.registry.server.GovRegistryServerHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class PermissionTypeRepository extends AbstractRepository<PermissionType, PermissionTypeEntity, String> {
     private final static Logger logger = LoggerFactory.getLogger(PermissionTypeRepository.class);
 
     public PermissionTypeRepository() {
         super(PermissionType.class, PermissionTypeEntity.class);
+    }
+
+    public String getGlobalPermissionTypeIdForDomain(String domainId) throws GovRegistryException {
+        HashMap<String, String> filters = new HashMap<>();
+        filters.put(DBConstants.PermissionTypeTable.DOMAIN_ID, domainId);
+        filters.put(DBConstants.PermissionTypeTable.NAME, GovRegistryServerHandler.GLOBAL_PERMISSION_NAME);
+        List<PermissionType> permissionTypeList = select(filters, 0, -1);
+        if(permissionTypeList.size() != 1){
+            throw new GovRegistryException("GLOBAL Permission inconsistency. Found " + permissionTypeList.size()
+                    + " records with " + GovRegistryServerHandler.GLOBAL_PERMISSION_NAME + " name");
+        }
+        return permissionTypeList.get(0).getPermissionTypeId();
     }
 }

@@ -243,7 +243,7 @@ public class GovRegistryServerHandlerTest {
         entity4.setEntityId(domainId+":Entity4");
         entity4.setDomainId(domainId);
         entity4.setEntityTypeId(entityTypeId3);
-        entity4.setOwnerId(userId1);
+        entity4.setOwnerId(userId3);
         entity4.setName("Input name");
         entity4.setDescription("Input file description");
         entity4.setParentEntityId(entityId3);
@@ -257,6 +257,10 @@ public class GovRegistryServerHandlerTest {
         String entityId4 = govRegistryServerHandler.createEntity(entity4);
         Assert.assertNotNull(entityId4);
 
+        Assert.assertTrue(govRegistryServerHandler.userHasAccess(domainId, userId3, entityId4, permissionTypeId1));
+        Assert.assertTrue(govRegistryServerHandler.userHasAccess(domainId, userId2, entityId4, permissionTypeId1));
+        Assert.assertTrue(govRegistryServerHandler.userHasAccess(domainId, userId1, entityId4, permissionTypeId1));
+        Assert.assertFalse(govRegistryServerHandler.userHasAccess(domainId, userId3, entityId1, permissionTypeId1));
 
 //        govRegistryServerHandler.revokeEntitySharingFromUsers(entityId1, Arrays.asList(userId2), permissionTypeId1);
 //        govRegistryServerHandler.revokeEntitySharingFromGroups(entityId3, Arrays.asList(groupId2), permissionTypeId1);

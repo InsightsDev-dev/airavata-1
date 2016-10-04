@@ -63,6 +63,7 @@ public class DBConstants {
     public static class PermissionTypeTable {
         public static String ENTITY_TYPE_ID = "permissionTypeId";
         public static String DOMAIN_ID = "domainId";
+        public static String NAME = "name";
     }
 
     public static class EntityTable {

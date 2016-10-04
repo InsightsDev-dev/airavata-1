@@ -53,4 +53,22 @@ public class SharingRepository extends AbstractRepository<Sharing, SharingEntity
         filters.put(DBConstants.SharingTable.ENTITY_ID, entityId);
         return select(filters, 0, -1);
     }
+
+    public boolean hasAccess(String entityId, List<String> groupIds, List<String> permissionTypeIds) throws GovRegistryException {
+        String query = "SELECT p from " + SharingEntity.class.getSimpleName() + " as p";
+        query += " WHERE ";
+        query += "p." + DBConstants.SharingTable.ENTITY_ID + " = '" + entityId + "' AND ";
+        String permissionTypeIdString = "'";
+        for(String permissionId : permissionTypeIds)
+            permissionTypeIdString += permissionId + "','";
+        permissionTypeIdString = permissionTypeIdString.substring(0, permissionTypeIdString.length()-2);
+        query += "p." + DBConstants.SharingTable.PERMISSION_TYPE_ID + " IN(" + permissionTypeIdString + ") AND ";
+        String groupIdString = "'";
+        for(String groupId : groupIds)
+            groupIdString += groupId + "','";
+        groupIdString = groupIdString.substring(0, groupIdString.length()-2);
+        query += "p." + DBConstants.SharingTable.GROUP_ID + " IN(" + groupIdString + ") ";
+        query += " ORDER BY p.createdTime DESC";
+        return select(query, 0, -1).size() > 0;
+    }
 }
