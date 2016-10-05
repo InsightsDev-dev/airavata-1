@@ -44,8 +44,9 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
   private static final org.apache.thrift.protocol.TField GROUP_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("groupType", org.apache.thrift.protocol.TType.I32, (short)4);
   private static final org.apache.thrift.protocol.TField SHARING_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("sharingType", org.apache.thrift.protocol.TType.I32, (short)5);
   private static final org.apache.thrift.protocol.TField INHERITED_PARENT_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("inheritedParentId", org.apache.thrift.protocol.TType.STRING, (short)6);
-  private static final org.apache.thrift.protocol.TField CREATED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("createdTime", org.apache.thrift.protocol.TType.I64, (short)7);
-  private static final org.apache.thrift.protocol.TField UPDATED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("updatedTime", org.apache.thrift.protocol.TType.I64, (short)8);
+  private static final org.apache.thrift.protocol.TField CASCADE_PERMISSION_FIELD_DESC = new org.apache.thrift.protocol.TField("cascadePermission", org.apache.thrift.protocol.TType.BOOL, (short)7);
+  private static final org.apache.thrift.protocol.TField CREATED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("createdTime", org.apache.thrift.protocol.TType.I64, (short)8);
+  private static final org.apache.thrift.protocol.TField UPDATED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("updatedTime", org.apache.thrift.protocol.TType.I64, (short)9);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -67,6 +68,7 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
    */
   public SharingType sharingType; // optional
   public String inheritedParentId; // optional
+  public boolean cascadePermission; // optional
   public long createdTime; // optional
   public long updatedTime; // optional
 
@@ -86,8 +88,9 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
      */
     SHARING_TYPE((short)5, "sharingType"),
     INHERITED_PARENT_ID((short)6, "inheritedParentId"),
-    CREATED_TIME((short)7, "createdTime"),
-    UPDATED_TIME((short)8, "updatedTime");
+    CASCADE_PERMISSION((short)7, "cascadePermission"),
+    CREATED_TIME((short)8, "createdTime"),
+    UPDATED_TIME((short)9, "updatedTime");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -114,9 +117,11 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
           return SHARING_TYPE;
         case 6: // INHERITED_PARENT_ID
           return INHERITED_PARENT_ID;
-        case 7: // CREATED_TIME
+        case 7: // CASCADE_PERMISSION
+          return CASCADE_PERMISSION;
+        case 8: // CREATED_TIME
           return CREATED_TIME;
-        case 8: // UPDATED_TIME
+        case 9: // UPDATED_TIME
           return UPDATED_TIME;
         default:
           return null;
@@ -158,10 +163,11 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
   }
 
   // isset id assignments
-  private static final int __CREATEDTIME_ISSET_ID = 0;
-  private static final int __UPDATEDTIME_ISSET_ID = 1;
+  private static final int __CASCADEPERMISSION_ISSET_ID = 0;
+  private static final int __CREATEDTIME_ISSET_ID = 1;
+  private static final int __UPDATEDTIME_ISSET_ID = 2;
   private byte __isset_bitfield = 0;
-  private static final _Fields optionals[] = {_Fields.PERMISSION_TYPE_ID,_Fields.ENTITY_ID,_Fields.GROUP_ID,_Fields.GROUP_TYPE,_Fields.SHARING_TYPE,_Fields.INHERITED_PARENT_ID,_Fields.CREATED_TIME,_Fields.UPDATED_TIME};
+  private static final _Fields optionals[] = {_Fields.PERMISSION_TYPE_ID,_Fields.ENTITY_ID,_Fields.GROUP_ID,_Fields.GROUP_TYPE,_Fields.SHARING_TYPE,_Fields.INHERITED_PARENT_ID,_Fields.CASCADE_PERMISSION,_Fields.CREATED_TIME,_Fields.UPDATED_TIME};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
@@ -177,6 +183,8 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
         new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, SharingType.class)));
     tmpMap.put(_Fields.INHERITED_PARENT_ID, new org.apache.thrift.meta_data.FieldMetaData("inheritedParentId", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+    tmpMap.put(_Fields.CASCADE_PERMISSION, new org.apache.thrift.meta_data.FieldMetaData("cascadePermission", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.BOOL)));
     tmpMap.put(_Fields.CREATED_TIME, new org.apache.thrift.meta_data.FieldMetaData("createdTime", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
     tmpMap.put(_Fields.UPDATED_TIME, new org.apache.thrift.meta_data.FieldMetaData("updatedTime", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
@@ -211,6 +219,7 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
     if (other.isSetInheritedParentId()) {
       this.inheritedParentId = other.inheritedParentId;
     }
+    this.cascadePermission = other.cascadePermission;
     this.createdTime = other.createdTime;
     this.updatedTime = other.updatedTime;
   }
@@ -227,6 +236,8 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
     this.groupType = null;
     this.sharingType = null;
     this.inheritedParentId = null;
+    setCascadePermissionIsSet(false);
+    this.cascadePermission = false;
     setCreatedTimeIsSet(false);
     this.createdTime = 0;
     setUpdatedTimeIsSet(false);
@@ -393,6 +404,29 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
     }
   }
 
+  public boolean isCascadePermission() {
+    return this.cascadePermission;
+  }
+
+  public Sharing setCascadePermission(boolean cascadePermission) {
+    this.cascadePermission = cascadePermission;
+    setCascadePermissionIsSet(true);
+    return this;
+  }
+
+  public void unsetCascadePermission() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __CASCADEPERMISSION_ISSET_ID);
+  }
+
+  /** Returns true if field cascadePermission is set (has been assigned a value) and false otherwise */
+  public boolean isSetCascadePermission() {
+    return EncodingUtils.testBit(__isset_bitfield, __CASCADEPERMISSION_ISSET_ID);
+  }
+
+  public void setCascadePermissionIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __CASCADEPERMISSION_ISSET_ID, value);
+  }
+
   public long getCreatedTime() {
     return this.createdTime;
   }
@@ -489,6 +523,14 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
       }
       break;
 
+    case CASCADE_PERMISSION:
+      if (value == null) {
+        unsetCascadePermission();
+      } else {
+        setCascadePermission((Boolean)value);
+      }
+      break;
+
     case CREATED_TIME:
       if (value == null) {
         unsetCreatedTime();
@@ -528,6 +570,9 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
     case INHERITED_PARENT_ID:
       return getInheritedParentId();
 
+    case CASCADE_PERMISSION:
+      return isCascadePermission();
+
     case CREATED_TIME:
       return getCreatedTime();
 
@@ -557,6 +602,8 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
       return isSetSharingType();
     case INHERITED_PARENT_ID:
       return isSetInheritedParentId();
+    case CASCADE_PERMISSION:
+      return isSetCascadePermission();
     case CREATED_TIME:
       return isSetCreatedTime();
     case UPDATED_TIME:
@@ -632,6 +679,15 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
         return false;
     }
 
+    boolean this_present_cascadePermission = true && this.isSetCascadePermission();
+    boolean that_present_cascadePermission = true && that.isSetCascadePermission();
+    if (this_present_cascadePermission || that_present_cascadePermission) {
+      if (!(this_present_cascadePermission && that_present_cascadePermission))
+        return false;
+      if (this.cascadePermission != that.cascadePermission)
+        return false;
+    }
+
     boolean this_present_createdTime = true && this.isSetCreatedTime();
     boolean that_present_createdTime = true && that.isSetCreatedTime();
     if (this_present_createdTime || that_present_createdTime) {
@@ -686,6 +742,11 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
     list.add(present_inheritedParentId);
     if (present_inheritedParentId)
       list.add(inheritedParentId);
+
+    boolean present_cascadePermission = true && (isSetCascadePermission());
+    list.add(present_cascadePermission);
+    if (present_cascadePermission)
+      list.add(cascadePermission);
 
     boolean present_createdTime = true && (isSetCreatedTime());
     list.add(present_createdTime);
@@ -764,6 +825,16 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
     }
     if (isSetInheritedParentId()) {
       lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.inheritedParentId, other.inheritedParentId);
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+    }
+    lastComparison = Boolean.valueOf(isSetCascadePermission()).compareTo(other.isSetCascadePermission());
+    if (lastComparison != 0) {
+      return lastComparison;
+    }
+    if (isSetCascadePermission()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.cascadePermission, other.cascadePermission);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -865,6 +936,12 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
       } else {
         sb.append(this.inheritedParentId);
       }
+      first = false;
+    }
+    if (isSetCascadePermission()) {
+      if (!first) sb.append(", ");
+      sb.append("cascadePermission:");
+      sb.append(this.cascadePermission);
       first = false;
     }
     if (isSetCreatedTime()) {
@@ -972,7 +1049,15 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 7: // CREATED_TIME
+          case 7: // CASCADE_PERMISSION
+            if (schemeField.type == org.apache.thrift.protocol.TType.BOOL) {
+              struct.cascadePermission = iprot.readBool();
+              struct.setCascadePermissionIsSet(true);
+            } else { 
+              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+            }
+            break;
+          case 8: // CREATED_TIME
             if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
               struct.createdTime = iprot.readI64();
               struct.setCreatedTimeIsSet(true);
@@ -980,7 +1065,7 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 8: // UPDATED_TIME
+          case 9: // UPDATED_TIME
             if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
               struct.updatedTime = iprot.readI64();
               struct.setUpdatedTimeIsSet(true);
@@ -1045,6 +1130,11 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
           oprot.writeFieldEnd();
         }
       }
+      if (struct.isSetCascadePermission()) {
+        oprot.writeFieldBegin(CASCADE_PERMISSION_FIELD_DESC);
+        oprot.writeBool(struct.cascadePermission);
+        oprot.writeFieldEnd();
+      }
       if (struct.isSetCreatedTime()) {
         oprot.writeFieldBegin(CREATED_TIME_FIELD_DESC);
         oprot.writeI64(struct.createdTime);
@@ -1091,13 +1181,16 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
       if (struct.isSetInheritedParentId()) {
         optionals.set(5);
       }
-      if (struct.isSetCreatedTime()) {
+      if (struct.isSetCascadePermission()) {
         optionals.set(6);
       }
-      if (struct.isSetUpdatedTime()) {
+      if (struct.isSetCreatedTime()) {
         optionals.set(7);
       }
-      oprot.writeBitSet(optionals, 8);
+      if (struct.isSetUpdatedTime()) {
+        optionals.set(8);
+      }
+      oprot.writeBitSet(optionals, 9);
       if (struct.isSetPermissionTypeId()) {
         oprot.writeString(struct.permissionTypeId);
       }
@@ -1116,6 +1209,9 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
       if (struct.isSetInheritedParentId()) {
         oprot.writeString(struct.inheritedParentId);
       }
+      if (struct.isSetCascadePermission()) {
+        oprot.writeBool(struct.cascadePermission);
+      }
       if (struct.isSetCreatedTime()) {
         oprot.writeI64(struct.createdTime);
       }
@@ -1127,7 +1223,7 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, Sharing struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      BitSet incoming = iprot.readBitSet(8);
+      BitSet incoming = iprot.readBitSet(9);
       if (incoming.get(0)) {
         struct.permissionTypeId = iprot.readString();
         struct.setPermissionTypeIdIsSet(true);
@@ -1153,10 +1249,14 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
         struct.setInheritedParentIdIsSet(true);
       }
       if (incoming.get(6)) {
+        struct.cascadePermission = iprot.readBool();
+        struct.setCascadePermissionIsSet(true);
+      }
+      if (incoming.get(7)) {
         struct.createdTime = iprot.readI64();
         struct.setCreatedTimeIsSet(true);
       }
-      if (incoming.get(7)) {
+      if (incoming.get(8)) {
         struct.updatedTime = iprot.readI64();
         struct.setUpdatedTimeIsSet(true);
       }

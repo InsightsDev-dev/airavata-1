@@ -36,7 +36,7 @@ import java.util.*;
 public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     private final static Logger logger = LoggerFactory.getLogger(SharingRegistryServerHandler.class);
 
-    public static String GLOBAL_PERMISSION_NAME = "GLOBAL";
+    public static String GLOBAL_PERMISSION_NAME = "OWNER";
 
     private DomainRepository domainRepository;
     private UserRepository userRepository;
@@ -372,7 +372,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
         newSharing.setEntityId(entity.entityId);
         newSharing.setGroupId(entity.ownerId);
         newSharing.setGroupType(GroupType.SINGLE_USER);
-        newSharing.setSharingType(SharingType.DIRECT);
+        newSharing.setSharingType(SharingType.DIRECT_CASCADING);
         newSharing.setCreatedTime(System.currentTimeMillis());
         newSharing.setUpdatedTime(System.currentTimeMillis());
 
@@ -380,14 +380,14 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
 
         //creating records for inherited permissions
         if(entity.getParentEntityId() != null && entity.getParentEntityId() != ""){
-            List<Sharing> sharings = sharingRepository.getPermissionsForEntity(entity.parentEntityId);
+            List<Sharing> sharings = sharingRepository.getCascadingPermissionsForEntity(entity.parentEntityId);
             for(Sharing sharing : sharings){
                 newSharing = new Sharing();
                 newSharing.setPermissionTypeId(sharing.permissionTypeId);
                 newSharing.setEntityId(entity.entityId);
                 newSharing.setGroupId(sharing.groupId);
                 newSharing.setGroupType(sharing.groupType);
-                newSharing.setSharingType(SharingType.INHERITED);
+                newSharing.setSharingType(SharingType.INDIRECT_CASCADING);
                 newSharing.setCreatedTime(System.currentTimeMillis());
                 newSharing.setUpdatedTime(System.currentTimeMillis());
 
@@ -439,16 +439,16 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
      * @param permissionType
      */
     @Override
-    public boolean shareEntityWithUsers(String entityId, List<String> userList, String permissionTypeId) throws GovRegistryException, TException {
-        return shareEntity(entityId, userList, permissionTypeId, GroupType.SINGLE_USER);
+    public boolean shareEntityWithUsers(String entityId, List<String> userList, String permissionTypeId, boolean cascadePermission) throws GovRegistryException, TException {
+        return shareEntity(entityId, userList, permissionTypeId, GroupType.SINGLE_USER, cascadePermission);
     }
 
     @Override
-    public boolean shareEntityWithGroups(String entityId, List<String> groupList, String permissionTypeId) throws GovRegistryException, TException {
-        return shareEntity(entityId, groupList, permissionTypeId, GroupType.MULTI_USER);
+    public boolean shareEntityWithGroups(String entityId, List<String> groupList, String permissionTypeId, boolean cascadePermission) throws GovRegistryException, TException {
+        return shareEntity(entityId, groupList, permissionTypeId, GroupType.MULTI_USER, cascadePermission);
     }
 
-    private boolean shareEntity(String entityId, List<String> groupOrUserList, String permissionTypeId, GroupType groupType)  throws GovRegistryException, TException {
+    private boolean shareEntity(String entityId, List<String> groupOrUserList, String permissionTypeId, GroupType groupType, boolean cascadePermission)  throws GovRegistryException, TException {
         //Adding permission for the specified users/groups for the specified entity
         LinkedList<Entity> temp = new LinkedList<>();
         for(String userId : groupOrUserList){
@@ -457,31 +457,40 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
             sharing.setEntityId(entityId);
             sharing.setGroupId(userId);
             sharing.setGroupType(groupType);
-            sharing.setSharingType(SharingType.DIRECT);
+            if(cascadePermission) {
+                sharing.setSharingType(SharingType.DIRECT_CASCADING);
+                sharing.setCascadePermission(true);
+            }else {
+                sharing.setSharingType(SharingType.DIRECT_NON_CASCADING);
+                sharing.setCascadePermission(false);
+            }
             sharing.setCreatedTime(System.currentTimeMillis());
             sharing.setUpdatedTime(System.currentTimeMillis());
 
             sharingRepository.create(sharing);
         }
 
-        //Adding permission for the specified users/groups for all child entities
-        entityRepository.getChildEntities(entityId).stream().forEach(e-> temp.addLast(e));
-        while(temp.size() > 0){
-            Entity entity = temp.pop();
-            String childEntityId = entity.entityId;
-            String parentEntityId = entity.parentEntityId;
-            for(String userId : groupOrUserList){
-                Sharing sharing = new Sharing();
-                sharing.setPermissionTypeId(permissionTypeId);
-                sharing.setEntityId(childEntityId);
-                sharing.setGroupId(userId);
-                sharing.setGroupType(groupType);
-                sharing.setSharingType(SharingType.INHERITED);
-                sharing.setInheritedParentId(parentEntityId);
-                sharing.setCreatedTime(System.currentTimeMillis());
-                sharing.setUpdatedTime(System.currentTimeMillis());
-                sharingRepository.create(sharing);
-                entityRepository.getChildEntities(childEntityId).stream().forEach(e-> temp.addLast(e));
+        if(cascadePermission){
+            //Adding permission for the specified users/groups for all child entities
+            entityRepository.getChildEntities(entityId).stream().forEach(e-> temp.addLast(e));
+            while(temp.size() > 0){
+                Entity entity = temp.pop();
+                String childEntityId = entity.entityId;
+                String parentEntityId = entity.parentEntityId;
+                for(String userId : groupOrUserList){
+                    Sharing sharing = new Sharing();
+                    sharing.setPermissionTypeId(permissionTypeId);
+                    sharing.setEntityId(childEntityId);
+                    sharing.setGroupId(userId);
+                    sharing.setGroupType(groupType);
+                    sharing.setSharingType(SharingType.INDIRECT_CASCADING);
+                    sharing.setInheritedParentId(parentEntityId);
+                    sharing.setCascadePermission(true);
+                    sharing.setCreatedTime(System.currentTimeMillis());
+                    sharing.setUpdatedTime(System.currentTimeMillis());
+                    sharingRepository.create(sharing);
+                    entityRepository.getChildEntities(childEntityId).stream().forEach(e-> temp.addLast(e));
+                }
             }
         }
         return true;

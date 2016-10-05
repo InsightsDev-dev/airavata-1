@@ -11,14 +11,14 @@ import java.util.Map;
 import java.util.HashMap;
 import org.apache.thrift.TEnum;
 
-public enum SharingType implements org.apache.thrift.TEnum {
-  DIRECT_NON_CASCADING(0),
-  DIRECT_CASCADING(1),
-  INDIRECT_CASCADING(2);
+public enum EntitySearchFields implements org.apache.thrift.TEnum {
+  NAME(0),
+  DESCRIPTION(1),
+  FULL_TEXT(2);
 
   private final int value;
 
-  private SharingType(int value) {
+  private EntitySearchFields(int value) {
     this.value = value;
   }
 
@@ -33,14 +33,14 @@ public enum SharingType implements org.apache.thrift.TEnum {
    * Find a the enum type by its integer value, as defined in the Thrift IDL.
    * @return null if the value is not found.
    */
-  public static SharingType findByValue(int value) { 
+  public static EntitySearchFields findByValue(int value) { 
     switch (value) {
       case 0:
-        return DIRECT_NON_CASCADING;
+        return NAME;
       case 1:
-        return DIRECT_CASCADING;
+        return DESCRIPTION;
       case 2:
-        return INDIRECT_CASCADING;
+        return FULL_TEXT;
       default:
         return null;
     }

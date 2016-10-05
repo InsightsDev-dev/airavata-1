@@ -109,8 +109,9 @@ struct PermissionType {
 }
 
 enum SharingType {
-    DIRECT,
-    INHERITED
+    DIRECT_NON_CASCADING,
+    DIRECT_CASCADING,
+    INDIRECT_CASCADING
  }
 
 struct Sharing {
@@ -120,8 +121,9 @@ struct Sharing {
     4: optional GroupType groupType,
     5: optional SharingType sharingType,
     6: optional string inheritedParentId,
-    7: optional i64 createdTime,
-    8: optional i64 updatedTime
+    7: optional bool cascadePermission,
+    8: optional i64 createdTime,
+    9: optional i64 updatedTime
 }
 
 exception GovRegistryException {

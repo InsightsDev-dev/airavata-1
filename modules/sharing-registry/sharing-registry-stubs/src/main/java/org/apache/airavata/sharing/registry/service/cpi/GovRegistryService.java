@@ -152,12 +152,13 @@ public class GovRegistryService {
      * @param entityId
      * @param userList
      * @param perssionTypeId
+     * @param cascadePermission
      */
-    public boolean shareEntityWithUsers(String entityId, List<String> userList, String perssionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean shareEntityWithUsers(String entityId, List<String> userList, String perssionTypeId, boolean cascadePermission) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
 
     public boolean revokeEntitySharingFromUsers(String entityId, List<String> userList, String perssionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
 
-    public boolean shareEntityWithGroups(String entityId, List<String> groupList, String perssionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean shareEntityWithGroups(String entityId, List<String> groupList, String perssionTypeId, boolean cascadePermission) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
 
     public boolean revokeEntitySharingFromGroups(String entityId, List<String> groupList, String perssionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
 
@@ -237,11 +238,11 @@ public class GovRegistryService {
 
     public void getPermissionTypes(String domain, int offset, int limit, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException;
 
-    public void shareEntityWithUsers(String entityId, List<String> userList, String perssionTypeId, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException;
+    public void shareEntityWithUsers(String entityId, List<String> userList, String perssionTypeId, boolean cascadePermission, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException;
 
     public void revokeEntitySharingFromUsers(String entityId, List<String> userList, String perssionTypeId, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException;
 
-    public void shareEntityWithGroups(String entityId, List<String> groupList, String perssionTypeId, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException;
+    public void shareEntityWithGroups(String entityId, List<String> groupList, String perssionTypeId, boolean cascadePermission, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException;
 
     public void revokeEntitySharingFromGroups(String entityId, List<String> groupList, String perssionTypeId, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException;
 
@@ -1195,18 +1196,19 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getPermissionTypes failed: unknown result");
     }
 
-    public boolean shareEntityWithUsers(String entityId, List<String> userList, String perssionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean shareEntityWithUsers(String entityId, List<String> userList, String perssionTypeId, boolean cascadePermission) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
     {
-      send_shareEntityWithUsers(entityId, userList, perssionTypeId);
+      send_shareEntityWithUsers(entityId, userList, perssionTypeId, cascadePermission);
       return recv_shareEntityWithUsers();
     }
 
-    public void send_shareEntityWithUsers(String entityId, List<String> userList, String perssionTypeId) throws org.apache.thrift.TException
+    public void send_shareEntityWithUsers(String entityId, List<String> userList, String perssionTypeId, boolean cascadePermission) throws org.apache.thrift.TException
     {
       shareEntityWithUsers_args args = new shareEntityWithUsers_args();
       args.setEntityId(entityId);
       args.setUserList(userList);
       args.setPerssionTypeId(perssionTypeId);
+      args.setCascadePermission(cascadePermission);
       sendBase("shareEntityWithUsers", args);
     }
 
@@ -1251,18 +1253,19 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "revokeEntitySharingFromUsers failed: unknown result");
     }
 
-    public boolean shareEntityWithGroups(String entityId, List<String> groupList, String perssionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean shareEntityWithGroups(String entityId, List<String> groupList, String perssionTypeId, boolean cascadePermission) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
     {
-      send_shareEntityWithGroups(entityId, groupList, perssionTypeId);
+      send_shareEntityWithGroups(entityId, groupList, perssionTypeId, cascadePermission);
       return recv_shareEntityWithGroups();
     }
 
-    public void send_shareEntityWithGroups(String entityId, List<String> groupList, String perssionTypeId) throws org.apache.thrift.TException
+    public void send_shareEntityWithGroups(String entityId, List<String> groupList, String perssionTypeId, boolean cascadePermission) throws org.apache.thrift.TException
     {
       shareEntityWithGroups_args args = new shareEntityWithGroups_args();
       args.setEntityId(entityId);
       args.setGroupList(groupList);
       args.setPerssionTypeId(perssionTypeId);
+      args.setCascadePermission(cascadePermission);
       sendBase("shareEntityWithGroups", args);
     }
 
@@ -2531,9 +2534,9 @@ public class GovRegistryService {
       }
     }
 
-    public void shareEntityWithUsers(String entityId, List<String> userList, String perssionTypeId, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException {
+    public void shareEntityWithUsers(String entityId, List<String> userList, String perssionTypeId, boolean cascadePermission, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      shareEntityWithUsers_call method_call = new shareEntityWithUsers_call(entityId, userList, perssionTypeId, resultHandler, this, ___protocolFactory, ___transport);
+      shareEntityWithUsers_call method_call = new shareEntityWithUsers_call(entityId, userList, perssionTypeId, cascadePermission, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
@@ -2542,11 +2545,13 @@ public class GovRegistryService {
       private String entityId;
       private List<String> userList;
       private String perssionTypeId;
-      public shareEntityWithUsers_call(String entityId, List<String> userList, String perssionTypeId, org.apache.thrift.async.AsyncMethodCallback resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      private boolean cascadePermission;
+      public shareEntityWithUsers_call(String entityId, List<String> userList, String perssionTypeId, boolean cascadePermission, org.apache.thrift.async.AsyncMethodCallback resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.entityId = entityId;
         this.userList = userList;
         this.perssionTypeId = perssionTypeId;
+        this.cascadePermission = cascadePermission;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
@@ -2555,6 +2560,7 @@ public class GovRegistryService {
         args.setEntityId(entityId);
         args.setUserList(userList);
         args.setPerssionTypeId(perssionTypeId);
+        args.setCascadePermission(cascadePermission);
         args.write(prot);
         prot.writeMessageEnd();
       }
@@ -2607,9 +2613,9 @@ public class GovRegistryService {
       }
     }
 
-    public void shareEntityWithGroups(String entityId, List<String> groupList, String perssionTypeId, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException {
+    public void shareEntityWithGroups(String entityId, List<String> groupList, String perssionTypeId, boolean cascadePermission, org.apache.thrift.async.AsyncMethodCallback resultHandler) throws org.apache.thrift.TException {
       checkReady();
-      shareEntityWithGroups_call method_call = new shareEntityWithGroups_call(entityId, groupList, perssionTypeId, resultHandler, this, ___protocolFactory, ___transport);
+      shareEntityWithGroups_call method_call = new shareEntityWithGroups_call(entityId, groupList, perssionTypeId, cascadePermission, resultHandler, this, ___protocolFactory, ___transport);
       this.___currentMethod = method_call;
       ___manager.call(method_call);
     }
@@ -2618,11 +2624,13 @@ public class GovRegistryService {
       private String entityId;
       private List<String> groupList;
       private String perssionTypeId;
-      public shareEntityWithGroups_call(String entityId, List<String> groupList, String perssionTypeId, org.apache.thrift.async.AsyncMethodCallback resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
+      private boolean cascadePermission;
+      public shareEntityWithGroups_call(String entityId, List<String> groupList, String perssionTypeId, boolean cascadePermission, org.apache.thrift.async.AsyncMethodCallback resultHandler, org.apache.thrift.async.TAsyncClient client, org.apache.thrift.protocol.TProtocolFactory protocolFactory, org.apache.thrift.transport.TNonblockingTransport transport) throws org.apache.thrift.TException {
         super(client, protocolFactory, transport, resultHandler, false);
         this.entityId = entityId;
         this.groupList = groupList;
         this.perssionTypeId = perssionTypeId;
+        this.cascadePermission = cascadePermission;
       }
 
       public void write_args(org.apache.thrift.protocol.TProtocol prot) throws org.apache.thrift.TException {
@@ -2631,6 +2639,7 @@ public class GovRegistryService {
         args.setEntityId(entityId);
         args.setGroupList(groupList);
         args.setPerssionTypeId(perssionTypeId);
+        args.setCascadePermission(cascadePermission);
         args.write(prot);
         prot.writeMessageEnd();
       }
@@ -3648,7 +3657,7 @@ public class GovRegistryService {
       public shareEntityWithUsers_result getResult(I iface, shareEntityWithUsers_args args) throws org.apache.thrift.TException {
         shareEntityWithUsers_result result = new shareEntityWithUsers_result();
         try {
-          result.success = iface.shareEntityWithUsers(args.entityId, args.userList, args.perssionTypeId);
+          result.success = iface.shareEntityWithUsers(args.entityId, args.userList, args.perssionTypeId, args.cascadePermission);
           result.setSuccessIsSet(true);
         } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
           result.gre = gre;
@@ -3698,7 +3707,7 @@ public class GovRegistryService {
       public shareEntityWithGroups_result getResult(I iface, shareEntityWithGroups_args args) throws org.apache.thrift.TException {
         shareEntityWithGroups_result result = new shareEntityWithGroups_result();
         try {
-          result.success = iface.shareEntityWithGroups(args.entityId, args.groupList, args.perssionTypeId);
+          result.success = iface.shareEntityWithGroups(args.entityId, args.groupList, args.perssionTypeId, args.cascadePermission);
           result.setSuccessIsSet(true);
         } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
           result.gre = gre;
@@ -5872,7 +5881,7 @@ public class GovRegistryService {
       }
 
       public void start(I iface, shareEntityWithUsers_args args, org.apache.thrift.async.AsyncMethodCallback<Boolean> resultHandler) throws TException {
-        iface.shareEntityWithUsers(args.entityId, args.userList, args.perssionTypeId,resultHandler);
+        iface.shareEntityWithUsers(args.entityId, args.userList, args.perssionTypeId, args.cascadePermission,resultHandler);
       }
     }
 
@@ -5988,7 +5997,7 @@ public class GovRegistryService {
       }
 
       public void start(I iface, shareEntityWithGroups_args args, org.apache.thrift.async.AsyncMethodCallback<Boolean> resultHandler) throws TException {
-        iface.shareEntityWithGroups(args.entityId, args.groupList, args.perssionTypeId,resultHandler);
+        iface.shareEntityWithGroups(args.entityId, args.groupList, args.perssionTypeId, args.cascadePermission,resultHandler);
       }
     }
 
@@ -37294,6 +37303,7 @@ public class GovRegistryService {
     private static final org.apache.thrift.protocol.TField ENTITY_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("entityId", org.apache.thrift.protocol.TType.STRING, (short)1);
     private static final org.apache.thrift.protocol.TField USER_LIST_FIELD_DESC = new org.apache.thrift.protocol.TField("userList", org.apache.thrift.protocol.TType.LIST, (short)2);
     private static final org.apache.thrift.protocol.TField PERSSION_TYPE_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("perssionTypeId", org.apache.thrift.protocol.TType.STRING, (short)3);
+    private static final org.apache.thrift.protocol.TField CASCADE_PERMISSION_FIELD_DESC = new org.apache.thrift.protocol.TField("cascadePermission", org.apache.thrift.protocol.TType.BOOL, (short)4);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
@@ -37304,12 +37314,14 @@ public class GovRegistryService {
     public String entityId; // required
     public List<String> userList; // required
     public String perssionTypeId; // required
+    public boolean cascadePermission; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
       ENTITY_ID((short)1, "entityId"),
       USER_LIST((short)2, "userList"),
-      PERSSION_TYPE_ID((short)3, "perssionTypeId");
+      PERSSION_TYPE_ID((short)3, "perssionTypeId"),
+      CASCADE_PERMISSION((short)4, "cascadePermission");
 
       private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -37330,6 +37342,8 @@ public class GovRegistryService {
             return USER_LIST;
           case 3: // PERSSION_TYPE_ID
             return PERSSION_TYPE_ID;
+          case 4: // CASCADE_PERMISSION
+            return CASCADE_PERMISSION;
           default:
             return null;
         }
@@ -37370,6 +37384,8 @@ public class GovRegistryService {
     }
 
     // isset id assignments
+    private static final int __CASCADEPERMISSION_ISSET_ID = 0;
+    private byte __isset_bitfield = 0;
     public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
@@ -37380,6 +37396,8 @@ public class GovRegistryService {
               new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING))));
       tmpMap.put(_Fields.PERSSION_TYPE_ID, new org.apache.thrift.meta_data.FieldMetaData("perssionTypeId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+      tmpMap.put(_Fields.CASCADE_PERMISSION, new org.apache.thrift.meta_data.FieldMetaData("cascadePermission", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.BOOL)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
       org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(shareEntityWithUsers_args.class, metaDataMap);
     }
@@ -37390,18 +37408,22 @@ public class GovRegistryService {
     public shareEntityWithUsers_args(
       String entityId,
       List<String> userList,
-      String perssionTypeId)
+      String perssionTypeId,
+      boolean cascadePermission)
     {
       this();
       this.entityId = entityId;
       this.userList = userList;
       this.perssionTypeId = perssionTypeId;
+      this.cascadePermission = cascadePermission;
+      setCascadePermissionIsSet(true);
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
     public shareEntityWithUsers_args(shareEntityWithUsers_args other) {
+      __isset_bitfield = other.__isset_bitfield;
       if (other.isSetEntityId()) {
         this.entityId = other.entityId;
       }
@@ -37412,6 +37434,7 @@ public class GovRegistryService {
       if (other.isSetPerssionTypeId()) {
         this.perssionTypeId = other.perssionTypeId;
       }
+      this.cascadePermission = other.cascadePermission;
     }
 
     public shareEntityWithUsers_args deepCopy() {
@@ -37423,6 +37446,8 @@ public class GovRegistryService {
       this.entityId = null;
       this.userList = null;
       this.perssionTypeId = null;
+      setCascadePermissionIsSet(false);
+      this.cascadePermission = false;
     }
 
     public String getEntityId() {
@@ -37512,6 +37537,29 @@ public class GovRegistryService {
       }
     }
 
+    public boolean isCascadePermission() {
+      return this.cascadePermission;
+    }
+
+    public shareEntityWithUsers_args setCascadePermission(boolean cascadePermission) {
+      this.cascadePermission = cascadePermission;
+      setCascadePermissionIsSet(true);
+      return this;
+    }
+
+    public void unsetCascadePermission() {
+      __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __CASCADEPERMISSION_ISSET_ID);
+    }
+
+    /** Returns true if field cascadePermission is set (has been assigned a value) and false otherwise */
+    public boolean isSetCascadePermission() {
+      return EncodingUtils.testBit(__isset_bitfield, __CASCADEPERMISSION_ISSET_ID);
+    }
+
+    public void setCascadePermissionIsSet(boolean value) {
+      __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __CASCADEPERMISSION_ISSET_ID, value);
+    }
+
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
       case ENTITY_ID:
@@ -37538,6 +37586,14 @@ public class GovRegistryService {
         }
         break;
 
+      case CASCADE_PERMISSION:
+        if (value == null) {
+          unsetCascadePermission();
+        } else {
+          setCascadePermission((Boolean)value);
+        }
+        break;
+
       }
     }
 
@@ -37551,6 +37607,9 @@ public class GovRegistryService {
 
       case PERSSION_TYPE_ID:
         return getPerssionTypeId();
+
+      case CASCADE_PERMISSION:
+        return isCascadePermission();
 
       }
       throw new IllegalStateException();
@@ -37569,6 +37628,8 @@ public class GovRegistryService {
         return isSetUserList();
       case PERSSION_TYPE_ID:
         return isSetPerssionTypeId();
+      case CASCADE_PERMISSION:
+        return isSetCascadePermission();
       }
       throw new IllegalStateException();
     }
@@ -37613,6 +37674,15 @@ public class GovRegistryService {
           return false;
       }
 
+      boolean this_present_cascadePermission = true;
+      boolean that_present_cascadePermission = true;
+      if (this_present_cascadePermission || that_present_cascadePermission) {
+        if (!(this_present_cascadePermission && that_present_cascadePermission))
+          return false;
+        if (this.cascadePermission != that.cascadePermission)
+          return false;
+      }
+
       return true;
     }
 
@@ -37634,6 +37704,11 @@ public class GovRegistryService {
       list.add(present_perssionTypeId);
       if (present_perssionTypeId)
         list.add(perssionTypeId);
+
+      boolean present_cascadePermission = true;
+      list.add(present_cascadePermission);
+      if (present_cascadePermission)
+        list.add(cascadePermission);
 
       return list.hashCode();
     }
@@ -37672,6 +37747,16 @@ public class GovRegistryService {
       }
       if (isSetPerssionTypeId()) {
         lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.perssionTypeId, other.perssionTypeId);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetCascadePermission()).compareTo(other.isSetCascadePermission());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetCascadePermission()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.cascadePermission, other.cascadePermission);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -37719,6 +37804,10 @@ public class GovRegistryService {
         sb.append(this.perssionTypeId);
       }
       first = false;
+      if (!first) sb.append(", ");
+      sb.append("cascadePermission:");
+      sb.append(this.cascadePermission);
+      first = false;
       sb.append(")");
       return sb.toString();
     }
@@ -37734,6 +37823,7 @@ public class GovRegistryService {
       if (perssionTypeId == null) {
         throw new org.apache.thrift.protocol.TProtocolException("Required field 'perssionTypeId' was not present! Struct: " + toString());
       }
+      // alas, we cannot check 'cascadePermission' because it's a primitive and you chose the non-beans generator.
       // check for sub-struct validity
     }
 
@@ -37747,6 +37837,8 @@ public class GovRegistryService {
 
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
+        // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
+        __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
       } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
@@ -37805,6 +37897,14 @@ public class GovRegistryService {
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
               break;
+            case 4: // CASCADE_PERMISSION
+              if (schemeField.type == org.apache.thrift.protocol.TType.BOOL) {
+                struct.cascadePermission = iprot.readBool();
+                struct.setCascadePermissionIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
             default:
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
           }
@@ -37813,6 +37913,9 @@ public class GovRegistryService {
         iprot.readStructEnd();
 
         // check for required fields of primitive type, which can't be checked in the validate method
+        if (!struct.isSetCascadePermission()) {
+          throw new org.apache.thrift.protocol.TProtocolException("Required field 'cascadePermission' was not found in serialized data! Struct: " + toString());
+        }
         struct.validate();
       }
 
@@ -37842,6 +37945,9 @@ public class GovRegistryService {
           oprot.writeString(struct.perssionTypeId);
           oprot.writeFieldEnd();
         }
+        oprot.writeFieldBegin(CASCADE_PERMISSION_FIELD_DESC);
+        oprot.writeBool(struct.cascadePermission);
+        oprot.writeFieldEnd();
         oprot.writeFieldStop();
         oprot.writeStructEnd();
       }
@@ -37868,6 +37974,7 @@ public class GovRegistryService {
           }
         }
         oprot.writeString(struct.perssionTypeId);
+        oprot.writeBool(struct.cascadePermission);
       }
 
       @Override
@@ -37888,6 +37995,8 @@ public class GovRegistryService {
         struct.setUserListIsSet(true);
         struct.perssionTypeId = iprot.readString();
         struct.setPerssionTypeIdIsSet(true);
+        struct.cascadePermission = iprot.readBool();
+        struct.setCascadePermissionIsSet(true);
       }
     }
 
@@ -39440,6 +39549,7 @@ public class GovRegistryService {
     private static final org.apache.thrift.protocol.TField ENTITY_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("entityId", org.apache.thrift.protocol.TType.STRING, (short)1);
     private static final org.apache.thrift.protocol.TField GROUP_LIST_FIELD_DESC = new org.apache.thrift.protocol.TField("groupList", org.apache.thrift.protocol.TType.LIST, (short)2);
     private static final org.apache.thrift.protocol.TField PERSSION_TYPE_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("perssionTypeId", org.apache.thrift.protocol.TType.STRING, (short)3);
+    private static final org.apache.thrift.protocol.TField CASCADE_PERMISSION_FIELD_DESC = new org.apache.thrift.protocol.TField("cascadePermission", org.apache.thrift.protocol.TType.BOOL, (short)4);
 
     private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
     static {
@@ -39450,12 +39560,14 @@ public class GovRegistryService {
     public String entityId; // required
     public List<String> groupList; // required
     public String perssionTypeId; // required
+    public boolean cascadePermission; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
       ENTITY_ID((short)1, "entityId"),
       GROUP_LIST((short)2, "groupList"),
-      PERSSION_TYPE_ID((short)3, "perssionTypeId");
+      PERSSION_TYPE_ID((short)3, "perssionTypeId"),
+      CASCADE_PERMISSION((short)4, "cascadePermission");
 
       private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -39476,6 +39588,8 @@ public class GovRegistryService {
             return GROUP_LIST;
           case 3: // PERSSION_TYPE_ID
             return PERSSION_TYPE_ID;
+          case 4: // CASCADE_PERMISSION
+            return CASCADE_PERMISSION;
           default:
             return null;
         }
@@ -39516,6 +39630,8 @@ public class GovRegistryService {
     }
 
     // isset id assignments
+    private static final int __CASCADEPERMISSION_ISSET_ID = 0;
+    private byte __isset_bitfield = 0;
     public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
     static {
       Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
@@ -39526,6 +39642,8 @@ public class GovRegistryService {
               new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING))));
       tmpMap.put(_Fields.PERSSION_TYPE_ID, new org.apache.thrift.meta_data.FieldMetaData("perssionTypeId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
           new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
+      tmpMap.put(_Fields.CASCADE_PERMISSION, new org.apache.thrift.meta_data.FieldMetaData("cascadePermission", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+          new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.BOOL)));
       metaDataMap = Collections.unmodifiableMap(tmpMap);
       org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(shareEntityWithGroups_args.class, metaDataMap);
     }
@@ -39536,18 +39654,22 @@ public class GovRegistryService {
     public shareEntityWithGroups_args(
       String entityId,
       List<String> groupList,
-      String perssionTypeId)
+      String perssionTypeId,
+      boolean cascadePermission)
     {
       this();
       this.entityId = entityId;
       this.groupList = groupList;
       this.perssionTypeId = perssionTypeId;
+      this.cascadePermission = cascadePermission;
+      setCascadePermissionIsSet(true);
     }
 
     /**
      * Performs a deep copy on <i>other</i>.
      */
     public shareEntityWithGroups_args(shareEntityWithGroups_args other) {
+      __isset_bitfield = other.__isset_bitfield;
       if (other.isSetEntityId()) {
         this.entityId = other.entityId;
       }
@@ -39558,6 +39680,7 @@ public class GovRegistryService {
       if (other.isSetPerssionTypeId()) {
         this.perssionTypeId = other.perssionTypeId;
       }
+      this.cascadePermission = other.cascadePermission;
     }
 
     public shareEntityWithGroups_args deepCopy() {
@@ -39569,6 +39692,8 @@ public class GovRegistryService {
       this.entityId = null;
       this.groupList = null;
       this.perssionTypeId = null;
+      setCascadePermissionIsSet(false);
+      this.cascadePermission = false;
     }
 
     public String getEntityId() {
@@ -39658,6 +39783,29 @@ public class GovRegistryService {
       }
     }
 
+    public boolean isCascadePermission() {
+      return this.cascadePermission;
+    }
+
+    public shareEntityWithGroups_args setCascadePermission(boolean cascadePermission) {
+      this.cascadePermission = cascadePermission;
+      setCascadePermissionIsSet(true);
+      return this;
+    }
+
+    public void unsetCascadePermission() {
+      __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __CASCADEPERMISSION_ISSET_ID);
+    }
+
+    /** Returns true if field cascadePermission is set (has been assigned a value) and false otherwise */
+    public boolean isSetCascadePermission() {
+      return EncodingUtils.testBit(__isset_bitfield, __CASCADEPERMISSION_ISSET_ID);
+    }
+
+    public void setCascadePermissionIsSet(boolean value) {
+      __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __CASCADEPERMISSION_ISSET_ID, value);
+    }
+
     public void setFieldValue(_Fields field, Object value) {
       switch (field) {
       case ENTITY_ID:
@@ -39684,6 +39832,14 @@ public class GovRegistryService {
         }
         break;
 
+      case CASCADE_PERMISSION:
+        if (value == null) {
+          unsetCascadePermission();
+        } else {
+          setCascadePermission((Boolean)value);
+        }
+        break;
+
       }
     }
 
@@ -39697,6 +39853,9 @@ public class GovRegistryService {
 
       case PERSSION_TYPE_ID:
         return getPerssionTypeId();
+
+      case CASCADE_PERMISSION:
+        return isCascadePermission();
 
       }
       throw new IllegalStateException();
@@ -39715,6 +39874,8 @@ public class GovRegistryService {
         return isSetGroupList();
       case PERSSION_TYPE_ID:
         return isSetPerssionTypeId();
+      case CASCADE_PERMISSION:
+        return isSetCascadePermission();
       }
       throw new IllegalStateException();
     }
@@ -39759,6 +39920,15 @@ public class GovRegistryService {
           return false;
       }
 
+      boolean this_present_cascadePermission = true;
+      boolean that_present_cascadePermission = true;
+      if (this_present_cascadePermission || that_present_cascadePermission) {
+        if (!(this_present_cascadePermission && that_present_cascadePermission))
+          return false;
+        if (this.cascadePermission != that.cascadePermission)
+          return false;
+      }
+
       return true;
     }
 
@@ -39780,6 +39950,11 @@ public class GovRegistryService {
       list.add(present_perssionTypeId);
       if (present_perssionTypeId)
         list.add(perssionTypeId);
+
+      boolean present_cascadePermission = true;
+      list.add(present_cascadePermission);
+      if (present_cascadePermission)
+        list.add(cascadePermission);
 
       return list.hashCode();
     }
@@ -39818,6 +39993,16 @@ public class GovRegistryService {
       }
       if (isSetPerssionTypeId()) {
         lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.perssionTypeId, other.perssionTypeId);
+        if (lastComparison != 0) {
+          return lastComparison;
+        }
+      }
+      lastComparison = Boolean.valueOf(isSetCascadePermission()).compareTo(other.isSetCascadePermission());
+      if (lastComparison != 0) {
+        return lastComparison;
+      }
+      if (isSetCascadePermission()) {
+        lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.cascadePermission, other.cascadePermission);
         if (lastComparison != 0) {
           return lastComparison;
         }
@@ -39865,6 +40050,10 @@ public class GovRegistryService {
         sb.append(this.perssionTypeId);
       }
       first = false;
+      if (!first) sb.append(", ");
+      sb.append("cascadePermission:");
+      sb.append(this.cascadePermission);
+      first = false;
       sb.append(")");
       return sb.toString();
     }
@@ -39880,6 +40069,7 @@ public class GovRegistryService {
       if (perssionTypeId == null) {
         throw new org.apache.thrift.protocol.TProtocolException("Required field 'perssionTypeId' was not present! Struct: " + toString());
       }
+      // alas, we cannot check 'cascadePermission' because it's a primitive and you chose the non-beans generator.
       // check for sub-struct validity
     }
 
@@ -39893,6 +40083,8 @@ public class GovRegistryService {
 
     private void readObject(java.io.ObjectInputStream in) throws java.io.IOException, ClassNotFoundException {
       try {
+        // it doesn't seem like you should have to do this, but java serialization is wacky, and doesn't call the default constructor.
+        __isset_bitfield = 0;
         read(new org.apache.thrift.protocol.TCompactProtocol(new org.apache.thrift.transport.TIOStreamTransport(in)));
       } catch (org.apache.thrift.TException te) {
         throw new java.io.IOException(te);
@@ -39951,6 +40143,14 @@ public class GovRegistryService {
                 org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
               }
               break;
+            case 4: // CASCADE_PERMISSION
+              if (schemeField.type == org.apache.thrift.protocol.TType.BOOL) {
+                struct.cascadePermission = iprot.readBool();
+                struct.setCascadePermissionIsSet(true);
+              } else { 
+                org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
+              }
+              break;
             default:
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
           }
@@ -39959,6 +40159,9 @@ public class GovRegistryService {
         iprot.readStructEnd();
 
         // check for required fields of primitive type, which can't be checked in the validate method
+        if (!struct.isSetCascadePermission()) {
+          throw new org.apache.thrift.protocol.TProtocolException("Required field 'cascadePermission' was not found in serialized data! Struct: " + toString());
+        }
         struct.validate();
       }
 
@@ -39988,6 +40191,9 @@ public class GovRegistryService {
           oprot.writeString(struct.perssionTypeId);
           oprot.writeFieldEnd();
         }
+        oprot.writeFieldBegin(CASCADE_PERMISSION_FIELD_DESC);
+        oprot.writeBool(struct.cascadePermission);
+        oprot.writeFieldEnd();
         oprot.writeFieldStop();
         oprot.writeStructEnd();
       }
@@ -40014,6 +40220,7 @@ public class GovRegistryService {
           }
         }
         oprot.writeString(struct.perssionTypeId);
+        oprot.writeBool(struct.cascadePermission);
       }
 
       @Override
@@ -40034,6 +40241,8 @@ public class GovRegistryService {
         struct.setGroupListIsSet(true);
         struct.perssionTypeId = iprot.readString();
         struct.setPerssionTypeIdIsSet(true);
+        struct.cascadePermission = iprot.readBool();
+        struct.setCascadePermissionIsSet(true);
       }
     }
 

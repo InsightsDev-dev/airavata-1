@@ -42,16 +42,22 @@ public class SharingRepository extends AbstractRepository<Sharing, SharingEntity
     public List<Sharing> getIndirectSharedChildren(String parentId, String permissionTypeId) throws GovRegistryException {
         HashMap<String, String> filters = new HashMap<>();
         filters.put(DBConstants.SharingTable.INHERITED_PARENT_ID, parentId);
-        filters.put(DBConstants.SharingTable.SHARING_TYPE, SharingType.INHERITED.toString());
+        filters.put(DBConstants.SharingTable.SHARING_TYPE, SharingType.INDIRECT_CASCADING.toString());
         filters.put(DBConstants.SharingTable.PERMISSION_TYPE_ID, permissionTypeId);
 
         return select(filters, 0, -1);
     }
 
-    public List<Sharing> getPermissionsForEntity(String entityId) throws GovRegistryException {
+    public List<Sharing> getCascadingPermissionsForEntity(String entityId) throws GovRegistryException {
         HashMap<String, String> filters = new HashMap<>();
         filters.put(DBConstants.SharingTable.ENTITY_ID, entityId);
-        return select(filters, 0, -1);
+        String query = "SELECT p from " + SharingEntity.class.getSimpleName() + " as p";
+        query += " WHERE ";
+        query += "p." + DBConstants.SharingTable.ENTITY_ID + " = '" + entityId + "' AND ";
+        query += "p." + DBConstants.SharingTable.SHARING_TYPE + " IN('" + SharingType.DIRECT_CASCADING.toString()
+                + "', '" + SharingType.INDIRECT_CASCADING + "') ";
+        query += " ORDER BY p.createdTime DESC";
+        return select(query, 0, -1);
     }
 
     public boolean hasAccess(String entityId, List<String> groupIds, List<String> permissionTypeIds) throws GovRegistryException {

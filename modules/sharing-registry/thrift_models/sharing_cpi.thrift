@@ -88,9 +88,9 @@ service GovRegistryService {
     /**
      * Sharing Entity with Users and Groups
     **/
-    bool shareEntityWithUsers(1: required string entityId, 2: required list<string> userList, 3: required string perssionTypeId) throws (1: sharing_models.GovRegistryException gre)
-    bool revokeEntitySharingFromUsers(1: required string entityId, 2: required list<string> userList, 3: required string perssionTypeId) throws (1: sharing_models.GovRegistryException gre)
-    bool shareEntityWithGroups(1: required string entityId, 2: required list<string> groupList, 3: required string perssionTypeId) throws (1: sharing_models.GovRegistryException gre)
+    bool shareEntityWithUsers(1: required string entityId, 2: required list<string> userList, 3: required string perssionTypeId, 4: required bool cascadePermission) throws (1: sharing_models.GovRegistryException gre)
+    bool revokeEntitySharingFromUsers(1: required string entityId, 2: required list<string> userList, 3: required string perssionTypeId ) throws (1: sharing_models.GovRegistryException gre)
+    bool shareEntityWithGroups(1: required string entityId, 2: required list<string> groupList, 3: required string perssionTypeId, 4: required bool cascadePermission) throws (1: sharing_models.GovRegistryException gre)
     bool revokeEntitySharingFromGroups(1: required string entityId, 2: required list<string> groupList, 3: required string perssionTypeId) throws (1: sharing_models.GovRegistryException gre)
     bool userHasAccess(1: required string domainId, 2: required string userId, 3: required string entityId, 4: required string permissionTypeId) throws (1: sharing_models.GovRegistryException gre)
 }

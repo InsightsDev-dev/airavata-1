@@ -236,8 +236,8 @@ public class GovRegistryServerHandlerTest {
         String entityId3 = govRegistryServerHandler.createEntity(entity3);
         Assert.assertNotNull(entityId3);
 
-        govRegistryServerHandler.shareEntityWithUsers(entityId1, Arrays.asList(userId2), permissionTypeId1);
-        govRegistryServerHandler.shareEntityWithGroups(entityId3, Arrays.asList(groupId2), permissionTypeId1);
+        govRegistryServerHandler.shareEntityWithUsers(entityId1, Arrays.asList(userId2), permissionTypeId1, true);
+        govRegistryServerHandler.shareEntityWithGroups(entityId3, Arrays.asList(groupId2), permissionTypeId1, true);
 
         Entity entity4 = new Entity();
         entity4.setEntityId(domainId+":Entity4");
