@@ -40,11 +40,11 @@ public class JPAUtils {
     private final static Logger logger = LoggerFactory.getLogger(JPAUtils.class);
 
     private static final String PERSISTENCE_UNIT_NAME = "airavata-sharing-registry";
-    private static final String SHARING_REG_JDBC_DRIVER = "appcatalog.jdbc.driver";
-    private static final String SHARING_REG_JDBC_URL = "appcatalog.jdbc.url";
-    private static final String SHARING_REG_JDBC_USER = "appcatalog.jdbc.user";
-    private static final String SHARING_REG_JDBC_PWD = "appcatalog.jdbc.password";
-    private static final String SHARING_REG_VALIDATION_QUERY = "appcatalog.validationQuery";
+    private static final String SHARING_REG_JDBC_DRIVER = "sharingcatalog.jdbc.driver";
+    private static final String SHARING_REG_JDBC_URL = "sharingcatalog.jdbc.url";
+    private static final String SHARING_REG_JDBC_USER = "sharingcatalog.jdbc.user";
+    private static final String SHARING_REG_JDBC_PWD = "sharingcatalog.jdbc.password";
+    private static final String SHARING_REG_VALIDATION_QUERY = "sharingcatalog.validationQuery";
     private static final String JPA_CACHE_SIZE = "jpa.cache.size";
     private static final String JPA_CACHE_ENABLED = "cache.enable";
 
