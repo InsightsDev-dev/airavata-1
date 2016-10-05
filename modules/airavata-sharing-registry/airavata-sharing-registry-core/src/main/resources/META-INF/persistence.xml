@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 
-    <persistence-unit name="airavata-gov-registry">
+    <persistence-unit name="airavata-sharing-registry">
         <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
         <class>org.apache.airavata.sharing.registry.db.entities.DomainEntity</class>
         <class>org.apache.airavata.sharing.registry.db.entities.EntityEntity</class>

@@ -21,7 +21,7 @@
 package org.apache.airavata.sharing.registry;
 
 import org.apache.airavata.sharing.registry.models.*;
-import org.apache.airavata.sharing.registry.server.GovRegistryServerHandler;
+import org.apache.airavata.sharing.registry.server.SharingRegistryServerHandler;
 import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +39,7 @@ public class DataMigrator {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, TException {
         Connection expCatConnection = ConnectionFactory.getInstance().getExpCatConnection();
 
-        GovRegistryServerHandler govRegistryServerHandler = new GovRegistryServerHandler();
+        SharingRegistryServerHandler govRegistryServerHandler = new SharingRegistryServerHandler();
 
         String query = "SELECT * FROM GATEWAY";
         Statement statement = expCatConnection.createStatement();

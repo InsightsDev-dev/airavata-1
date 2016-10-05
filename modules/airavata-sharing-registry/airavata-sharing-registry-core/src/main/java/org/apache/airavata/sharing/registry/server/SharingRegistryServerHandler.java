@@ -33,8 +33,8 @@ import org.slf4j.LoggerFactory;
 import java.lang.reflect.Field;
 import java.util.*;
 
-public class GovRegistryServerHandler implements GovRegistryService.Iface{
-    private final static Logger logger = LoggerFactory.getLogger(GovRegistryServerHandler.class);
+public class SharingRegistryServerHandler implements GovRegistryService.Iface{
+    private final static Logger logger = LoggerFactory.getLogger(SharingRegistryServerHandler.class);
 
     public static String GLOBAL_PERMISSION_NAME = "GLOBAL";
 
@@ -47,7 +47,7 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
     private EntityRepository entityRepository;
     private SharingRepository sharingRepository;
 
-    public GovRegistryServerHandler(){
+    public SharingRegistryServerHandler(){
         this.domainRepository = new DomainRepository();
         this.userRepository = new UserRepository();
         this.userGroupRepository = new UserGroupRepository();

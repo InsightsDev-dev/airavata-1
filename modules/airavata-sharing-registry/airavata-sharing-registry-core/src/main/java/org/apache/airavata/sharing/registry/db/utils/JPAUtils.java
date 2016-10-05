@@ -33,12 +33,12 @@ import java.util.Map;
 public class JPAUtils {
     private final static Logger logger = LoggerFactory.getLogger(JPAUtils.class);
 
-    private static final String PERSISTENCE_UNIT_NAME = "airavata-gov-registry";
-    private static final String GOV_REG_JDBC_DRIVER = "appcatalog.jdbc.driver";
-    private static final String GOV_REG_JDBC_URL = "appcatalog.jdbc.url";
-    private static final String GOV_REG_JDBC_USER = "appcatalog.jdbc.user";
-    private static final String GOV_REG_JDBC_PWD = "appcatalog.jdbc.password";
-    private static final String GOV_REG_VALIDATION_QUERY = "appcatalog.validationQuery";
+    private static final String PERSISTENCE_UNIT_NAME = "airavata-sharing-registry";
+    private static final String SHARING_REG_JDBC_DRIVER = "appcatalog.jdbc.driver";
+    private static final String SHARING_REG_JDBC_URL = "appcatalog.jdbc.url";
+    private static final String SHARING_REG_JDBC_USER = "appcatalog.jdbc.user";
+    private static final String SHARING_REG_JDBC_PWD = "appcatalog.jdbc.password";
+    private static final String SHARING_REG_VALIDATION_QUERY = "appcatalog.validationQuery";
     private static final String JPA_CACHE_SIZE = "jpa.cache.size";
     private static final String JPA_CACHE_ENABLED = "cache.enable";
 
@@ -49,11 +49,11 @@ public class JPAUtils {
 
     public static EntityManager getEntityManager() {
         if (factory == null) {
-//            String connectionProperties = "DriverClassName=" + readServerProperties(GOV_REG_JDBC_DRIVER) + "," +
-//                    "Url=" + readServerProperties(GOV_REG_JDBC_URL) + "?autoReconnect=true," +
-//                    "Username=" + readServerProperties(GOV_REG_JDBC_USER) + "," +
-//                    "Password=" + readServerProperties(GOV_REG_JDBC_PWD) +
-//                    ",validationQuery=" + readServerProperties(GOV_REG_VALIDATION_QUERY);
+//            String connectionProperties = "DriverClassName=" + readServerProperties(SHARING_REG_JDBC_DRIVER) + "," +
+//                    "Url=" + readServerProperties(SHARING_REG_JDBC_URL) + "?autoReconnect=true," +
+//                    "Username=" + readServerProperties(SHARING_REG_JDBC_USER) + "," +
+//                    "Password=" + readServerProperties(SHARING_REG_JDBC_PWD) +
+//                    ",validationQuery=" + readServerProperties(SHARING_REG_VALIDATION_QUERY);
 //
 
             String connectionProperties = "DriverClassName=com.mysql.jdbc.Driver," +

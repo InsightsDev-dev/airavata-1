@@ -23,6 +23,6 @@ package org.apache.airavata.sharing.registry.server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class GovRegistryServer {
-    private final static Logger logger = LoggerFactory.getLogger(GovRegistryServer.class);
+public class SharingRegistryServer {
+    private final static Logger logger = LoggerFactory.getLogger(SharingRegistryServer.class);
 }

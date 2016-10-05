@@ -22,7 +22,7 @@ package org.apache.airavata.sharing.registry;
 
 import junit.framework.Assert;
 import org.apache.airavata.sharing.registry.models.*;
-import org.apache.airavata.sharing.registry.server.GovRegistryServerHandler;
+import org.apache.airavata.sharing.registry.server.SharingRegistryServerHandler;
 import org.apache.thrift.TException;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -37,7 +37,7 @@ public class GovRegistryServerHandlerTest {
 
     @Test
     public void test() throws TException {
-        GovRegistryServerHandler govRegistryServerHandler = new GovRegistryServerHandler();
+        SharingRegistryServerHandler govRegistryServerHandler = new SharingRegistryServerHandler();
 
         //Creating domain
         Domain domain = new Domain();
