@@ -118,12 +118,10 @@ struct Sharing {
     1: optional string permissionTypeId,
     2: optional string entityId,
     3: optional string groupId,
-    4: optional GroupType groupType,
-    5: optional SharingType sharingType,
-    6: optional string inheritedParentId,
-    7: optional bool cascadePermission,
-    8: optional i64 createdTime,
-    9: optional i64 updatedTime
+    4: optional SharingType sharingType,
+    5: optional string inheritedParentId,
+    6: optional i64 createdTime,
+    7: optional i64 updatedTime
 }
 
 exception GovRegistryException {

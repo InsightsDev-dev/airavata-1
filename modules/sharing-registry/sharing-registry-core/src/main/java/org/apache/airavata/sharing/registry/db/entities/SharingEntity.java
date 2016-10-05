@@ -33,7 +33,6 @@ public class SharingEntity {
     private String permissionTypeId;
     private String entityId;
     private String groupId;
-    private String groupType;
     private String sharingType;
     private String inheritedParentId;
     private Long createdTime;
@@ -67,16 +66,6 @@ public class SharingEntity {
 
     public void setGroupId(String groupId) {
         this.groupId = groupId;
-    }
-
-    @Basic
-    @Column(name = "GROUP_TYPE")
-    public String getGroupType() {
-        return groupType;
-    }
-
-    public void setGroupType(String groupType) {
-        this.groupType = groupType;
     }
 
     @Basic

@@ -32,8 +32,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GovRegistryServerHandlerTest {
-    private final static Logger logger = LoggerFactory.getLogger(GovRegistryServerHandlerTest.class);
+public class SharingRegistryServerHandlerTest {
+    private final static Logger logger = LoggerFactory.getLogger(SharingRegistryServerHandlerTest.class);
 
     @Test
     public void test() throws TException {

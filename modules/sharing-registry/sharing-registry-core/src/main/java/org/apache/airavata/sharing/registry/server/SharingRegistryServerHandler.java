@@ -371,8 +371,8 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
         newSharing.setPermissionTypeId(permissionTypeRepository.getGlobalPermissionTypeIdForDomain(entity.domainId));
         newSharing.setEntityId(entity.entityId);
         newSharing.setGroupId(entity.ownerId);
-        newSharing.setGroupType(GroupType.SINGLE_USER);
         newSharing.setSharingType(SharingType.DIRECT_CASCADING);
+        newSharing.setInheritedParentId(entity.entityId);
         newSharing.setCreatedTime(System.currentTimeMillis());
         newSharing.setUpdatedTime(System.currentTimeMillis());
 
@@ -386,7 +386,11 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
                 newSharing.setPermissionTypeId(sharing.permissionTypeId);
                 newSharing.setEntityId(entity.entityId);
                 newSharing.setGroupId(sharing.groupId);
-                newSharing.setGroupType(sharing.groupType);
+                if(sharing.sharingType.equals(SharingType.DIRECT_CASCADING))
+                    newSharing.setInheritedParentId(sharing.entityId);
+
+                else
+                    newSharing.setInheritedParentId(sharing.inheritedParentId);
                 newSharing.setSharingType(SharingType.INDIRECT_CASCADING);
                 newSharing.setCreatedTime(System.currentTimeMillis());
                 newSharing.setUpdatedTime(System.currentTimeMillis());
@@ -456,7 +460,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
             sharing.setPermissionTypeId(permissionTypeId);
             sharing.setEntityId(entityId);
             sharing.setGroupId(userId);
-            sharing.setGroupType(groupType);
+            sharing.setInheritedParentId(entityId);
             if(cascadePermission) {
                 sharing.setSharingType(SharingType.DIRECT_CASCADING);
                 sharing.setCascadePermission(true);
@@ -476,15 +480,14 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
             while(temp.size() > 0){
                 Entity entity = temp.pop();
                 String childEntityId = entity.entityId;
-                String parentEntityId = entity.parentEntityId;
                 for(String userId : groupOrUserList){
                     Sharing sharing = new Sharing();
                     sharing.setPermissionTypeId(permissionTypeId);
                     sharing.setEntityId(childEntityId);
                     sharing.setGroupId(userId);
-                    sharing.setGroupType(groupType);
+                    sharing.setInheritedParentId(entityId);
                     sharing.setSharingType(SharingType.INDIRECT_CASCADING);
-                    sharing.setInheritedParentId(parentEntityId);
+                    sharing.setInheritedParentId(entityId);
                     sharing.setCascadePermission(true);
                     sharing.setCreatedTime(System.currentTimeMillis());
                     sharing.setUpdatedTime(System.currentTimeMillis());
@@ -520,27 +523,27 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
 
     public boolean revokeEntitySharing(String entityId, List<String> groupOrUserList, String permissionTypeId) throws GovRegistryException {
         //revoking permission for the entity
-        LinkedList<Sharing> temp = new LinkedList<>();
-        sharingRepository.getIndirectSharedChildren(entityId, permissionTypeId).stream().forEach(s->temp.addLast(s));
         for(String groupId : groupOrUserList){
             SharingEntityPK sharingEntityPK = new SharingEntityPK();
             sharingEntityPK.setEntityId(entityId);
             sharingEntityPK.setGroupId(groupId);
             sharingEntityPK.setPermissionTypeId(permissionTypeId);
+            sharingEntityPK.setInheritedParentId(entityId);
 
             sharingRepository.delete(sharingEntityPK);
         }
 
         //revoking permission from inheritance
-        while(temp.size() > 0){
-            Sharing sharing = temp.pop();
+        List<Sharing> temp = new ArrayList<>();
+        sharingRepository.getIndirectSharedChildren(entityId, permissionTypeId).stream().forEach(s->temp.add(s));
+        for(Sharing sharing : temp){
             String childEntityId = sharing.entityId;
-            sharingRepository.getIndirectSharedChildren(sharing.entityId, permissionTypeId).stream().forEach(s->temp.addLast(s));
             for(String groupId : groupOrUserList){
                 SharingEntityPK sharingEntityPK = new SharingEntityPK();
                 sharingEntityPK.setEntityId(childEntityId);
                 sharingEntityPK.setGroupId(groupId);
                 sharingEntityPK.setPermissionTypeId(permissionTypeId);
+                sharingEntityPK.setInheritedParentId(entityId);
 
                 sharingRepository.delete(sharingEntityPK);
             }

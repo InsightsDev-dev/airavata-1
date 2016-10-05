@@ -41,12 +41,11 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
   private static final org.apache.thrift.protocol.TField PERMISSION_TYPE_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("permissionTypeId", org.apache.thrift.protocol.TType.STRING, (short)1);
   private static final org.apache.thrift.protocol.TField ENTITY_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("entityId", org.apache.thrift.protocol.TType.STRING, (short)2);
   private static final org.apache.thrift.protocol.TField GROUP_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("groupId", org.apache.thrift.protocol.TType.STRING, (short)3);
-  private static final org.apache.thrift.protocol.TField GROUP_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("groupType", org.apache.thrift.protocol.TType.I32, (short)4);
-  private static final org.apache.thrift.protocol.TField SHARING_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("sharingType", org.apache.thrift.protocol.TType.I32, (short)5);
-  private static final org.apache.thrift.protocol.TField INHERITED_PARENT_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("inheritedParentId", org.apache.thrift.protocol.TType.STRING, (short)6);
-  private static final org.apache.thrift.protocol.TField CASCADE_PERMISSION_FIELD_DESC = new org.apache.thrift.protocol.TField("cascadePermission", org.apache.thrift.protocol.TType.BOOL, (short)7);
-  private static final org.apache.thrift.protocol.TField CREATED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("createdTime", org.apache.thrift.protocol.TType.I64, (short)8);
-  private static final org.apache.thrift.protocol.TField UPDATED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("updatedTime", org.apache.thrift.protocol.TType.I64, (short)9);
+  private static final org.apache.thrift.protocol.TField SHARING_TYPE_FIELD_DESC = new org.apache.thrift.protocol.TField("sharingType", org.apache.thrift.protocol.TType.I32, (short)4);
+  private static final org.apache.thrift.protocol.TField INHERITED_PARENT_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("inheritedParentId", org.apache.thrift.protocol.TType.STRING, (short)5);
+  private static final org.apache.thrift.protocol.TField CASCADE_PERMISSION_FIELD_DESC = new org.apache.thrift.protocol.TField("cascadePermission", org.apache.thrift.protocol.TType.BOOL, (short)6);
+  private static final org.apache.thrift.protocol.TField CREATED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("createdTime", org.apache.thrift.protocol.TType.I64, (short)7);
+  private static final org.apache.thrift.protocol.TField UPDATED_TIME_FIELD_DESC = new org.apache.thrift.protocol.TField("updatedTime", org.apache.thrift.protocol.TType.I64, (short)8);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
@@ -57,11 +56,6 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
   public String permissionTypeId; // optional
   public String entityId; // optional
   public String groupId; // optional
-  /**
-   * 
-   * @see GroupType
-   */
-  public GroupType groupType; // optional
   /**
    * 
    * @see SharingType
@@ -79,18 +73,13 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
     GROUP_ID((short)3, "groupId"),
     /**
      * 
-     * @see GroupType
-     */
-    GROUP_TYPE((short)4, "groupType"),
-    /**
-     * 
      * @see SharingType
      */
-    SHARING_TYPE((short)5, "sharingType"),
-    INHERITED_PARENT_ID((short)6, "inheritedParentId"),
-    CASCADE_PERMISSION((short)7, "cascadePermission"),
-    CREATED_TIME((short)8, "createdTime"),
-    UPDATED_TIME((short)9, "updatedTime");
+    SHARING_TYPE((short)4, "sharingType"),
+    INHERITED_PARENT_ID((short)5, "inheritedParentId"),
+    CASCADE_PERMISSION((short)6, "cascadePermission"),
+    CREATED_TIME((short)7, "createdTime"),
+    UPDATED_TIME((short)8, "updatedTime");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -111,17 +100,15 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
           return ENTITY_ID;
         case 3: // GROUP_ID
           return GROUP_ID;
-        case 4: // GROUP_TYPE
-          return GROUP_TYPE;
-        case 5: // SHARING_TYPE
+        case 4: // SHARING_TYPE
           return SHARING_TYPE;
-        case 6: // INHERITED_PARENT_ID
+        case 5: // INHERITED_PARENT_ID
           return INHERITED_PARENT_ID;
-        case 7: // CASCADE_PERMISSION
+        case 6: // CASCADE_PERMISSION
           return CASCADE_PERMISSION;
-        case 8: // CREATED_TIME
+        case 7: // CREATED_TIME
           return CREATED_TIME;
-        case 9: // UPDATED_TIME
+        case 8: // UPDATED_TIME
           return UPDATED_TIME;
         default:
           return null;
@@ -167,7 +154,7 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
   private static final int __CREATEDTIME_ISSET_ID = 1;
   private static final int __UPDATEDTIME_ISSET_ID = 2;
   private byte __isset_bitfield = 0;
-  private static final _Fields optionals[] = {_Fields.PERMISSION_TYPE_ID,_Fields.ENTITY_ID,_Fields.GROUP_ID,_Fields.GROUP_TYPE,_Fields.SHARING_TYPE,_Fields.INHERITED_PARENT_ID,_Fields.CASCADE_PERMISSION,_Fields.CREATED_TIME,_Fields.UPDATED_TIME};
+  private static final _Fields optionals[] = {_Fields.PERMISSION_TYPE_ID,_Fields.ENTITY_ID,_Fields.GROUP_ID,_Fields.SHARING_TYPE,_Fields.INHERITED_PARENT_ID,_Fields.CASCADE_PERMISSION,_Fields.CREATED_TIME,_Fields.UPDATED_TIME};
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
@@ -177,8 +164,6 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     tmpMap.put(_Fields.GROUP_ID, new org.apache.thrift.meta_data.FieldMetaData("groupId", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
-    tmpMap.put(_Fields.GROUP_TYPE, new org.apache.thrift.meta_data.FieldMetaData("groupType", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
-        new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, GroupType.class)));
     tmpMap.put(_Fields.SHARING_TYPE, new org.apache.thrift.meta_data.FieldMetaData("sharingType", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
         new org.apache.thrift.meta_data.EnumMetaData(org.apache.thrift.protocol.TType.ENUM, SharingType.class)));
     tmpMap.put(_Fields.INHERITED_PARENT_ID, new org.apache.thrift.meta_data.FieldMetaData("inheritedParentId", org.apache.thrift.TFieldRequirementType.OPTIONAL, 
@@ -210,9 +195,6 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
     if (other.isSetGroupId()) {
       this.groupId = other.groupId;
     }
-    if (other.isSetGroupType()) {
-      this.groupType = other.groupType;
-    }
     if (other.isSetSharingType()) {
       this.sharingType = other.sharingType;
     }
@@ -233,7 +215,6 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
     this.permissionTypeId = null;
     this.entityId = null;
     this.groupId = null;
-    this.groupType = null;
     this.sharingType = null;
     this.inheritedParentId = null;
     setCascadePermissionIsSet(false);
@@ -313,38 +294,6 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
   public void setGroupIdIsSet(boolean value) {
     if (!value) {
       this.groupId = null;
-    }
-  }
-
-  /**
-   * 
-   * @see GroupType
-   */
-  public GroupType getGroupType() {
-    return this.groupType;
-  }
-
-  /**
-   * 
-   * @see GroupType
-   */
-  public Sharing setGroupType(GroupType groupType) {
-    this.groupType = groupType;
-    return this;
-  }
-
-  public void unsetGroupType() {
-    this.groupType = null;
-  }
-
-  /** Returns true if field groupType is set (has been assigned a value) and false otherwise */
-  public boolean isSetGroupType() {
-    return this.groupType != null;
-  }
-
-  public void setGroupTypeIsSet(boolean value) {
-    if (!value) {
-      this.groupType = null;
     }
   }
 
@@ -499,14 +448,6 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
       }
       break;
 
-    case GROUP_TYPE:
-      if (value == null) {
-        unsetGroupType();
-      } else {
-        setGroupType((GroupType)value);
-      }
-      break;
-
     case SHARING_TYPE:
       if (value == null) {
         unsetSharingType();
@@ -561,9 +502,6 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
     case GROUP_ID:
       return getGroupId();
 
-    case GROUP_TYPE:
-      return getGroupType();
-
     case SHARING_TYPE:
       return getSharingType();
 
@@ -596,8 +534,6 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
       return isSetEntityId();
     case GROUP_ID:
       return isSetGroupId();
-    case GROUP_TYPE:
-      return isSetGroupType();
     case SHARING_TYPE:
       return isSetSharingType();
     case INHERITED_PARENT_ID:
@@ -649,15 +585,6 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
       if (!(this_present_groupId && that_present_groupId))
         return false;
       if (!this.groupId.equals(that.groupId))
-        return false;
-    }
-
-    boolean this_present_groupType = true && this.isSetGroupType();
-    boolean that_present_groupType = true && that.isSetGroupType();
-    if (this_present_groupType || that_present_groupType) {
-      if (!(this_present_groupType && that_present_groupType))
-        return false;
-      if (!this.groupType.equals(that.groupType))
         return false;
     }
 
@@ -728,11 +655,6 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
     if (present_groupId)
       list.add(groupId);
 
-    boolean present_groupType = true && (isSetGroupType());
-    list.add(present_groupType);
-    if (present_groupType)
-      list.add(groupType.getValue());
-
     boolean present_sharingType = true && (isSetSharingType());
     list.add(present_sharingType);
     if (present_sharingType)
@@ -795,16 +717,6 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
     }
     if (isSetGroupId()) {
       lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.groupId, other.groupId);
-      if (lastComparison != 0) {
-        return lastComparison;
-      }
-    }
-    lastComparison = Boolean.valueOf(isSetGroupType()).compareTo(other.isSetGroupType());
-    if (lastComparison != 0) {
-      return lastComparison;
-    }
-    if (isSetGroupType()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.groupType, other.groupType);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -905,16 +817,6 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
         sb.append("null");
       } else {
         sb.append(this.groupId);
-      }
-      first = false;
-    }
-    if (isSetGroupType()) {
-      if (!first) sb.append(", ");
-      sb.append("groupType:");
-      if (this.groupType == null) {
-        sb.append("null");
-      } else {
-        sb.append(this.groupType);
       }
       first = false;
     }
@@ -1025,15 +927,7 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 4: // GROUP_TYPE
-            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
-              struct.groupType = org.apache.airavata.sharing.registry.models.GroupType.findByValue(iprot.readI32());
-              struct.setGroupTypeIsSet(true);
-            } else { 
-              org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
-            }
-            break;
-          case 5: // SHARING_TYPE
+          case 4: // SHARING_TYPE
             if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
               struct.sharingType = org.apache.airavata.sharing.registry.models.SharingType.findByValue(iprot.readI32());
               struct.setSharingTypeIsSet(true);
@@ -1041,7 +935,7 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 6: // INHERITED_PARENT_ID
+          case 5: // INHERITED_PARENT_ID
             if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
               struct.inheritedParentId = iprot.readString();
               struct.setInheritedParentIdIsSet(true);
@@ -1049,7 +943,7 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 7: // CASCADE_PERMISSION
+          case 6: // CASCADE_PERMISSION
             if (schemeField.type == org.apache.thrift.protocol.TType.BOOL) {
               struct.cascadePermission = iprot.readBool();
               struct.setCascadePermissionIsSet(true);
@@ -1057,7 +951,7 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 8: // CREATED_TIME
+          case 7: // CREATED_TIME
             if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
               struct.createdTime = iprot.readI64();
               struct.setCreatedTimeIsSet(true);
@@ -1065,7 +959,7 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 9: // UPDATED_TIME
+          case 8: // UPDATED_TIME
             if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
               struct.updatedTime = iprot.readI64();
               struct.setUpdatedTimeIsSet(true);
@@ -1106,13 +1000,6 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
         if (struct.isSetGroupId()) {
           oprot.writeFieldBegin(GROUP_ID_FIELD_DESC);
           oprot.writeString(struct.groupId);
-          oprot.writeFieldEnd();
-        }
-      }
-      if (struct.groupType != null) {
-        if (struct.isSetGroupType()) {
-          oprot.writeFieldBegin(GROUP_TYPE_FIELD_DESC);
-          oprot.writeI32(struct.groupType.getValue());
           oprot.writeFieldEnd();
         }
       }
@@ -1172,25 +1059,22 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
       if (struct.isSetGroupId()) {
         optionals.set(2);
       }
-      if (struct.isSetGroupType()) {
+      if (struct.isSetSharingType()) {
         optionals.set(3);
       }
-      if (struct.isSetSharingType()) {
+      if (struct.isSetInheritedParentId()) {
         optionals.set(4);
       }
-      if (struct.isSetInheritedParentId()) {
+      if (struct.isSetCascadePermission()) {
         optionals.set(5);
       }
-      if (struct.isSetCascadePermission()) {
+      if (struct.isSetCreatedTime()) {
         optionals.set(6);
       }
-      if (struct.isSetCreatedTime()) {
+      if (struct.isSetUpdatedTime()) {
         optionals.set(7);
       }
-      if (struct.isSetUpdatedTime()) {
-        optionals.set(8);
-      }
-      oprot.writeBitSet(optionals, 9);
+      oprot.writeBitSet(optionals, 8);
       if (struct.isSetPermissionTypeId()) {
         oprot.writeString(struct.permissionTypeId);
       }
@@ -1199,9 +1083,6 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
       }
       if (struct.isSetGroupId()) {
         oprot.writeString(struct.groupId);
-      }
-      if (struct.isSetGroupType()) {
-        oprot.writeI32(struct.groupType.getValue());
       }
       if (struct.isSetSharingType()) {
         oprot.writeI32(struct.sharingType.getValue());
@@ -1223,7 +1104,7 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
     @Override
     public void read(org.apache.thrift.protocol.TProtocol prot, Sharing struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      BitSet incoming = iprot.readBitSet(9);
+      BitSet incoming = iprot.readBitSet(8);
       if (incoming.get(0)) {
         struct.permissionTypeId = iprot.readString();
         struct.setPermissionTypeIdIsSet(true);
@@ -1237,26 +1118,22 @@ public class Sharing implements org.apache.thrift.TBase<Sharing, Sharing._Fields
         struct.setGroupIdIsSet(true);
       }
       if (incoming.get(3)) {
-        struct.groupType = org.apache.airavata.sharing.registry.models.GroupType.findByValue(iprot.readI32());
-        struct.setGroupTypeIsSet(true);
-      }
-      if (incoming.get(4)) {
         struct.sharingType = org.apache.airavata.sharing.registry.models.SharingType.findByValue(iprot.readI32());
         struct.setSharingTypeIsSet(true);
       }
-      if (incoming.get(5)) {
+      if (incoming.get(4)) {
         struct.inheritedParentId = iprot.readString();
         struct.setInheritedParentIdIsSet(true);
       }
-      if (incoming.get(6)) {
+      if (incoming.get(5)) {
         struct.cascadePermission = iprot.readBool();
         struct.setCascadePermissionIsSet(true);
       }
-      if (incoming.get(7)) {
+      if (incoming.get(6)) {
         struct.createdTime = iprot.readI64();
         struct.setCreatedTimeIsSet(true);
       }
-      if (incoming.get(8)) {
+      if (incoming.get(7)) {
         struct.updatedTime = iprot.readI64();
         struct.setUpdatedTimeIsSet(true);
       }

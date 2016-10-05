@@ -33,8 +33,7 @@ public class SharingEntityPK implements Serializable {
     private String permissionTypeId;
     private String entityId;
     private String groupId;
-    private Long createdTime;
-    private Long updatedTime;
+    private String inheritedParentId;
 
     @Column(name = "PERMISSION_TYPE_ID")
     @Id
@@ -67,23 +66,13 @@ public class SharingEntityPK implements Serializable {
     }
 
     @Basic
-    @Column(name = "CREATED_TIME")
-    public Long getCreatedTime() {
-        return createdTime;
+    @Column(name = "INHERITED_PARENT_ID")
+    public String getInheritedParentId() {
+        return inheritedParentId;
     }
 
-    public void setCreatedTime(Long createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    @Basic
-    @Column(name = "UPDATED_TIME")
-    public Long getUpdatedTime() {
-        return updatedTime;
-    }
-
-    public void setUpdatedTime(Long updatedTime) {
-        this.updatedTime = updatedTime;
+    public void setInheritedParentId(String inheritedParentId) {
+        this.inheritedParentId = inheritedParentId;
     }
 
     @Override
@@ -97,8 +86,6 @@ public class SharingEntityPK implements Serializable {
             return false;
         if (entityId != null ? !entityId.equals(that.entityId) : that.entityId != null) return false;
         if (groupId != null ? !groupId.equals(that.groupId) : that.groupId != null) return false;
-        if (createdTime != null ? !createdTime.equals(that.createdTime) : that.createdTime != null) return false;
-        if (updatedTime != null ? !updatedTime.equals(that.updatedTime) : that.updatedTime != null) return false;
 
         return true;
     }
