@@ -78,6 +78,12 @@ struct EntityType {
     6: optional i64 updatedTime
 }
 
+enum EntitySearchFields {
+    NAME,
+    DESCRIPTION,
+    FULL_TEXT
+}
+
 
 struct Entity {
     1: optional string entityId = DO_NOT_SET_AT_CLIENTS_ID,

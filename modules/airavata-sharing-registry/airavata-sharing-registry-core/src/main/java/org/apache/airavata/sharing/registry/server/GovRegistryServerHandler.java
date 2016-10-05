@@ -422,8 +422,12 @@ public class GovRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public List<Entity> searchEntities(String domain, String entityType, Map<String, String> filters, int offset, int limit) throws GovRegistryException, TException {
-        return null;
+    public List<Entity> searchEntities(String userId, String entityTypeId, Map<EntitySearchFields, String> filters,
+                                       int offset, int limit) throws GovRegistryException, TException {
+        List<String> groupIds = new ArrayList<>();
+        groupIds.add(userId);
+        groupMembershipRepository.getAllParentMembershipsForChild(userId).stream().forEach(gm->groupIds.add(gm.parentId));
+        return entityRepository.searchEntities(groupIds, entityTypeId, filters, offset, limit);
     }
 
     /**

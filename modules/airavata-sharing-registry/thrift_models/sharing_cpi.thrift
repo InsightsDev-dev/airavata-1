@@ -73,8 +73,8 @@ service GovRegistryService {
     bool updateEntity(1: required sharing_models.Entity entity) throws (1: sharing_models.GovRegistryException gre)
     bool deleteEntity(1: required string entityId) throws (1: sharing_models.GovRegistryException gre)
     sharing_models.Entity getEntity(1: required string entityId) throws (1: sharing_models.GovRegistryException gre)
-    list<sharing_models.Entity> searchEntities(1: required string domain, 2: required string entityType,
-            3: required map<string, string> filters, 4: required i32 offset, 5: required i32 limit) throws (1: sharing_models.GovRegistryException gre)
+    list<sharing_models.Entity> searchEntities(1: required string userId, 2: required string entityTypeId, 3: required map<sharing_models.EntitySearchFields,
+     string> filters, 4: required i32 offset, 5: required i32 limit) throws (1: sharing_models.GovRegistryException gre)
 
     /**
      * Permission Operations

@@ -69,6 +69,10 @@ public class DBConstants {
     public static class EntityTable {
         public static String ENTITY_ID = "entityId";
         public static String PARENT_ENTITY_ID = "parentEntityId";
+        public static String ENTITY_TYPE_ID = "entityTypeId";
+        public static String NAME = "name";
+        public static String DESCRIPTION = "description";
+        public static String FULL_TEXT = "fullText";
     }
 
     public static class SharingTable {

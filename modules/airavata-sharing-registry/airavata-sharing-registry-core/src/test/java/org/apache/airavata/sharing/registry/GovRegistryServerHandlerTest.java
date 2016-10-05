@@ -262,6 +262,10 @@ public class GovRegistryServerHandlerTest {
         Assert.assertTrue(govRegistryServerHandler.userHasAccess(domainId, userId1, entityId4, permissionTypeId1));
         Assert.assertFalse(govRegistryServerHandler.userHasAccess(domainId, userId3, entityId1, permissionTypeId1));
 
+        HashMap<EntitySearchFields, String> filters = new HashMap<>();
+        filters.put(EntitySearchFields.NAME, "Input");
+        Assert.assertTrue(govRegistryServerHandler.searchEntities(userId1, entityTypeId3, filters, 0, -1).size() > 0);
+
 //        govRegistryServerHandler.revokeEntitySharingFromUsers(entityId1, Arrays.asList(userId2), permissionTypeId1);
 //        govRegistryServerHandler.revokeEntitySharingFromGroups(entityId3, Arrays.asList(groupId2), permissionTypeId1);
     }

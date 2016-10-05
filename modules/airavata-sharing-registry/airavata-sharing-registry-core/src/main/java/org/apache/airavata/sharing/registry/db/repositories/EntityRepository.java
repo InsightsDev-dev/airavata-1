@@ -21,14 +21,17 @@
 package org.apache.airavata.sharing.registry.db.repositories;
 
 import org.apache.airavata.sharing.registry.db.entities.EntityEntity;
+import org.apache.airavata.sharing.registry.db.entities.SharingEntity;
 import org.apache.airavata.sharing.registry.db.utils.DBConstants;
 import org.apache.airavata.sharing.registry.models.Entity;
+import org.apache.airavata.sharing.registry.models.EntitySearchFields;
 import org.apache.airavata.sharing.registry.models.GovRegistryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class EntityRepository extends AbstractRepository<Entity, EntityEntity, String> {
     private final static Logger logger = LoggerFactory.getLogger(EntityRepository.class);
@@ -41,5 +44,32 @@ public class EntityRepository extends AbstractRepository<Entity, EntityEntity, S
         HashMap<String, String> filters = new HashMap<>();
         filters.put(DBConstants.EntityTable.PARENT_ENTITY_ID, parentId);
         return select(filters, 0, -1);
+    }
+
+    public List<Entity> searchEntities(List<String> groupIds, String entityTypeId, Map<EntitySearchFields, String> filters,
+                                       int offset, int limit) throws GovRegistryException {
+        String groupIdString = "'";
+        for(String groupId : groupIds)
+            groupIdString += groupId + "','";
+        groupIdString = groupIdString.substring(0, groupIdString.length()-2);
+
+        String query = "SELECT E FROM " + EntityEntity.class.getSimpleName() + " E, " + SharingEntity.class.getSimpleName() + " S WHERE " +
+                "E." + DBConstants.EntityTable.ENTITY_ID + " = S." + DBConstants.SharingTable.ENTITY_ID + " AND " +
+                "S." + DBConstants.SharingTable.GROUP_ID + " IN(" + groupIdString + ") AND E." + DBConstants.EntityTable.ENTITY_TYPE_ID + "='" +
+                entityTypeId + "' AND ";
+
+        for(Map.Entry<EntitySearchFields, String> mapEntry : filters.entrySet()){
+            if(mapEntry.getKey().equals(EntitySearchFields.NAME)){
+                query += "E." + DBConstants.EntityTable.NAME + " LIKE '%" + mapEntry.getValue() + "%' AND ";
+            }else if(mapEntry.getKey().equals(EntitySearchFields.DESCRIPTION)){
+                query += "E." + DBConstants.EntityTable.DESCRIPTION + " LIKE '%" + mapEntry.getValue() + "%' AND ";
+            }else if(mapEntry.getKey().equals(EntitySearchFields.FULL_TEXT)){
+                query += "E." + DBConstants.EntityTable.FULL_TEXT + " LIKE '%" + mapEntry.getValue() + "%' AND ";
+            }
+        }
+
+        query = query.substring(0, query.length() - 5);
+        return select(query, offset, limit);
+
     }
 }
