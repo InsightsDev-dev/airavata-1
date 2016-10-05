@@ -23,7 +23,6 @@ package org.apache.airavata.sharing.registry.db.entities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -65,8 +64,8 @@ public class SharingEntityPK implements Serializable {
         this.groupId = groupId;
     }
 
-    @Basic
     @Column(name = "INHERITED_PARENT_ID")
+    @Id
     public String getInheritedParentId() {
         return inheritedParentId;
     }

@@ -68,6 +68,17 @@ public class SharingEntity {
         this.groupId = groupId;
     }
 
+
+    @Id
+    @Column(name = "INHERITED_PARENT_ID")
+    public String getInheritedParentId() {
+        return inheritedParentId;
+    }
+
+    public void setInheritedParentId(String inheritedParentId) {
+        this.inheritedParentId = inheritedParentId;
+    }
+
     @Basic
     @Column(name = "SHARING_TYPE")
     public String getSharingType() {
@@ -76,16 +87,6 @@ public class SharingEntity {
 
     public void setSharingType(String sharingType) {
         this.sharingType = sharingType;
-    }
-
-    @Basic
-    @Column(name = "INHERITED_PARENT_ID")
-    public String getInheritedParentId() {
-        return inheritedParentId;
-    }
-
-    public void setInheritedParentId(String inheritedParentId) {
-        this.inheritedParentId = inheritedParentId;
     }
 
     @Basic

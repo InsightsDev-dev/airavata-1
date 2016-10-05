@@ -386,11 +386,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
                 newSharing.setPermissionTypeId(sharing.permissionTypeId);
                 newSharing.setEntityId(entity.entityId);
                 newSharing.setGroupId(sharing.groupId);
-                if(sharing.sharingType.equals(SharingType.DIRECT_CASCADING))
-                    newSharing.setInheritedParentId(sharing.entityId);
-
-                else
-                    newSharing.setInheritedParentId(sharing.inheritedParentId);
+                newSharing.setInheritedParentId(sharing.inheritedParentId);
                 newSharing.setSharingType(SharingType.INDIRECT_CASCADING);
                 newSharing.setCreatedTime(System.currentTimeMillis());
                 newSharing.setUpdatedTime(System.currentTimeMillis());

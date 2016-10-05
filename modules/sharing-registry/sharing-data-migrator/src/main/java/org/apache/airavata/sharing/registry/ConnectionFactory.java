@@ -38,7 +38,7 @@ public class ConnectionFactory {
     public static final String EXPCAT_PASSWORD = "";
     public static final String DRIVER_CLASS = "com.mysql.jdbc.Driver";
 
-    private static Connection expCatConnection, sharingCatConnection;
+    private static Connection expCatConnection;
 
     //private constructor
     private ConnectionFactory() throws ClassNotFoundException, SQLException {
