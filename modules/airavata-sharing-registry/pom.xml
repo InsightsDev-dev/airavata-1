@@ -23,5 +23,6 @@
     <modules>
         <module>airavata-sharing-registry-stubs</module>
         <module>airavata-sharing-registry-core</module>
+        <module>airavata-sharing-data-migrator</module>
     </modules>
 </project>
