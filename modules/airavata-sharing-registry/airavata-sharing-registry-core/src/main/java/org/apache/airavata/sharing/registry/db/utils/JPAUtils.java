@@ -57,7 +57,7 @@ public class JPAUtils {
 //
 
             String connectionProperties = "DriverClassName=com.mysql.jdbc.Driver," +
-                    "Url=jdbc:mysql://localhost:3306/airavata_gov_registry?autoReconnect=true," +
+                    "Url=jdbc:mysql://localhost:3306/airavata_sharing_catalog?autoReconnect=true," +
                     "Username=root," +
                     "Password=," +
                     ",validationQuery=SELECT 1 FROM CONFIGURATION";
