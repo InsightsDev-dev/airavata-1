@@ -430,6 +430,16 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
         return entityRepository.searchEntities(groupIds, entityTypeId, filters, offset, limit);
     }
 
+    @Override
+    public List<User> getListOfSharedUsers(String entityId, String permissionTypeId) throws GovRegistryException, TException {
+        return null;
+    }
+
+    @Override
+    public List<UserGroup> getListOfSharedGroups(String entityId, String permissionTypeId) throws GovRegistryException, TException {
+        return null;
+    }
+
     /**
      * * Sharing Entity with Users and Groups
      * *
@@ -459,10 +469,8 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
             sharing.setInheritedParentId(entityId);
             if(cascadePermission) {
                 sharing.setSharingType(SharingType.DIRECT_CASCADING);
-                sharing.setCascadePermission(true);
             }else {
                 sharing.setSharingType(SharingType.DIRECT_NON_CASCADING);
-                sharing.setCascadePermission(false);
             }
             sharing.setCreatedTime(System.currentTimeMillis());
             sharing.setUpdatedTime(System.currentTimeMillis());
@@ -484,7 +492,6 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
                     sharing.setInheritedParentId(entityId);
                     sharing.setSharingType(SharingType.INDIRECT_CASCADING);
                     sharing.setInheritedParentId(entityId);
-                    sharing.setCascadePermission(true);
                     sharing.setCreatedTime(System.currentTimeMillis());
                     sharing.setUpdatedTime(System.currentTimeMillis());
                     sharingRepository.create(sharing);
