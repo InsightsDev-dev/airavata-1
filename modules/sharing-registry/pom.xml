@@ -7,7 +7,7 @@
     <parent>
         <artifactId>airavata</artifactId>
         <groupId>org.apache.airavata</groupId>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../../pom.xml</relativePath>
         <version>0.17-SNAPSHOT</version>
     </parent>
 
