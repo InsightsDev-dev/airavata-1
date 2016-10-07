@@ -1,5 +1,9 @@
 /**
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
  *
+=======
+ * 
+>>>>>>> adding more files
  */
 package org.apache.airavata.grouper.group;
 
@@ -11,6 +15,7 @@ import java.util.List;
  *
  */
 public class Group {
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 
   private String id;
 
@@ -38,6 +43,17 @@ public class Group {
     this.id = id;
   }
 
+=======
+  
+  private String id;
+  
+  private String name;
+  
+  private String description;
+  
+  private List<String> users = new ArrayList<String>();
+  
+>>>>>>> adding more files
   /**
    * @return the id
    */
@@ -45,6 +61,18 @@ public class Group {
     return id;
   }
 
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
+=======
+  
+  /**
+   * @param id the id to set
+   */
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  
+>>>>>>> adding more files
   /**
    * @return the name
    */
@@ -52,7 +80,11 @@ public class Group {
     return name;
   }
 
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 
+=======
+  
+>>>>>>> adding more files
   /**
    * @param name the name to set
    */
@@ -60,6 +92,7 @@ public class Group {
     this.name = name;
   }
 
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 
   /**
    * @return the ownerId
@@ -69,6 +102,9 @@ public class Group {
   }
 
 
+=======
+  
+>>>>>>> adding more files
   /**
    * @return the description
    */
@@ -76,7 +112,11 @@ public class Group {
     return description;
   }
 
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 
+=======
+  
+>>>>>>> adding more files
   /**
    * @param description the description to set
    */
@@ -84,6 +124,7 @@ public class Group {
     this.description = description;
   }
 
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
   /**
    * @return the members
    */
@@ -105,4 +146,30 @@ public class Group {
         + ", description=" + description + "]";
   }
 
+=======
+  
+  /**
+   * @return the users
+   */
+  public List<String> getUsers() {
+    return users;
+  }
+
+  /**
+   * @param users the users to set
+   */
+  public void setUsers(List<String> users) {
+    this.users = users;
+  }
+
+
+  /**
+   * @see Object#toString()
+   */
+  @Override
+  public String toString() {
+    return "Group [id=" + id + ", name=" + name + ", description=" + description + "]";
+  }
+  
+>>>>>>> adding more files
 }

@@ -1,6 +1,9 @@
 package org.apache.airavata.grouper;
 
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 import org.apache.airavata.grouper.group.Group;
+=======
+>>>>>>> adding more files
 import org.apache.airavata.grouper.permission.PermissionAction;
 import org.apache.airavata.grouper.resource.Resource;
 import org.apache.airavata.grouper.resource.ResourceType;
@@ -22,6 +25,7 @@ public interface GroupManagerCPI {
     Set<String> getAllAccessibleUsers(String resourceId, ResourceType resourceType, PermissionAction permissionType);
 
     List<String> getAccessibleResourcesForUser(String userId, ResourceType resourceType, PermissionAction permissionAction);
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 
     void createGroup(Group group);
 
@@ -32,4 +36,6 @@ public interface GroupManagerCPI {
     Group getGroup(String groupId);
 
     List<Group> getAllGroupsUserBelongs(String userId);
+=======
+>>>>>>> adding more files
 }

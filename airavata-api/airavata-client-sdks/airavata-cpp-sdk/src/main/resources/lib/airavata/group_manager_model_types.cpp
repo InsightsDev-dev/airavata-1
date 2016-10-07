@@ -54,6 +54,7 @@ const char* _kResourcePermissionTypeNames[] = {
 };
 const std::map<int, const char*> _ResourcePermissionType_VALUES_TO_NAMES(::apache::thrift::TEnumIterator(2, _kResourcePermissionTypeValues, _kResourcePermissionTypeNames), ::apache::thrift::TEnumIterator(-1, NULL, NULL));
 
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 
 GroupModel::~GroupModel() throw() {
 }
@@ -250,4 +251,6 @@ void GroupModel::printTo(std::ostream& out) const {
   out << ")";
 }
 
+=======
+>>>>>>> adding more files
 }}}} // namespace

@@ -39,6 +39,7 @@ final class ResourcePermissionType {
   );
 }
 
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 class GroupModel {
   static $_TSPEC;
 
@@ -232,4 +233,6 @@ class GroupModel {
 
 }
 
+=======
+>>>>>>> adding more files
 

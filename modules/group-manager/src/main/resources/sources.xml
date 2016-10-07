@@ -770,12 +770,20 @@ where
         
         <init-param>
             <param-name>dbUser</param-name>
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
             <param-value></param-value>
+=======
+            <param-value>airavata_grouper_client</param-value>
+>>>>>>> adding more files
         </init-param>
         
         <init-param>
             <param-name>dbPwd</param-name>
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
             <param-value></param-value>
+=======
+            <param-value>airavata_grouper_client</param-value>
+>>>>>>> adding more files
         </init-param>
     
          <init-param>

@@ -20,6 +20,7 @@
 */
 package org.apache.airavata.grouper;
 
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 import org.apache.airavata.grouper.group.Group;
 import org.apache.airavata.grouper.group.GroupMembership;
 import org.apache.airavata.grouper.group.GroupServiceImpl;
@@ -27,6 +28,11 @@ import org.apache.airavata.grouper.permission.PermissionAction;
 import org.apache.airavata.grouper.permission.PermissionServiceImpl;
 import org.apache.airavata.grouper.resource.Resource;
 import org.apache.airavata.grouper.resource.ResourceNotFoundException;
+=======
+import org.apache.airavata.grouper.permission.PermissionAction;
+import org.apache.airavata.grouper.permission.PermissionServiceImpl;
+import org.apache.airavata.grouper.resource.Resource;
+>>>>>>> adding more files
 import org.apache.airavata.grouper.resource.ResourceServiceImpl;
 import org.apache.airavata.grouper.resource.ResourceType;
 import org.slf4j.Logger;
@@ -41,12 +47,18 @@ public class GroupManagerImpl implements GroupManagerCPI {
 
     private ResourceServiceImpl resourceService;
     private PermissionServiceImpl permissionService;
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
     private GroupServiceImpl groupService;
+=======
+>>>>>>> adding more files
 
     public GroupManagerImpl(){
         this.resourceService = new ResourceServiceImpl();
         this.permissionService = new PermissionServiceImpl();
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
         this.groupService = new GroupServiceImpl();
+=======
+>>>>>>> adding more files
     }
 
     @Override
@@ -56,11 +68,15 @@ public class GroupManagerImpl implements GroupManagerCPI {
 
     @Override
     public boolean isResourceRegistered(String resourceId, ResourceType resourceType) {
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
         try{
             return resourceService.getResource(resourceId, resourceType) != null;
         }catch (ResourceNotFoundException ex){
             return false;
         }
+=======
+        return resourceService.getResource(resourceId, resourceType) != null;
+>>>>>>> adding more files
     }
 
     @Override
@@ -87,6 +103,7 @@ public class GroupManagerImpl implements GroupManagerCPI {
         allResources.stream().forEach(r->ids.add(r.getId()));
         return ids;
     }
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 
     @Override
     public void createGroup(Group group) {
@@ -115,4 +132,6 @@ public class GroupManagerImpl implements GroupManagerCPI {
         groupMemberships.stream().forEach(gm->groupList.add(getGroup(gm.getGroupId())));
         return groupList;
     }
+=======
+>>>>>>> adding more files
 }

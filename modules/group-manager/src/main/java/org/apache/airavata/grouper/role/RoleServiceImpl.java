@@ -1,5 +1,9 @@
 /**
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
  *
+=======
+ * 
+>>>>>>> adding more files
  */
 package org.apache.airavata.grouper.role;
 
@@ -17,10 +21,17 @@ import static org.apache.airavata.grouper.AiravataGrouperUtil.*;
  *
  */
 public class RoleServiceImpl {
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 
 
   public Group createRole(String roleId, GrouperSession session) {
 
+=======
+  
+  
+  public Group createRole(String roleId, GrouperSession session) {
+    
+>>>>>>> adding more files
     GrouperSession grouperSession = null;
     Group role = null;
     try {
@@ -41,7 +52,11 @@ public class RoleServiceImpl {
     }
     return role;
   }
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 
+=======
+  
+>>>>>>> adding more files
   public void deleteRole(String roleId, GrouperSession session) {
     GrouperSession grouperSession = null;
     try {
@@ -56,9 +71,15 @@ public class RoleServiceImpl {
       }
     }
   }
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 
   public void assignRoleToUser(String userId, String roleId, GrouperSession session) throws GroupNotFoundException, SubjectNotFoundException {
 
+=======
+  
+  public void assignRoleToUser(String userId, String roleId, GrouperSession session) throws GroupNotFoundException, SubjectNotFoundException {
+    
+>>>>>>> adding more files
     GrouperSession grouperSession = null;
     try {
       grouperSession = session != null? session : GrouperSession.startRootSession();
@@ -66,7 +87,11 @@ public class RoleServiceImpl {
       if (role == null) {
         throw new GroupNotFoundException("Role "+roleId+" was not found.");
       }
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
       Subject subject = SubjectFinder.findById(userId, false);
+=======
+      Subject subject = SubjectFinder.findByIdAndSource(userId, SUBJECT_SOURCE, false);
+>>>>>>> adding more files
       if (subject == null) {
         throw new SubjectNotFoundException("userId "+userId+" was not found.");
       }
@@ -76,9 +101,15 @@ public class RoleServiceImpl {
         GrouperSession.stopQuietly(grouperSession);
       }
     }
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 
   }
 
+=======
+    
+  }
+  
+>>>>>>> adding more files
   public void removeRoleFromUser(String userId, String roleId, GrouperSession session) throws GroupNotFoundException, SubjectNotFoundException {
     GrouperSession grouperSession = null;
     try {
@@ -98,6 +129,7 @@ public class RoleServiceImpl {
       }
     }
   }
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 
   public static void main(String[] args) {
     RoleServiceImpl roleServiceImpl = new RoleServiceImpl();
@@ -106,6 +138,16 @@ public class RoleServiceImpl {
 
     roleServiceImpl.assignRoleToUser("test.subject.3", "test_role", null);
 
+=======
+  
+  public static void main(String[] args) {
+    RoleServiceImpl roleServiceImpl = new RoleServiceImpl();
+    
+    roleServiceImpl.createRole("test_role", null);
+    
+    roleServiceImpl.assignRoleToUser("test.subject.3", "test_role", null);
+    
+>>>>>>> adding more files
     //roleServiceImpl.deleteRole("test_role", null);
   }
 

@@ -57,6 +57,7 @@ struct ResourcePermissionType {
 
 extern const std::map<int, const char*> _ResourcePermissionType_VALUES_TO_NAMES;
 
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 class GroupModel;
 
 typedef struct _GroupModel__isset {
@@ -139,6 +140,8 @@ inline std::ostream& operator<<(std::ostream& out, const GroupModel& obj)
   return out;
 }
 
+=======
+>>>>>>> adding more files
 }}}} // namespace
 
 #endif

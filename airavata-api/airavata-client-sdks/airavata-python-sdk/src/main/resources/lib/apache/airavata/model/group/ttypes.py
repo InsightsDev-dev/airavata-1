@@ -52,6 +52,7 @@ class ResourcePermissionType:
     "READ": 1,
   }
 
+<<<<<<< 10f30a96f6478fb045ae6e0cdb15b25614581856
 
 class GroupModel:
   """
@@ -177,3 +178,5 @@ class GroupModel:
 
   def __ne__(self, other):
     return not (self == other)
+=======
+>>>>>>> adding more files
