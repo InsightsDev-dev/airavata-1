@@ -124,6 +124,6 @@ struct Sharing {
     7: optional i64 updatedTime
 }
 
-exception GovRegistryException {
+exception SharingRegistryException {
   1: required string message
 }

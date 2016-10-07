@@ -23,7 +23,7 @@ package org.apache.airavata.sharing.registry.db.repositories;
 import org.apache.airavata.sharing.registry.db.utils.DBConstants;
 import org.apache.airavata.sharing.registry.db.utils.JPAUtils;
 import org.apache.airavata.sharing.registry.db.utils.ObjectMapperSingleton;
-import org.apache.airavata.sharing.registry.models.GovRegistryException;
+import org.apache.airavata.sharing.registry.models.SharingRegistryException;
 import org.dozer.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,29 +43,29 @@ public abstract class AbstractRepository<T, E, Id> {
         this.dbEntityGenericClass = dbEntityGenericClass;
     }
 
-    public T create(T t) throws GovRegistryException {
+    public T create(T t) throws SharingRegistryException {
         return update(t);
     }
 
-    public List<T> create(List<T> tList) throws GovRegistryException {
+    public List<T> create(List<T> tList) throws SharingRegistryException {
         return update(tList);
     }
 
-    public  T update(T t) throws GovRegistryException {
+    public  T update(T t) throws SharingRegistryException {
         Mapper mapper = ObjectMapperSingleton.getInstance();
         E entity = mapper.map(t, dbEntityGenericClass);
         E persistedCopy = JPAUtils.execute(entityManager -> entityManager.merge(entity));
         return mapper.map(persistedCopy, thriftGenericClass);
     }
 
-    public  List<T> update(List<T> tList) throws GovRegistryException {
+    public  List<T> update(List<T> tList) throws SharingRegistryException {
         List<T> returnList = new ArrayList<>();
         for(T temp : tList)
             returnList.add(update(temp));
         return returnList;
     }
 
-    public boolean delete(Id id) throws GovRegistryException {
+    public boolean delete(Id id) throws SharingRegistryException {
         JPAUtils.execute(entityManager -> {
             E entity = entityManager.find(dbEntityGenericClass, id);
             entityManager.remove(entity);
@@ -74,13 +74,13 @@ public abstract class AbstractRepository<T, E, Id> {
         return true;
     }
 
-    public boolean delete(List<Id> idList) throws GovRegistryException {
+    public boolean delete(List<Id> idList) throws SharingRegistryException {
         for(Id id : idList)
             delete(id);
         return true;
     }
 
-    public T get(Id id) throws GovRegistryException {
+    public T get(Id id) throws SharingRegistryException {
         E entity = JPAUtils.execute(entityManager -> entityManager
                 .find(dbEntityGenericClass, id));
         Mapper mapper = ObjectMapperSingleton.getInstance();
@@ -89,14 +89,14 @@ public abstract class AbstractRepository<T, E, Id> {
         return mapper.map(entity, thriftGenericClass);
     }
 
-    public List<T> get(List<Id> idList) throws GovRegistryException {
+    public List<T> get(List<Id> idList) throws SharingRegistryException {
         List<T> returnList = new ArrayList<>();
         for(Id id : idList)
             returnList.add(get(id));
         return returnList;
     }
 
-    public List<T> select(Map<String, String> filters, int offset, int limit) throws GovRegistryException {
+    public List<T> select(Map<String, String> filters, int offset, int limit) throws SharingRegistryException {
         String queryString = getSelectQuery(filters);
         int newLimit = limit < 0 ? DBConstants.SELECT_MAX_ROWS: limit;
         List resultSet = JPAUtils.execute(entityManager -> entityManager.createQuery(queryString).setFirstResult(offset)
@@ -107,7 +107,7 @@ public abstract class AbstractRepository<T, E, Id> {
         return gatewayList;
     }
 
-    public List<T> select(String queryString, int offset, int limit) throws GovRegistryException {
+    public List<T> select(String queryString, int offset, int limit) throws SharingRegistryException {
         int newLimit = limit < 0 ? DBConstants.SELECT_MAX_ROWS: limit;
         List resultSet = JPAUtils.execute(entityManager -> entityManager.createQuery(queryString).setFirstResult(offset)
                 .setMaxResults(newLimit).getResultList());

@@ -25,7 +25,7 @@ import org.apache.airavata.sharing.registry.db.entities.SharingEntity;
 import org.apache.airavata.sharing.registry.db.utils.DBConstants;
 import org.apache.airavata.sharing.registry.models.Entity;
 import org.apache.airavata.sharing.registry.models.EntitySearchFields;
-import org.apache.airavata.sharing.registry.models.GovRegistryException;
+import org.apache.airavata.sharing.registry.models.SharingRegistryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,14 +40,14 @@ public class EntityRepository extends AbstractRepository<Entity, EntityEntity, S
         super(Entity.class, EntityEntity.class);
     }
 
-    public List<Entity> getChildEntities(String parentId) throws GovRegistryException {
+    public List<Entity> getChildEntities(String parentId) throws SharingRegistryException {
         HashMap<String, String> filters = new HashMap<>();
         filters.put(DBConstants.EntityTable.PARENT_ENTITY_ID, parentId);
         return select(filters, 0, -1);
     }
 
     public List<Entity> searchEntities(List<String> groupIds, String entityTypeId, Map<EntitySearchFields, String> filters,
-                                       int offset, int limit) throws GovRegistryException {
+                                       int offset, int limit) throws SharingRegistryException {
         String groupIdString = "'";
         for(String groupId : groupIds)
             groupIdString += groupId + "','";

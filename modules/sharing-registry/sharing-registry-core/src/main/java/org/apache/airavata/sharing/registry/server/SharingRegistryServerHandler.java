@@ -63,9 +63,9 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
      * *
      */
     @Override
-    public String createDomain(Domain domain) throws GovRegistryException, TException {
+    public String createDomain(Domain domain) throws SharingRegistryException, TException {
         if(domainRepository.get(domain.domainId) != null)
-            throw new GovRegistryException("There exist domain with given domain id");
+            throw new SharingRegistryException("There exist domain with given domain id");
 
         domain.setCreatedTime(System.currentTimeMillis());
         domain.setUpdatedTime(System.currentTimeMillis());
@@ -85,7 +85,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean updateDomain(Domain domain) throws GovRegistryException, TException {
+    public boolean updateDomain(Domain domain) throws SharingRegistryException, TException {
         Domain oldDomain = domainRepository.get(domain.domainId);
         domain.setCreatedTime(oldDomain.createdTime);
         domain.setUpdatedTime(System.currentTimeMillis());
@@ -95,13 +95,13 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean deleteDomain(String domainId) throws GovRegistryException, TException {
+    public boolean deleteDomain(String domainId) throws SharingRegistryException, TException {
         domainRepository.delete(domainId);
         return true;
     }
 
     @Override
-    public Domain getDomain(String domainId) throws GovRegistryException, TException {
+    public Domain getDomain(String domainId) throws SharingRegistryException, TException {
         return domainRepository.get(domainId);
     }
 
@@ -115,9 +115,9 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
      * *
      */
     @Override
-    public String createUser(User user) throws GovRegistryException, TException {
+    public String createUser(User user) throws SharingRegistryException, TException {
         if(userRepository.get(user.userId) != null)
-            throw new GovRegistryException("There exist user with given user id");
+            throw new SharingRegistryException("There exist user with given user id");
 
         user.setCreatedTime(System.currentTimeMillis());
         user.setUpdatedTime(System.currentTimeMillis());
@@ -136,7 +136,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean updatedUser(User user) throws GovRegistryException, TException {
+    public boolean updatedUser(User user) throws SharingRegistryException, TException {
         User oldUser = userRepository.get(user.userId);
         user.setCreatedTime(oldUser.createdTime);
         user.setUpdatedTime(System.currentTimeMillis());
@@ -151,19 +151,19 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean deleteUser(String userId) throws GovRegistryException, TException {
+    public boolean deleteUser(String userId) throws SharingRegistryException, TException {
         userRepository.delete(userId);
         userGroupRepository.delete(userId);
         return true;
     }
 
     @Override
-    public User getUser(String userId) throws GovRegistryException, TException {
+    public User getUser(String userId) throws SharingRegistryException, TException {
         return userRepository.get(userId);
     }
 
     @Override
-    public List<User> getUsers(String domain, int offset, int limit) throws  GovRegistryException, TException {
+    public List<User> getUsers(String domain, int offset, int limit) throws SharingRegistryException, TException {
         HashMap<String, String> filters = new HashMap<>();
         filters.put(DBConstants.UserTable.DOMAIN_ID, domain);
         return userRepository.select(filters, offset, limit);
@@ -174,9 +174,9 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
      * *
      */
     @Override
-    public String createGroup(UserGroup group) throws GovRegistryException, TException {
+    public String createGroup(UserGroup group) throws SharingRegistryException, TException {
         if(userGroupRepository.get(group.groupId) != null)
-            throw new GovRegistryException("There exist group with given group id");
+            throw new SharingRegistryException("There exist group with given group id");
 
         group.setCreatedTime(System.currentTimeMillis());
         group.setUpdatedTime(System.currentTimeMillis());
@@ -185,7 +185,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean updateGroup(UserGroup group) throws GovRegistryException, TException {
+    public boolean updateGroup(UserGroup group) throws SharingRegistryException, TException {
         group.setUpdatedTime(System.currentTimeMillis());
         UserGroup oldGroup = userGroupRepository.get(group.groupId);
         group.setCreatedTime(oldGroup.createdTime);
@@ -195,13 +195,13 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean deleteGroup(String groupId) throws GovRegistryException, TException {
+    public boolean deleteGroup(String groupId) throws SharingRegistryException, TException {
         userGroupRepository.delete(groupId);
         return true;
     }
 
     @Override
-    public UserGroup getGroup(String groupId) throws GovRegistryException, TException {
+    public UserGroup getGroup(String groupId) throws SharingRegistryException, TException {
         return userGroupRepository.get(groupId);
     }
 
@@ -213,7 +213,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean addUsersToGroup(List<String> userIds, String groupId) throws GovRegistryException, TException {
+    public boolean addUsersToGroup(List<String> userIds, String groupId) throws SharingRegistryException, TException {
         for(int i=0; i < userIds.size(); i++){
             GroupMembership groupMembership = new GroupMembership();
             groupMembership.setParentId(groupId);
@@ -227,7 +227,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean removeUsersFromGroup(List<String> userIds, String groupId) throws GovRegistryException, TException {
+    public boolean removeUsersFromGroup(List<String> userIds, String groupId) throws SharingRegistryException, TException {
         for(int i=0; i < userIds.size(); i++){
             GroupMembershipEntityPK groupMembershipEntityPK = new GroupMembershipEntityPK();
             groupMembershipEntityPK.setParentId(groupId);
@@ -238,7 +238,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public Map<String, GroupChildType> getGroupMembers(String groupId, int offset, int limit) throws  GovRegistryException, TException {
+    public Map<String, GroupChildType> getGroupMembers(String groupId, int offset, int limit) throws SharingRegistryException, TException {
         HashMap<String, GroupChildType> groupMembers = new HashMap<>();
         HashMap<String, String> filters = new HashMap<>();
         filters.put(DBConstants.GroupMembershipTable.PARENT_ID, groupId);
@@ -248,7 +248,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean addChildGroupToParentGroup(String childId, String groupId) throws GovRegistryException, TException {
+    public boolean addChildGroupToParentGroup(String childId, String groupId) throws SharingRegistryException, TException {
         //Todo check for cyclic dependencies
         GroupMembership groupMembership = new GroupMembership();
         groupMembership.setParentId(groupId);
@@ -261,7 +261,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean removeChildGroupFromParentGroup(String childId, String groupId) throws GovRegistryException, TException {
+    public boolean removeChildGroupFromParentGroup(String childId, String groupId) throws SharingRegistryException, TException {
         GroupMembershipEntityPK groupMembershipEntityPK = new GroupMembershipEntityPK();
         groupMembershipEntityPK.setParentId(groupId);
         groupMembershipEntityPK.setChildId(childId);
@@ -274,9 +274,9 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
      * *
      */
     @Override
-    public String createEntityType(EntityType entityType) throws GovRegistryException, TException {
+    public String createEntityType(EntityType entityType) throws SharingRegistryException, TException {
         if(entityTypeRepository.get(entityType.entityTypeId) != null)
-            throw new GovRegistryException("There exist EntityType with given EntityType id");
+            throw new SharingRegistryException("There exist EntityType with given EntityType id");
 
         entityType.setCreatedTime(System.currentTimeMillis());
         entityType.setUpdatedTime(System.currentTimeMillis());
@@ -285,7 +285,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean updateEntityType(EntityType entityType) throws GovRegistryException, TException {
+    public boolean updateEntityType(EntityType entityType) throws SharingRegistryException, TException {
         entityType.setUpdatedTime(System.currentTimeMillis());
         EntityType oldEntityType = entityTypeRepository.get(entityType.entityTypeId);
         entityType.setCreatedTime(oldEntityType.createdTime);
@@ -295,13 +295,13 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean deleteEntityType(String entityTypeId) throws GovRegistryException, TException {
+    public boolean deleteEntityType(String entityTypeId) throws SharingRegistryException, TException {
         entityTypeRepository.delete(entityTypeId);
         return true;
     }
 
     @Override
-    public EntityType getEntityType(String entityTypeId) throws GovRegistryException, TException {
+    public EntityType getEntityType(String entityTypeId) throws SharingRegistryException, TException {
         return entityTypeRepository.get(entityTypeId);
     }
 
@@ -317,9 +317,9 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
      * *
      */
     @Override
-    public String createPermissionType(PermissionType permissionType) throws GovRegistryException, TException {
+    public String createPermissionType(PermissionType permissionType) throws SharingRegistryException, TException {
         if(permissionTypeRepository.get(permissionType.permissionTypeId) != null)
-            throw new GovRegistryException("There exist PermissionType with given PermissionType id");
+            throw new SharingRegistryException("There exist PermissionType with given PermissionType id");
         permissionType.setCreatedTime(System.currentTimeMillis());
         permissionType.setUpdatedTime(System.currentTimeMillis());
         permissionTypeRepository.create(permissionType);
@@ -327,7 +327,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean updatePermissionType(PermissionType permissionType) throws GovRegistryException, TException {
+    public boolean updatePermissionType(PermissionType permissionType) throws SharingRegistryException, TException {
         permissionType.setUpdatedTime(System.currentTimeMillis());
         PermissionType oldPermissionType = permissionTypeRepository.get(permissionType.permissionTypeId);
         permissionType = getUpdatedObject(oldPermissionType, permissionType);
@@ -336,18 +336,18 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean deletePermissionType(String entityTypeId) throws GovRegistryException, TException {
+    public boolean deletePermissionType(String entityTypeId) throws SharingRegistryException, TException {
         permissionTypeRepository.delete(entityTypeId);
         return true;
     }
 
     @Override
-    public PermissionType getPermissionType(String permissionTypeId) throws GovRegistryException, TException {
+    public PermissionType getPermissionType(String permissionTypeId) throws SharingRegistryException, TException {
         return permissionTypeRepository.get(permissionTypeId);
     }
 
     @Override
-    public List<PermissionType> getPermissionTypes(String domain, int offset, int limit) throws GovRegistryException, TException {
+    public List<PermissionType> getPermissionTypes(String domain, int offset, int limit) throws SharingRegistryException, TException {
         HashMap<String, String> filters = new HashMap<>();
         filters.put(DBConstants.PermissionTypeTable.DOMAIN_ID, domain);
         return permissionTypeRepository.select(filters, offset, limit);
@@ -358,9 +358,9 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
      * *
      */
     @Override
-    public String createEntity(Entity entity) throws GovRegistryException, TException {
+    public String createEntity(Entity entity) throws SharingRegistryException, TException {
         if(entityRepository.get(entity.entityId) != null)
-            throw new GovRegistryException("There exist Entity with given Entity id");
+            throw new SharingRegistryException("There exist Entity with given Entity id");
 
         entity.setCreatedTime(System.currentTimeMillis());
         entity.setUpdatedTime(System.currentTimeMillis());
@@ -399,7 +399,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean updateEntity(Entity entity) throws GovRegistryException, TException {
+    public boolean updateEntity(Entity entity) throws SharingRegistryException, TException {
         //TODO Check for permission changes
         entity.setUpdatedTime(System.currentTimeMillis());
         Entity oldEntity = entityRepository.get(entity.getEntityId());
@@ -410,20 +410,20 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean deleteEntity(String entityId) throws GovRegistryException, TException {
+    public boolean deleteEntity(String entityId) throws SharingRegistryException, TException {
         //TODO Check for permission changes
         entityRepository.delete(entityId);
         return true;
     }
 
     @Override
-    public Entity getEntity(String entityId) throws GovRegistryException, TException {
+    public Entity getEntity(String entityId) throws SharingRegistryException, TException {
         return entityRepository.get(entityId);
     }
 
     @Override
     public List<Entity> searchEntities(String userId, String entityTypeId, Map<EntitySearchFields, String> filters,
-                                       int offset, int limit) throws GovRegistryException, TException {
+                                       int offset, int limit) throws SharingRegistryException, TException {
         List<String> groupIds = new ArrayList<>();
         groupIds.add(userId);
         groupMembershipRepository.getAllParentMembershipsForChild(userId).stream().forEach(gm->groupIds.add(gm.parentId));
@@ -431,12 +431,12 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public List<User> getListOfSharedUsers(String entityId, String permissionTypeId) throws GovRegistryException, TException {
+    public List<User> getListOfSharedUsers(String entityId, String permissionTypeId) throws SharingRegistryException, TException {
         return null;
     }
 
     @Override
-    public List<UserGroup> getListOfSharedGroups(String entityId, String permissionTypeId) throws GovRegistryException, TException {
+    public List<UserGroup> getListOfSharedGroups(String entityId, String permissionTypeId) throws SharingRegistryException, TException {
         return null;
     }
 
@@ -449,16 +449,16 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
      * @param permissionType
      */
     @Override
-    public boolean shareEntityWithUsers(String entityId, List<String> userList, String permissionTypeId, boolean cascadePermission) throws GovRegistryException, TException {
+    public boolean shareEntityWithUsers(String entityId, List<String> userList, String permissionTypeId, boolean cascadePermission) throws SharingRegistryException, TException {
         return shareEntity(entityId, userList, permissionTypeId, GroupType.SINGLE_USER, cascadePermission);
     }
 
     @Override
-    public boolean shareEntityWithGroups(String entityId, List<String> groupList, String permissionTypeId, boolean cascadePermission) throws GovRegistryException, TException {
+    public boolean shareEntityWithGroups(String entityId, List<String> groupList, String permissionTypeId, boolean cascadePermission) throws SharingRegistryException, TException {
         return shareEntity(entityId, groupList, permissionTypeId, GroupType.MULTI_USER, cascadePermission);
     }
 
-    private boolean shareEntity(String entityId, List<String> groupOrUserList, String permissionTypeId, GroupType groupType, boolean cascadePermission)  throws GovRegistryException, TException {
+    private boolean shareEntity(String entityId, List<String> groupOrUserList, String permissionTypeId, GroupType groupType, boolean cascadePermission)  throws SharingRegistryException, TException {
         //Adding permission for the specified users/groups for the specified entity
         LinkedList<Entity> temp = new LinkedList<>();
         for(String userId : groupOrUserList){
@@ -503,18 +503,18 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     }
 
     @Override
-    public boolean revokeEntitySharingFromUsers(String entityId, List<String> userList, String permissionTypeId) throws GovRegistryException, TException {
+    public boolean revokeEntitySharingFromUsers(String entityId, List<String> userList, String permissionTypeId) throws SharingRegistryException, TException {
         return revokeEntitySharing(entityId, userList, permissionTypeId);
     }
 
 
     @Override
-    public boolean revokeEntitySharingFromGroups(String entityId, List<String> groupList, String permissionTypeId) throws GovRegistryException, TException {
+    public boolean revokeEntitySharingFromGroups(String entityId, List<String> groupList, String permissionTypeId) throws SharingRegistryException, TException {
         return revokeEntitySharing(entityId, groupList, permissionTypeId);
     }
 
     @Override
-    public boolean userHasAccess(String domainId, String userId, String entityId, String permissionTypeId) throws GovRegistryException, TException {
+    public boolean userHasAccess(String domainId, String userId, String entityId, String permissionTypeId) throws SharingRegistryException, TException {
         //check whether the user has permission directly or indirectly
         List<GroupMembership> parentMemberships = groupMembershipRepository.getAllParentMembershipsForChild(userId);
         List<String> groupIds = new ArrayList<>();
@@ -524,7 +524,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
                 permissionTypeRepository.getGlobalPermissionTypeIdForDomain(domainId)));
     }
 
-    public boolean revokeEntitySharing(String entityId, List<String> groupOrUserList, String permissionTypeId) throws GovRegistryException {
+    public boolean revokeEntitySharing(String entityId, List<String> groupOrUserList, String permissionTypeId) throws SharingRegistryException {
         //revoking permission for the entity
         for(String groupId : groupOrUserList){
             SharingEntityPK sharingEntityPK = new SharingEntityPK();
@@ -556,7 +556,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
 
 
 
-    private <T> T getUpdatedObject(T oldEntity, T newEntity) throws GovRegistryException {
+    private <T> T getUpdatedObject(T oldEntity, T newEntity) throws SharingRegistryException {
         Field[] newEntityFields = newEntity.getClass().getDeclaredFields();
         Hashtable newHT = fieldsToHT(newEntityFields, newEntity);
 
@@ -574,7 +574,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
                     logger.debug("setting " + f.getName());
                     f.set(oldEntity, o);
                 } catch (Exception e) {
-                    throw new GovRegistryException(e.getMessage());
+                    throw new SharingRegistryException(e.getMessage());
                 }
             }
         }

@@ -35,13 +35,13 @@ public class GroupMembershipRepository extends AbstractRepository<GroupMembershi
         super(GroupMembership.class, GroupMembershipEntity.class);
     }
 
-    public List<GroupMembership> getChildMembershipsOfGroup(String parentId) throws GovRegistryException {
+    public List<GroupMembership> getChildMembershipsOfGroup(String parentId) throws SharingRegistryException {
         Map<String, String> filters = new HashMap<>();
         filters.put(DBConstants.GroupMembershipTable.PARENT_ID, parentId);
         return select(filters, 0, -1);
     }
 
-    public List<User> getAllChildUsers(String groupId) throws GovRegistryException {
+    public List<User> getAllChildUsers(String groupId) throws SharingRegistryException {
         String queryString = "SELECT U FROM " + UserEntity.class.getSimpleName() + " U, " + GroupMembershipEntity.class.getSimpleName()
                 + " GM WHERE GM." + DBConstants.GroupMembershipTable.CHILD_ID + " = U." + DBConstants.UserTable.USER_ID + " AND " +
                 "gm." + DBConstants.GroupMembershipTable.PARENT_ID+"='"+groupId + "' AND gm." + DBConstants.GroupMembershipTable.CHILD_TYPE
@@ -51,7 +51,7 @@ public class GroupMembershipRepository extends AbstractRepository<GroupMembershi
         return users;
     }
 
-    public List<UserGroup> getAllChildGroups(String groupId) throws GovRegistryException {
+    public List<UserGroup> getAllChildGroups(String groupId) throws SharingRegistryException {
         String queryString = "SELECT G FROM " + UserGroupEntity.class.getSimpleName() + " G, " + GroupMembershipEntity.class.getSimpleName()
                 + " GM WHERE GM." + DBConstants.GroupMembershipTable.CHILD_ID + " = G." + DBConstants.UserGroupTable.GROUP_ID + " AND " +
                 "GM." + DBConstants.GroupMembershipTable.PARENT_ID+"='"+groupId + "' AND GM." + DBConstants.GroupMembershipTable.CHILD_TYPE
@@ -61,7 +61,7 @@ public class GroupMembershipRepository extends AbstractRepository<GroupMembershi
         return groups;
     }
 
-    public List<GroupMembership> getAllParentMembershipsForChild(String childId) throws GovRegistryException {
+    public List<GroupMembership> getAllParentMembershipsForChild(String childId) throws SharingRegistryException {
         List<GroupMembership> finalParentGroups = new ArrayList<>();
         Map<String, String> filters = new HashMap<>();
         filters.put(DBConstants.GroupMembershipTable.CHILD_ID, childId);
@@ -77,7 +77,7 @@ public class GroupMembershipRepository extends AbstractRepository<GroupMembershi
         return finalParentGroups;
     }
 
-    public List<UserGroup> getAllParentGroupsForChild(String childId) throws GovRegistryException {
+    public List<UserGroup> getAllParentGroupsForChild(String childId) throws SharingRegistryException {
         List<UserGroup> finalParentGroups = new ArrayList<>();
         Map<String, String> filters = new HashMap<>();
         filters.put(DBConstants.GroupMembershipTable.CHILD_ID, childId);

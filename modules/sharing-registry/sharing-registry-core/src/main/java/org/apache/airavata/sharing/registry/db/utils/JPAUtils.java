@@ -22,7 +22,7 @@ package org.apache.airavata.sharing.registry.db.utils;
 
 import org.apache.airavata.common.exception.ApplicationSettingsException;
 import org.apache.airavata.common.utils.ServerSettings;
-import org.apache.airavata.sharing.registry.models.GovRegistryException;
+import org.apache.airavata.sharing.registry.models.SharingRegistryException;
 import org.apache.derby.drda.NetworkServerControl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -100,7 +100,7 @@ public class JPAUtils {
         return entityManager;
     }
 
-    public static <R> R execute(Committer<EntityManager, R> committer) throws GovRegistryException {
+    public static <R> R execute(Committer<EntityManager, R> committer) throws SharingRegistryException {
         EntityManager entityManager = JPAUtils.getEntityManager();
         try {
             entityManager.getTransaction().begin();
@@ -117,7 +117,7 @@ public class JPAUtils {
         }
     }
 
-    public static void initializeDB() throws GovRegistryException {
+    public static void initializeDB() throws SharingRegistryException {
         jdbcDriver = readServerProperties(SHARING_REG_JDBC_DRIVER);
         jdbcURl = readServerProperties(SHARING_REG_JDBC_URL);
         jdbcUser = readServerProperties(SHARING_REG_JDBC_USER);
@@ -219,12 +219,12 @@ public class JPAUtils {
         }
     }
 
-    private static String readServerProperties(String propertyName) throws GovRegistryException {
+    private static String readServerProperties(String propertyName) throws SharingRegistryException {
         try {
             return ServerSettings.getSetting(propertyName);
         } catch (ApplicationSettingsException e) {
             logger.error("Unable to read airavata-server.properties...", e);
-            throw new GovRegistryException("Unable to read airavata-server.properties...");
+            throw new SharingRegistryException("Unable to read airavata-server.properties...");
         }
     }
 }

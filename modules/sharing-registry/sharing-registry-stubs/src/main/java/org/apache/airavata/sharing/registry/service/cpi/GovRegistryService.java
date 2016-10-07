@@ -6,13 +6,13 @@
  */
 package org.apache.airavata.sharing.registry.service.cpi;
 
+import org.apache.airavata.sharing.registry.models.SharingRegistryException;
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
 import org.apache.thrift.scheme.StandardScheme;
 
 import org.apache.thrift.scheme.TupleScheme;
 import org.apache.thrift.protocol.TTupleProtocol;
-import org.apache.thrift.protocol.TProtocolException;
 import org.apache.thrift.EncodingUtils;
 import org.apache.thrift.TException;
 import org.apache.thrift.async.AsyncMethodCallback;
@@ -22,13 +22,9 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.EnumMap;
-import java.util.Set;
-import java.util.HashSet;
 import java.util.EnumSet;
 import java.util.Collections;
 import java.util.BitSet;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
 import javax.annotation.Generated;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,15 +41,15 @@ public class GovRegistryService {
      * 
      * @param domain
      */
-    public String createDomain(org.apache.airavata.sharing.registry.models.Domain domain) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public String createDomain(org.apache.airavata.sharing.registry.models.Domain domain) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean updateDomain(org.apache.airavata.sharing.registry.models.Domain domain) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean updateDomain(org.apache.airavata.sharing.registry.models.Domain domain) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean deleteDomain(String domainId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean deleteDomain(String domainId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public org.apache.airavata.sharing.registry.models.Domain getDomain(String domainId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public org.apache.airavata.sharing.registry.models.Domain getDomain(String domainId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public List<org.apache.airavata.sharing.registry.models.Domain> getDomains(int offset, int limit) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public List<org.apache.airavata.sharing.registry.models.Domain> getDomains(int offset, int limit) throws SharingRegistryException, org.apache.thrift.TException;
 
     /**
      *  * User Operations
@@ -61,15 +57,15 @@ public class GovRegistryService {
      * 
      * @param user
      */
-    public String createUser(org.apache.airavata.sharing.registry.models.User user) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public String createUser(org.apache.airavata.sharing.registry.models.User user) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean updatedUser(org.apache.airavata.sharing.registry.models.User user) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean updatedUser(org.apache.airavata.sharing.registry.models.User user) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean deleteUser(String userId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean deleteUser(String userId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public org.apache.airavata.sharing.registry.models.User getUser(String userId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public org.apache.airavata.sharing.registry.models.User getUser(String userId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public List<org.apache.airavata.sharing.registry.models.User> getUsers(String domain, int offset, int limit) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public List<org.apache.airavata.sharing.registry.models.User> getUsers(String domain, int offset, int limit) throws SharingRegistryException, org.apache.thrift.TException;
 
     /**
      *  * Group Operations
@@ -77,25 +73,25 @@ public class GovRegistryService {
      * 
      * @param group
      */
-    public String createGroup(org.apache.airavata.sharing.registry.models.UserGroup group) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public String createGroup(org.apache.airavata.sharing.registry.models.UserGroup group) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean updateGroup(org.apache.airavata.sharing.registry.models.UserGroup group) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean updateGroup(org.apache.airavata.sharing.registry.models.UserGroup group) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean deleteGroup(String groupId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean deleteGroup(String groupId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public org.apache.airavata.sharing.registry.models.UserGroup getGroup(String groupId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public org.apache.airavata.sharing.registry.models.UserGroup getGroup(String groupId) throws SharingRegistryException, org.apache.thrift.TException;
 
     public List<org.apache.airavata.sharing.registry.models.UserGroup> getGroups(String domain, int offset, int limit) throws org.apache.thrift.TException;
 
-    public boolean addUsersToGroup(List<String> userIds, String groupId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean addUsersToGroup(List<String> userIds, String groupId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean removeUsersFromGroup(List<String> userIds, String groupId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean removeUsersFromGroup(List<String> userIds, String groupId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public Map<String,org.apache.airavata.sharing.registry.models.GroupChildType> getGroupMembers(String groupId, int offset, int limit) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public Map<String,org.apache.airavata.sharing.registry.models.GroupChildType> getGroupMembers(String groupId, int offset, int limit) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean addChildGroupToParentGroup(String childId, String groupId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean addChildGroupToParentGroup(String childId, String groupId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean removeChildGroupFromParentGroup(String childId, String groupId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean removeChildGroupFromParentGroup(String childId, String groupId) throws SharingRegistryException, org.apache.thrift.TException;
 
     /**
      *  * EntityType Operations
@@ -103,15 +99,15 @@ public class GovRegistryService {
      * 
      * @param entityType
      */
-    public String createEntityType(org.apache.airavata.sharing.registry.models.EntityType entityType) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public String createEntityType(org.apache.airavata.sharing.registry.models.EntityType entityType) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean updateEntityType(org.apache.airavata.sharing.registry.models.EntityType entityType) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean updateEntityType(org.apache.airavata.sharing.registry.models.EntityType entityType) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean deleteEntityType(String entityTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean deleteEntityType(String entityTypeId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public org.apache.airavata.sharing.registry.models.EntityType getEntityType(String entityTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public org.apache.airavata.sharing.registry.models.EntityType getEntityType(String entityTypeId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public List<org.apache.airavata.sharing.registry.models.EntityType> getEntityTypes(String domain, int offset, int limit) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public List<org.apache.airavata.sharing.registry.models.EntityType> getEntityTypes(String domain, int offset, int limit) throws SharingRegistryException, org.apache.thrift.TException;
 
     /**
      *  * Entity Operations
@@ -119,19 +115,19 @@ public class GovRegistryService {
      * 
      * @param entity
      */
-    public String createEntity(org.apache.airavata.sharing.registry.models.Entity entity) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public String createEntity(org.apache.airavata.sharing.registry.models.Entity entity) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean updateEntity(org.apache.airavata.sharing.registry.models.Entity entity) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean updateEntity(org.apache.airavata.sharing.registry.models.Entity entity) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean deleteEntity(String entityId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean deleteEntity(String entityId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public org.apache.airavata.sharing.registry.models.Entity getEntity(String entityId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public org.apache.airavata.sharing.registry.models.Entity getEntity(String entityId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public List<org.apache.airavata.sharing.registry.models.Entity> searchEntities(String userId, String entityTypeId, Map<org.apache.airavata.sharing.registry.models.EntitySearchFields,String> filters, int offset, int limit) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public List<org.apache.airavata.sharing.registry.models.Entity> searchEntities(String userId, String entityTypeId, Map<org.apache.airavata.sharing.registry.models.EntitySearchFields,String> filters, int offset, int limit) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public List<org.apache.airavata.sharing.registry.models.User> getListOfSharedUsers(String entityId, String permissionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public List<org.apache.airavata.sharing.registry.models.User> getListOfSharedUsers(String entityId, String permissionTypeId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public List<org.apache.airavata.sharing.registry.models.UserGroup> getListOfSharedGroups(String entityId, String permissionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public List<org.apache.airavata.sharing.registry.models.UserGroup> getListOfSharedGroups(String entityId, String permissionTypeId) throws SharingRegistryException, org.apache.thrift.TException;
 
     /**
      *  * Permission Operations
@@ -139,15 +135,15 @@ public class GovRegistryService {
      * 
      * @param permissionType
      */
-    public String createPermissionType(org.apache.airavata.sharing.registry.models.PermissionType permissionType) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public String createPermissionType(org.apache.airavata.sharing.registry.models.PermissionType permissionType) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean updatePermissionType(org.apache.airavata.sharing.registry.models.PermissionType permissionType) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean updatePermissionType(org.apache.airavata.sharing.registry.models.PermissionType permissionType) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean deletePermissionType(String entityTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean deletePermissionType(String entityTypeId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public org.apache.airavata.sharing.registry.models.PermissionType getPermissionType(String permissionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public org.apache.airavata.sharing.registry.models.PermissionType getPermissionType(String permissionTypeId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public List<org.apache.airavata.sharing.registry.models.PermissionType> getPermissionTypes(String domain, int offset, int limit) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public List<org.apache.airavata.sharing.registry.models.PermissionType> getPermissionTypes(String domain, int offset, int limit) throws SharingRegistryException, org.apache.thrift.TException;
 
     /**
      *  * Sharing Entity with Users and Groups
@@ -158,15 +154,15 @@ public class GovRegistryService {
      * @param perssionTypeId
      * @param cascadePermission
      */
-    public boolean shareEntityWithUsers(String entityId, List<String> userList, String perssionTypeId, boolean cascadePermission) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean shareEntityWithUsers(String entityId, List<String> userList, String perssionTypeId, boolean cascadePermission) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean revokeEntitySharingFromUsers(String entityId, List<String> userList, String perssionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean revokeEntitySharingFromUsers(String entityId, List<String> userList, String perssionTypeId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean shareEntityWithGroups(String entityId, List<String> groupList, String perssionTypeId, boolean cascadePermission) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean shareEntityWithGroups(String entityId, List<String> groupList, String perssionTypeId, boolean cascadePermission) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean revokeEntitySharingFromGroups(String entityId, List<String> groupList, String perssionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean revokeEntitySharingFromGroups(String entityId, List<String> groupList, String perssionTypeId) throws SharingRegistryException, org.apache.thrift.TException;
 
-    public boolean userHasAccess(String domainId, String userId, String entityId, String permissionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException;
+    public boolean userHasAccess(String domainId, String userId, String entityId, String permissionTypeId) throws SharingRegistryException, org.apache.thrift.TException;
 
   }
 
@@ -278,7 +274,7 @@ public class GovRegistryService {
       super(iprot, oprot);
     }
 
-    public String createDomain(org.apache.airavata.sharing.registry.models.Domain domain) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public String createDomain(org.apache.airavata.sharing.registry.models.Domain domain) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_createDomain(domain);
       return recv_createDomain();
@@ -291,7 +287,7 @@ public class GovRegistryService {
       sendBase("createDomain", args);
     }
 
-    public String recv_createDomain() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public String recv_createDomain() throws SharingRegistryException, org.apache.thrift.TException
     {
       createDomain_result result = new createDomain_result();
       receiveBase(result, "createDomain");
@@ -304,7 +300,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "createDomain failed: unknown result");
     }
 
-    public boolean updateDomain(org.apache.airavata.sharing.registry.models.Domain domain) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean updateDomain(org.apache.airavata.sharing.registry.models.Domain domain) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_updateDomain(domain);
       return recv_updateDomain();
@@ -317,7 +313,7 @@ public class GovRegistryService {
       sendBase("updateDomain", args);
     }
 
-    public boolean recv_updateDomain() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_updateDomain() throws SharingRegistryException, org.apache.thrift.TException
     {
       updateDomain_result result = new updateDomain_result();
       receiveBase(result, "updateDomain");
@@ -330,7 +326,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "updateDomain failed: unknown result");
     }
 
-    public boolean deleteDomain(String domainId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean deleteDomain(String domainId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_deleteDomain(domainId);
       return recv_deleteDomain();
@@ -343,7 +339,7 @@ public class GovRegistryService {
       sendBase("deleteDomain", args);
     }
 
-    public boolean recv_deleteDomain() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_deleteDomain() throws SharingRegistryException, org.apache.thrift.TException
     {
       deleteDomain_result result = new deleteDomain_result();
       receiveBase(result, "deleteDomain");
@@ -356,7 +352,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "deleteDomain failed: unknown result");
     }
 
-    public org.apache.airavata.sharing.registry.models.Domain getDomain(String domainId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public org.apache.airavata.sharing.registry.models.Domain getDomain(String domainId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_getDomain(domainId);
       return recv_getDomain();
@@ -369,7 +365,7 @@ public class GovRegistryService {
       sendBase("getDomain", args);
     }
 
-    public org.apache.airavata.sharing.registry.models.Domain recv_getDomain() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public org.apache.airavata.sharing.registry.models.Domain recv_getDomain() throws SharingRegistryException, org.apache.thrift.TException
     {
       getDomain_result result = new getDomain_result();
       receiveBase(result, "getDomain");
@@ -382,7 +378,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getDomain failed: unknown result");
     }
 
-    public List<org.apache.airavata.sharing.registry.models.Domain> getDomains(int offset, int limit) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public List<org.apache.airavata.sharing.registry.models.Domain> getDomains(int offset, int limit) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_getDomains(offset, limit);
       return recv_getDomains();
@@ -396,7 +392,7 @@ public class GovRegistryService {
       sendBase("getDomains", args);
     }
 
-    public List<org.apache.airavata.sharing.registry.models.Domain> recv_getDomains() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public List<org.apache.airavata.sharing.registry.models.Domain> recv_getDomains() throws SharingRegistryException, org.apache.thrift.TException
     {
       getDomains_result result = new getDomains_result();
       receiveBase(result, "getDomains");
@@ -409,7 +405,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getDomains failed: unknown result");
     }
 
-    public String createUser(org.apache.airavata.sharing.registry.models.User user) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public String createUser(org.apache.airavata.sharing.registry.models.User user) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_createUser(user);
       return recv_createUser();
@@ -422,7 +418,7 @@ public class GovRegistryService {
       sendBase("createUser", args);
     }
 
-    public String recv_createUser() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public String recv_createUser() throws SharingRegistryException, org.apache.thrift.TException
     {
       createUser_result result = new createUser_result();
       receiveBase(result, "createUser");
@@ -435,7 +431,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "createUser failed: unknown result");
     }
 
-    public boolean updatedUser(org.apache.airavata.sharing.registry.models.User user) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean updatedUser(org.apache.airavata.sharing.registry.models.User user) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_updatedUser(user);
       return recv_updatedUser();
@@ -448,7 +444,7 @@ public class GovRegistryService {
       sendBase("updatedUser", args);
     }
 
-    public boolean recv_updatedUser() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_updatedUser() throws SharingRegistryException, org.apache.thrift.TException
     {
       updatedUser_result result = new updatedUser_result();
       receiveBase(result, "updatedUser");
@@ -461,7 +457,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "updatedUser failed: unknown result");
     }
 
-    public boolean deleteUser(String userId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean deleteUser(String userId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_deleteUser(userId);
       return recv_deleteUser();
@@ -474,7 +470,7 @@ public class GovRegistryService {
       sendBase("deleteUser", args);
     }
 
-    public boolean recv_deleteUser() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_deleteUser() throws SharingRegistryException, org.apache.thrift.TException
     {
       deleteUser_result result = new deleteUser_result();
       receiveBase(result, "deleteUser");
@@ -487,7 +483,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "deleteUser failed: unknown result");
     }
 
-    public org.apache.airavata.sharing.registry.models.User getUser(String userId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public org.apache.airavata.sharing.registry.models.User getUser(String userId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_getUser(userId);
       return recv_getUser();
@@ -500,7 +496,7 @@ public class GovRegistryService {
       sendBase("getUser", args);
     }
 
-    public org.apache.airavata.sharing.registry.models.User recv_getUser() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public org.apache.airavata.sharing.registry.models.User recv_getUser() throws SharingRegistryException, org.apache.thrift.TException
     {
       getUser_result result = new getUser_result();
       receiveBase(result, "getUser");
@@ -513,7 +509,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getUser failed: unknown result");
     }
 
-    public List<org.apache.airavata.sharing.registry.models.User> getUsers(String domain, int offset, int limit) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public List<org.apache.airavata.sharing.registry.models.User> getUsers(String domain, int offset, int limit) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_getUsers(domain, offset, limit);
       return recv_getUsers();
@@ -528,7 +524,7 @@ public class GovRegistryService {
       sendBase("getUsers", args);
     }
 
-    public List<org.apache.airavata.sharing.registry.models.User> recv_getUsers() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public List<org.apache.airavata.sharing.registry.models.User> recv_getUsers() throws SharingRegistryException, org.apache.thrift.TException
     {
       getUsers_result result = new getUsers_result();
       receiveBase(result, "getUsers");
@@ -541,7 +537,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getUsers failed: unknown result");
     }
 
-    public String createGroup(org.apache.airavata.sharing.registry.models.UserGroup group) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public String createGroup(org.apache.airavata.sharing.registry.models.UserGroup group) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_createGroup(group);
       return recv_createGroup();
@@ -554,7 +550,7 @@ public class GovRegistryService {
       sendBase("createGroup", args);
     }
 
-    public String recv_createGroup() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public String recv_createGroup() throws SharingRegistryException, org.apache.thrift.TException
     {
       createGroup_result result = new createGroup_result();
       receiveBase(result, "createGroup");
@@ -567,7 +563,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "createGroup failed: unknown result");
     }
 
-    public boolean updateGroup(org.apache.airavata.sharing.registry.models.UserGroup group) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean updateGroup(org.apache.airavata.sharing.registry.models.UserGroup group) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_updateGroup(group);
       return recv_updateGroup();
@@ -580,7 +576,7 @@ public class GovRegistryService {
       sendBase("updateGroup", args);
     }
 
-    public boolean recv_updateGroup() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_updateGroup() throws SharingRegistryException, org.apache.thrift.TException
     {
       updateGroup_result result = new updateGroup_result();
       receiveBase(result, "updateGroup");
@@ -593,7 +589,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "updateGroup failed: unknown result");
     }
 
-    public boolean deleteGroup(String groupId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean deleteGroup(String groupId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_deleteGroup(groupId);
       return recv_deleteGroup();
@@ -606,7 +602,7 @@ public class GovRegistryService {
       sendBase("deleteGroup", args);
     }
 
-    public boolean recv_deleteGroup() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_deleteGroup() throws SharingRegistryException, org.apache.thrift.TException
     {
       deleteGroup_result result = new deleteGroup_result();
       receiveBase(result, "deleteGroup");
@@ -619,7 +615,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "deleteGroup failed: unknown result");
     }
 
-    public org.apache.airavata.sharing.registry.models.UserGroup getGroup(String groupId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public org.apache.airavata.sharing.registry.models.UserGroup getGroup(String groupId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_getGroup(groupId);
       return recv_getGroup();
@@ -632,7 +628,7 @@ public class GovRegistryService {
       sendBase("getGroup", args);
     }
 
-    public org.apache.airavata.sharing.registry.models.UserGroup recv_getGroup() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public org.apache.airavata.sharing.registry.models.UserGroup recv_getGroup() throws SharingRegistryException, org.apache.thrift.TException
     {
       getGroup_result result = new getGroup_result();
       receiveBase(result, "getGroup");
@@ -670,7 +666,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getGroups failed: unknown result");
     }
 
-    public boolean addUsersToGroup(List<String> userIds, String groupId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean addUsersToGroup(List<String> userIds, String groupId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_addUsersToGroup(userIds, groupId);
       return recv_addUsersToGroup();
@@ -684,7 +680,7 @@ public class GovRegistryService {
       sendBase("addUsersToGroup", args);
     }
 
-    public boolean recv_addUsersToGroup() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_addUsersToGroup() throws SharingRegistryException, org.apache.thrift.TException
     {
       addUsersToGroup_result result = new addUsersToGroup_result();
       receiveBase(result, "addUsersToGroup");
@@ -697,7 +693,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "addUsersToGroup failed: unknown result");
     }
 
-    public boolean removeUsersFromGroup(List<String> userIds, String groupId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean removeUsersFromGroup(List<String> userIds, String groupId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_removeUsersFromGroup(userIds, groupId);
       return recv_removeUsersFromGroup();
@@ -711,7 +707,7 @@ public class GovRegistryService {
       sendBase("removeUsersFromGroup", args);
     }
 
-    public boolean recv_removeUsersFromGroup() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_removeUsersFromGroup() throws SharingRegistryException, org.apache.thrift.TException
     {
       removeUsersFromGroup_result result = new removeUsersFromGroup_result();
       receiveBase(result, "removeUsersFromGroup");
@@ -724,7 +720,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "removeUsersFromGroup failed: unknown result");
     }
 
-    public Map<String,org.apache.airavata.sharing.registry.models.GroupChildType> getGroupMembers(String groupId, int offset, int limit) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public Map<String,org.apache.airavata.sharing.registry.models.GroupChildType> getGroupMembers(String groupId, int offset, int limit) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_getGroupMembers(groupId, offset, limit);
       return recv_getGroupMembers();
@@ -739,7 +735,7 @@ public class GovRegistryService {
       sendBase("getGroupMembers", args);
     }
 
-    public Map<String,org.apache.airavata.sharing.registry.models.GroupChildType> recv_getGroupMembers() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public Map<String,org.apache.airavata.sharing.registry.models.GroupChildType> recv_getGroupMembers() throws SharingRegistryException, org.apache.thrift.TException
     {
       getGroupMembers_result result = new getGroupMembers_result();
       receiveBase(result, "getGroupMembers");
@@ -752,7 +748,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getGroupMembers failed: unknown result");
     }
 
-    public boolean addChildGroupToParentGroup(String childId, String groupId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean addChildGroupToParentGroup(String childId, String groupId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_addChildGroupToParentGroup(childId, groupId);
       return recv_addChildGroupToParentGroup();
@@ -766,7 +762,7 @@ public class GovRegistryService {
       sendBase("addChildGroupToParentGroup", args);
     }
 
-    public boolean recv_addChildGroupToParentGroup() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_addChildGroupToParentGroup() throws SharingRegistryException, org.apache.thrift.TException
     {
       addChildGroupToParentGroup_result result = new addChildGroupToParentGroup_result();
       receiveBase(result, "addChildGroupToParentGroup");
@@ -779,7 +775,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "addChildGroupToParentGroup failed: unknown result");
     }
 
-    public boolean removeChildGroupFromParentGroup(String childId, String groupId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean removeChildGroupFromParentGroup(String childId, String groupId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_removeChildGroupFromParentGroup(childId, groupId);
       return recv_removeChildGroupFromParentGroup();
@@ -793,7 +789,7 @@ public class GovRegistryService {
       sendBase("removeChildGroupFromParentGroup", args);
     }
 
-    public boolean recv_removeChildGroupFromParentGroup() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_removeChildGroupFromParentGroup() throws SharingRegistryException, org.apache.thrift.TException
     {
       removeChildGroupFromParentGroup_result result = new removeChildGroupFromParentGroup_result();
       receiveBase(result, "removeChildGroupFromParentGroup");
@@ -806,7 +802,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "removeChildGroupFromParentGroup failed: unknown result");
     }
 
-    public String createEntityType(org.apache.airavata.sharing.registry.models.EntityType entityType) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public String createEntityType(org.apache.airavata.sharing.registry.models.EntityType entityType) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_createEntityType(entityType);
       return recv_createEntityType();
@@ -819,7 +815,7 @@ public class GovRegistryService {
       sendBase("createEntityType", args);
     }
 
-    public String recv_createEntityType() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public String recv_createEntityType() throws SharingRegistryException, org.apache.thrift.TException
     {
       createEntityType_result result = new createEntityType_result();
       receiveBase(result, "createEntityType");
@@ -832,7 +828,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "createEntityType failed: unknown result");
     }
 
-    public boolean updateEntityType(org.apache.airavata.sharing.registry.models.EntityType entityType) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean updateEntityType(org.apache.airavata.sharing.registry.models.EntityType entityType) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_updateEntityType(entityType);
       return recv_updateEntityType();
@@ -845,7 +841,7 @@ public class GovRegistryService {
       sendBase("updateEntityType", args);
     }
 
-    public boolean recv_updateEntityType() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_updateEntityType() throws SharingRegistryException, org.apache.thrift.TException
     {
       updateEntityType_result result = new updateEntityType_result();
       receiveBase(result, "updateEntityType");
@@ -858,7 +854,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "updateEntityType failed: unknown result");
     }
 
-    public boolean deleteEntityType(String entityTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean deleteEntityType(String entityTypeId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_deleteEntityType(entityTypeId);
       return recv_deleteEntityType();
@@ -871,7 +867,7 @@ public class GovRegistryService {
       sendBase("deleteEntityType", args);
     }
 
-    public boolean recv_deleteEntityType() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_deleteEntityType() throws SharingRegistryException, org.apache.thrift.TException
     {
       deleteEntityType_result result = new deleteEntityType_result();
       receiveBase(result, "deleteEntityType");
@@ -884,7 +880,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "deleteEntityType failed: unknown result");
     }
 
-    public org.apache.airavata.sharing.registry.models.EntityType getEntityType(String entityTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public org.apache.airavata.sharing.registry.models.EntityType getEntityType(String entityTypeId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_getEntityType(entityTypeId);
       return recv_getEntityType();
@@ -897,7 +893,7 @@ public class GovRegistryService {
       sendBase("getEntityType", args);
     }
 
-    public org.apache.airavata.sharing.registry.models.EntityType recv_getEntityType() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public org.apache.airavata.sharing.registry.models.EntityType recv_getEntityType() throws SharingRegistryException, org.apache.thrift.TException
     {
       getEntityType_result result = new getEntityType_result();
       receiveBase(result, "getEntityType");
@@ -910,7 +906,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getEntityType failed: unknown result");
     }
 
-    public List<org.apache.airavata.sharing.registry.models.EntityType> getEntityTypes(String domain, int offset, int limit) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public List<org.apache.airavata.sharing.registry.models.EntityType> getEntityTypes(String domain, int offset, int limit) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_getEntityTypes(domain, offset, limit);
       return recv_getEntityTypes();
@@ -925,7 +921,7 @@ public class GovRegistryService {
       sendBase("getEntityTypes", args);
     }
 
-    public List<org.apache.airavata.sharing.registry.models.EntityType> recv_getEntityTypes() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public List<org.apache.airavata.sharing.registry.models.EntityType> recv_getEntityTypes() throws SharingRegistryException, org.apache.thrift.TException
     {
       getEntityTypes_result result = new getEntityTypes_result();
       receiveBase(result, "getEntityTypes");
@@ -938,7 +934,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getEntityTypes failed: unknown result");
     }
 
-    public String createEntity(org.apache.airavata.sharing.registry.models.Entity entity) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public String createEntity(org.apache.airavata.sharing.registry.models.Entity entity) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_createEntity(entity);
       return recv_createEntity();
@@ -951,7 +947,7 @@ public class GovRegistryService {
       sendBase("createEntity", args);
     }
 
-    public String recv_createEntity() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public String recv_createEntity() throws SharingRegistryException, org.apache.thrift.TException
     {
       createEntity_result result = new createEntity_result();
       receiveBase(result, "createEntity");
@@ -964,7 +960,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "createEntity failed: unknown result");
     }
 
-    public boolean updateEntity(org.apache.airavata.sharing.registry.models.Entity entity) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean updateEntity(org.apache.airavata.sharing.registry.models.Entity entity) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_updateEntity(entity);
       return recv_updateEntity();
@@ -977,7 +973,7 @@ public class GovRegistryService {
       sendBase("updateEntity", args);
     }
 
-    public boolean recv_updateEntity() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_updateEntity() throws SharingRegistryException, org.apache.thrift.TException
     {
       updateEntity_result result = new updateEntity_result();
       receiveBase(result, "updateEntity");
@@ -990,7 +986,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "updateEntity failed: unknown result");
     }
 
-    public boolean deleteEntity(String entityId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean deleteEntity(String entityId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_deleteEntity(entityId);
       return recv_deleteEntity();
@@ -1003,7 +999,7 @@ public class GovRegistryService {
       sendBase("deleteEntity", args);
     }
 
-    public boolean recv_deleteEntity() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_deleteEntity() throws SharingRegistryException, org.apache.thrift.TException
     {
       deleteEntity_result result = new deleteEntity_result();
       receiveBase(result, "deleteEntity");
@@ -1016,7 +1012,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "deleteEntity failed: unknown result");
     }
 
-    public org.apache.airavata.sharing.registry.models.Entity getEntity(String entityId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public org.apache.airavata.sharing.registry.models.Entity getEntity(String entityId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_getEntity(entityId);
       return recv_getEntity();
@@ -1029,7 +1025,7 @@ public class GovRegistryService {
       sendBase("getEntity", args);
     }
 
-    public org.apache.airavata.sharing.registry.models.Entity recv_getEntity() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public org.apache.airavata.sharing.registry.models.Entity recv_getEntity() throws SharingRegistryException, org.apache.thrift.TException
     {
       getEntity_result result = new getEntity_result();
       receiveBase(result, "getEntity");
@@ -1042,7 +1038,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getEntity failed: unknown result");
     }
 
-    public List<org.apache.airavata.sharing.registry.models.Entity> searchEntities(String userId, String entityTypeId, Map<org.apache.airavata.sharing.registry.models.EntitySearchFields,String> filters, int offset, int limit) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public List<org.apache.airavata.sharing.registry.models.Entity> searchEntities(String userId, String entityTypeId, Map<org.apache.airavata.sharing.registry.models.EntitySearchFields,String> filters, int offset, int limit) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_searchEntities(userId, entityTypeId, filters, offset, limit);
       return recv_searchEntities();
@@ -1059,7 +1055,7 @@ public class GovRegistryService {
       sendBase("searchEntities", args);
     }
 
-    public List<org.apache.airavata.sharing.registry.models.Entity> recv_searchEntities() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public List<org.apache.airavata.sharing.registry.models.Entity> recv_searchEntities() throws SharingRegistryException, org.apache.thrift.TException
     {
       searchEntities_result result = new searchEntities_result();
       receiveBase(result, "searchEntities");
@@ -1072,7 +1068,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "searchEntities failed: unknown result");
     }
 
-    public List<org.apache.airavata.sharing.registry.models.User> getListOfSharedUsers(String entityId, String permissionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public List<org.apache.airavata.sharing.registry.models.User> getListOfSharedUsers(String entityId, String permissionTypeId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_getListOfSharedUsers(entityId, permissionTypeId);
       return recv_getListOfSharedUsers();
@@ -1086,7 +1082,7 @@ public class GovRegistryService {
       sendBase("getListOfSharedUsers", args);
     }
 
-    public List<org.apache.airavata.sharing.registry.models.User> recv_getListOfSharedUsers() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public List<org.apache.airavata.sharing.registry.models.User> recv_getListOfSharedUsers() throws SharingRegistryException, org.apache.thrift.TException
     {
       getListOfSharedUsers_result result = new getListOfSharedUsers_result();
       receiveBase(result, "getListOfSharedUsers");
@@ -1099,7 +1095,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getListOfSharedUsers failed: unknown result");
     }
 
-    public List<org.apache.airavata.sharing.registry.models.UserGroup> getListOfSharedGroups(String entityId, String permissionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public List<org.apache.airavata.sharing.registry.models.UserGroup> getListOfSharedGroups(String entityId, String permissionTypeId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_getListOfSharedGroups(entityId, permissionTypeId);
       return recv_getListOfSharedGroups();
@@ -1113,7 +1109,7 @@ public class GovRegistryService {
       sendBase("getListOfSharedGroups", args);
     }
 
-    public List<org.apache.airavata.sharing.registry.models.UserGroup> recv_getListOfSharedGroups() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public List<org.apache.airavata.sharing.registry.models.UserGroup> recv_getListOfSharedGroups() throws SharingRegistryException, org.apache.thrift.TException
     {
       getListOfSharedGroups_result result = new getListOfSharedGroups_result();
       receiveBase(result, "getListOfSharedGroups");
@@ -1126,7 +1122,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getListOfSharedGroups failed: unknown result");
     }
 
-    public String createPermissionType(org.apache.airavata.sharing.registry.models.PermissionType permissionType) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public String createPermissionType(org.apache.airavata.sharing.registry.models.PermissionType permissionType) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_createPermissionType(permissionType);
       return recv_createPermissionType();
@@ -1139,7 +1135,7 @@ public class GovRegistryService {
       sendBase("createPermissionType", args);
     }
 
-    public String recv_createPermissionType() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public String recv_createPermissionType() throws SharingRegistryException, org.apache.thrift.TException
     {
       createPermissionType_result result = new createPermissionType_result();
       receiveBase(result, "createPermissionType");
@@ -1152,7 +1148,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "createPermissionType failed: unknown result");
     }
 
-    public boolean updatePermissionType(org.apache.airavata.sharing.registry.models.PermissionType permissionType) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean updatePermissionType(org.apache.airavata.sharing.registry.models.PermissionType permissionType) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_updatePermissionType(permissionType);
       return recv_updatePermissionType();
@@ -1165,7 +1161,7 @@ public class GovRegistryService {
       sendBase("updatePermissionType", args);
     }
 
-    public boolean recv_updatePermissionType() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_updatePermissionType() throws SharingRegistryException, org.apache.thrift.TException
     {
       updatePermissionType_result result = new updatePermissionType_result();
       receiveBase(result, "updatePermissionType");
@@ -1178,7 +1174,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "updatePermissionType failed: unknown result");
     }
 
-    public boolean deletePermissionType(String entityTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean deletePermissionType(String entityTypeId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_deletePermissionType(entityTypeId);
       return recv_deletePermissionType();
@@ -1191,7 +1187,7 @@ public class GovRegistryService {
       sendBase("deletePermissionType", args);
     }
 
-    public boolean recv_deletePermissionType() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_deletePermissionType() throws SharingRegistryException, org.apache.thrift.TException
     {
       deletePermissionType_result result = new deletePermissionType_result();
       receiveBase(result, "deletePermissionType");
@@ -1204,7 +1200,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "deletePermissionType failed: unknown result");
     }
 
-    public org.apache.airavata.sharing.registry.models.PermissionType getPermissionType(String permissionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public org.apache.airavata.sharing.registry.models.PermissionType getPermissionType(String permissionTypeId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_getPermissionType(permissionTypeId);
       return recv_getPermissionType();
@@ -1217,7 +1213,7 @@ public class GovRegistryService {
       sendBase("getPermissionType", args);
     }
 
-    public org.apache.airavata.sharing.registry.models.PermissionType recv_getPermissionType() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public org.apache.airavata.sharing.registry.models.PermissionType recv_getPermissionType() throws SharingRegistryException, org.apache.thrift.TException
     {
       getPermissionType_result result = new getPermissionType_result();
       receiveBase(result, "getPermissionType");
@@ -1230,7 +1226,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getPermissionType failed: unknown result");
     }
 
-    public List<org.apache.airavata.sharing.registry.models.PermissionType> getPermissionTypes(String domain, int offset, int limit) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public List<org.apache.airavata.sharing.registry.models.PermissionType> getPermissionTypes(String domain, int offset, int limit) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_getPermissionTypes(domain, offset, limit);
       return recv_getPermissionTypes();
@@ -1245,7 +1241,7 @@ public class GovRegistryService {
       sendBase("getPermissionTypes", args);
     }
 
-    public List<org.apache.airavata.sharing.registry.models.PermissionType> recv_getPermissionTypes() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public List<org.apache.airavata.sharing.registry.models.PermissionType> recv_getPermissionTypes() throws SharingRegistryException, org.apache.thrift.TException
     {
       getPermissionTypes_result result = new getPermissionTypes_result();
       receiveBase(result, "getPermissionTypes");
@@ -1258,7 +1254,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "getPermissionTypes failed: unknown result");
     }
 
-    public boolean shareEntityWithUsers(String entityId, List<String> userList, String perssionTypeId, boolean cascadePermission) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean shareEntityWithUsers(String entityId, List<String> userList, String perssionTypeId, boolean cascadePermission) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_shareEntityWithUsers(entityId, userList, perssionTypeId, cascadePermission);
       return recv_shareEntityWithUsers();
@@ -1274,7 +1270,7 @@ public class GovRegistryService {
       sendBase("shareEntityWithUsers", args);
     }
 
-    public boolean recv_shareEntityWithUsers() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_shareEntityWithUsers() throws SharingRegistryException, org.apache.thrift.TException
     {
       shareEntityWithUsers_result result = new shareEntityWithUsers_result();
       receiveBase(result, "shareEntityWithUsers");
@@ -1287,7 +1283,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "shareEntityWithUsers failed: unknown result");
     }
 
-    public boolean revokeEntitySharingFromUsers(String entityId, List<String> userList, String perssionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean revokeEntitySharingFromUsers(String entityId, List<String> userList, String perssionTypeId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_revokeEntitySharingFromUsers(entityId, userList, perssionTypeId);
       return recv_revokeEntitySharingFromUsers();
@@ -1302,7 +1298,7 @@ public class GovRegistryService {
       sendBase("revokeEntitySharingFromUsers", args);
     }
 
-    public boolean recv_revokeEntitySharingFromUsers() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_revokeEntitySharingFromUsers() throws SharingRegistryException, org.apache.thrift.TException
     {
       revokeEntitySharingFromUsers_result result = new revokeEntitySharingFromUsers_result();
       receiveBase(result, "revokeEntitySharingFromUsers");
@@ -1315,7 +1311,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "revokeEntitySharingFromUsers failed: unknown result");
     }
 
-    public boolean shareEntityWithGroups(String entityId, List<String> groupList, String perssionTypeId, boolean cascadePermission) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean shareEntityWithGroups(String entityId, List<String> groupList, String perssionTypeId, boolean cascadePermission) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_shareEntityWithGroups(entityId, groupList, perssionTypeId, cascadePermission);
       return recv_shareEntityWithGroups();
@@ -1331,7 +1327,7 @@ public class GovRegistryService {
       sendBase("shareEntityWithGroups", args);
     }
 
-    public boolean recv_shareEntityWithGroups() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_shareEntityWithGroups() throws SharingRegistryException, org.apache.thrift.TException
     {
       shareEntityWithGroups_result result = new shareEntityWithGroups_result();
       receiveBase(result, "shareEntityWithGroups");
@@ -1344,7 +1340,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "shareEntityWithGroups failed: unknown result");
     }
 
-    public boolean revokeEntitySharingFromGroups(String entityId, List<String> groupList, String perssionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean revokeEntitySharingFromGroups(String entityId, List<String> groupList, String perssionTypeId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_revokeEntitySharingFromGroups(entityId, groupList, perssionTypeId);
       return recv_revokeEntitySharingFromGroups();
@@ -1359,7 +1355,7 @@ public class GovRegistryService {
       sendBase("revokeEntitySharingFromGroups", args);
     }
 
-    public boolean recv_revokeEntitySharingFromGroups() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_revokeEntitySharingFromGroups() throws SharingRegistryException, org.apache.thrift.TException
     {
       revokeEntitySharingFromGroups_result result = new revokeEntitySharingFromGroups_result();
       receiveBase(result, "revokeEntitySharingFromGroups");
@@ -1372,7 +1368,7 @@ public class GovRegistryService {
       throw new org.apache.thrift.TApplicationException(org.apache.thrift.TApplicationException.MISSING_RESULT, "revokeEntitySharingFromGroups failed: unknown result");
     }
 
-    public boolean userHasAccess(String domainId, String userId, String entityId, String permissionTypeId) throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean userHasAccess(String domainId, String userId, String entityId, String permissionTypeId) throws SharingRegistryException, org.apache.thrift.TException
     {
       send_userHasAccess(domainId, userId, entityId, permissionTypeId);
       return recv_userHasAccess();
@@ -1388,7 +1384,7 @@ public class GovRegistryService {
       sendBase("userHasAccess", args);
     }
 
-    public boolean recv_userHasAccess() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException
+    public boolean recv_userHasAccess() throws SharingRegistryException, org.apache.thrift.TException
     {
       userHasAccess_result result = new userHasAccess_result();
       receiveBase(result, "userHasAccess");
@@ -1441,7 +1437,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public String getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1473,7 +1469,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1505,7 +1501,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1537,7 +1533,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public org.apache.airavata.sharing.registry.models.Domain getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public org.apache.airavata.sharing.registry.models.Domain getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1572,7 +1568,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public List<org.apache.airavata.sharing.registry.models.Domain> getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public List<org.apache.airavata.sharing.registry.models.Domain> getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1604,7 +1600,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public String getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1636,7 +1632,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1668,7 +1664,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1700,7 +1696,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public org.apache.airavata.sharing.registry.models.User getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public org.apache.airavata.sharing.registry.models.User getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1738,7 +1734,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public List<org.apache.airavata.sharing.registry.models.User> getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public List<org.apache.airavata.sharing.registry.models.User> getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1770,7 +1766,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public String getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1802,7 +1798,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1834,7 +1830,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1866,7 +1862,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public org.apache.airavata.sharing.registry.models.UserGroup getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public org.apache.airavata.sharing.registry.models.UserGroup getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1939,7 +1935,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -1974,7 +1970,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2012,7 +2008,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public Map<String,org.apache.airavata.sharing.registry.models.GroupChildType> getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public Map<String,org.apache.airavata.sharing.registry.models.GroupChildType> getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2047,7 +2043,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2082,7 +2078,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2114,7 +2110,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public String getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2146,7 +2142,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2178,7 +2174,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2210,7 +2206,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public org.apache.airavata.sharing.registry.models.EntityType getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public org.apache.airavata.sharing.registry.models.EntityType getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2248,7 +2244,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public List<org.apache.airavata.sharing.registry.models.EntityType> getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public List<org.apache.airavata.sharing.registry.models.EntityType> getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2280,7 +2276,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public String getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2312,7 +2308,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2344,7 +2340,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2376,7 +2372,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public org.apache.airavata.sharing.registry.models.Entity getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public org.apache.airavata.sharing.registry.models.Entity getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2420,7 +2416,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public List<org.apache.airavata.sharing.registry.models.Entity> getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public List<org.apache.airavata.sharing.registry.models.Entity> getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2455,7 +2451,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public List<org.apache.airavata.sharing.registry.models.User> getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public List<org.apache.airavata.sharing.registry.models.User> getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2490,7 +2486,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public List<org.apache.airavata.sharing.registry.models.UserGroup> getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public List<org.apache.airavata.sharing.registry.models.UserGroup> getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2522,7 +2518,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public String getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2554,7 +2550,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2586,7 +2582,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2618,7 +2614,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public org.apache.airavata.sharing.registry.models.PermissionType getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public org.apache.airavata.sharing.registry.models.PermissionType getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2656,7 +2652,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public List<org.apache.airavata.sharing.registry.models.PermissionType> getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public List<org.apache.airavata.sharing.registry.models.PermissionType> getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2697,7 +2693,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2735,7 +2731,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2776,7 +2772,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2814,7 +2810,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2855,7 +2851,7 @@ public class GovRegistryService {
         prot.writeMessageEnd();
       }
 
-      public boolean getResult() throws org.apache.airavata.sharing.registry.models.GovRegistryException, org.apache.thrift.TException {
+      public boolean getResult() throws SharingRegistryException, org.apache.thrift.TException {
         if (getState() != org.apache.thrift.async.TAsyncMethodCall.State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
@@ -2940,7 +2936,7 @@ public class GovRegistryService {
         createDomain_result result = new createDomain_result();
         try {
           result.success = iface.createDomain(args.domain);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -2965,7 +2961,7 @@ public class GovRegistryService {
         try {
           result.success = iface.updateDomain(args.domain);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -2990,7 +2986,7 @@ public class GovRegistryService {
         try {
           result.success = iface.deleteDomain(args.domainId);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3014,7 +3010,7 @@ public class GovRegistryService {
         getDomain_result result = new getDomain_result();
         try {
           result.success = iface.getDomain(args.domainId);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3038,7 +3034,7 @@ public class GovRegistryService {
         getDomains_result result = new getDomains_result();
         try {
           result.success = iface.getDomains(args.offset, args.limit);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3062,7 +3058,7 @@ public class GovRegistryService {
         createUser_result result = new createUser_result();
         try {
           result.success = iface.createUser(args.user);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3087,7 +3083,7 @@ public class GovRegistryService {
         try {
           result.success = iface.updatedUser(args.user);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3112,7 +3108,7 @@ public class GovRegistryService {
         try {
           result.success = iface.deleteUser(args.userId);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3136,7 +3132,7 @@ public class GovRegistryService {
         getUser_result result = new getUser_result();
         try {
           result.success = iface.getUser(args.userId);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3160,7 +3156,7 @@ public class GovRegistryService {
         getUsers_result result = new getUsers_result();
         try {
           result.success = iface.getUsers(args.domain, args.offset, args.limit);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3184,7 +3180,7 @@ public class GovRegistryService {
         createGroup_result result = new createGroup_result();
         try {
           result.success = iface.createGroup(args.group);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3209,7 +3205,7 @@ public class GovRegistryService {
         try {
           result.success = iface.updateGroup(args.group);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3234,7 +3230,7 @@ public class GovRegistryService {
         try {
           result.success = iface.deleteGroup(args.groupId);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3258,7 +3254,7 @@ public class GovRegistryService {
         getGroup_result result = new getGroup_result();
         try {
           result.success = iface.getGroup(args.groupId);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3303,7 +3299,7 @@ public class GovRegistryService {
         try {
           result.success = iface.addUsersToGroup(args.userIds, args.groupId);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3328,7 +3324,7 @@ public class GovRegistryService {
         try {
           result.success = iface.removeUsersFromGroup(args.userIds, args.groupId);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3352,7 +3348,7 @@ public class GovRegistryService {
         getGroupMembers_result result = new getGroupMembers_result();
         try {
           result.success = iface.getGroupMembers(args.groupId, args.offset, args.limit);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3377,7 +3373,7 @@ public class GovRegistryService {
         try {
           result.success = iface.addChildGroupToParentGroup(args.childId, args.groupId);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3402,7 +3398,7 @@ public class GovRegistryService {
         try {
           result.success = iface.removeChildGroupFromParentGroup(args.childId, args.groupId);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3426,7 +3422,7 @@ public class GovRegistryService {
         createEntityType_result result = new createEntityType_result();
         try {
           result.success = iface.createEntityType(args.entityType);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3451,7 +3447,7 @@ public class GovRegistryService {
         try {
           result.success = iface.updateEntityType(args.entityType);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3476,7 +3472,7 @@ public class GovRegistryService {
         try {
           result.success = iface.deleteEntityType(args.entityTypeId);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3500,7 +3496,7 @@ public class GovRegistryService {
         getEntityType_result result = new getEntityType_result();
         try {
           result.success = iface.getEntityType(args.entityTypeId);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3524,7 +3520,7 @@ public class GovRegistryService {
         getEntityTypes_result result = new getEntityTypes_result();
         try {
           result.success = iface.getEntityTypes(args.domain, args.offset, args.limit);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3548,7 +3544,7 @@ public class GovRegistryService {
         createEntity_result result = new createEntity_result();
         try {
           result.success = iface.createEntity(args.entity);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3573,7 +3569,7 @@ public class GovRegistryService {
         try {
           result.success = iface.updateEntity(args.entity);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3598,7 +3594,7 @@ public class GovRegistryService {
         try {
           result.success = iface.deleteEntity(args.entityId);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3622,7 +3618,7 @@ public class GovRegistryService {
         getEntity_result result = new getEntity_result();
         try {
           result.success = iface.getEntity(args.entityId);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3646,7 +3642,7 @@ public class GovRegistryService {
         searchEntities_result result = new searchEntities_result();
         try {
           result.success = iface.searchEntities(args.userId, args.entityTypeId, args.filters, args.offset, args.limit);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3670,7 +3666,7 @@ public class GovRegistryService {
         getListOfSharedUsers_result result = new getListOfSharedUsers_result();
         try {
           result.success = iface.getListOfSharedUsers(args.entityId, args.permissionTypeId);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3694,7 +3690,7 @@ public class GovRegistryService {
         getListOfSharedGroups_result result = new getListOfSharedGroups_result();
         try {
           result.success = iface.getListOfSharedGroups(args.entityId, args.permissionTypeId);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3718,7 +3714,7 @@ public class GovRegistryService {
         createPermissionType_result result = new createPermissionType_result();
         try {
           result.success = iface.createPermissionType(args.permissionType);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3743,7 +3739,7 @@ public class GovRegistryService {
         try {
           result.success = iface.updatePermissionType(args.permissionType);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3768,7 +3764,7 @@ public class GovRegistryService {
         try {
           result.success = iface.deletePermissionType(args.entityTypeId);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3792,7 +3788,7 @@ public class GovRegistryService {
         getPermissionType_result result = new getPermissionType_result();
         try {
           result.success = iface.getPermissionType(args.permissionTypeId);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3816,7 +3812,7 @@ public class GovRegistryService {
         getPermissionTypes_result result = new getPermissionTypes_result();
         try {
           result.success = iface.getPermissionTypes(args.domain, args.offset, args.limit);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3841,7 +3837,7 @@ public class GovRegistryService {
         try {
           result.success = iface.shareEntityWithUsers(args.entityId, args.userList, args.perssionTypeId, args.cascadePermission);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3866,7 +3862,7 @@ public class GovRegistryService {
         try {
           result.success = iface.revokeEntitySharingFromUsers(args.entityId, args.userList, args.perssionTypeId);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3891,7 +3887,7 @@ public class GovRegistryService {
         try {
           result.success = iface.shareEntityWithGroups(args.entityId, args.groupList, args.perssionTypeId, args.cascadePermission);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3916,7 +3912,7 @@ public class GovRegistryService {
         try {
           result.success = iface.revokeEntitySharingFromGroups(args.entityId, args.groupList, args.perssionTypeId);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -3941,7 +3937,7 @@ public class GovRegistryService {
         try {
           result.success = iface.userHasAccess(args.domainId, args.userId, args.entityId, args.permissionTypeId);
           result.setSuccessIsSet(true);
-        } catch (org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+        } catch (SharingRegistryException gre) {
           result.gre = gre;
         }
         return result;
@@ -4033,8 +4029,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             createDomain_result result = new createDomain_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4091,8 +4087,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             updateDomain_result result = new updateDomain_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4149,8 +4145,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             deleteDomain_result result = new deleteDomain_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4206,8 +4202,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getDomain_result result = new getDomain_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4263,8 +4259,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getDomains_result result = new getDomains_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4320,8 +4316,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             createUser_result result = new createUser_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4378,8 +4374,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             updatedUser_result result = new updatedUser_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4436,8 +4432,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             deleteUser_result result = new deleteUser_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4493,8 +4489,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getUser_result result = new getUser_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4550,8 +4546,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getUsers_result result = new getUsers_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4607,8 +4603,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             createGroup_result result = new createGroup_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4665,8 +4661,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             updateGroup_result result = new updateGroup_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4723,8 +4719,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             deleteGroup_result result = new deleteGroup_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4780,8 +4776,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getGroup_result result = new getGroup_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4889,8 +4885,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             addUsersToGroup_result result = new addUsersToGroup_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -4947,8 +4943,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             removeUsersFromGroup_result result = new removeUsersFromGroup_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5004,8 +5000,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getGroupMembers_result result = new getGroupMembers_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5062,8 +5058,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             addChildGroupToParentGroup_result result = new addChildGroupToParentGroup_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5120,8 +5116,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             removeChildGroupFromParentGroup_result result = new removeChildGroupFromParentGroup_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5177,8 +5173,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             createEntityType_result result = new createEntityType_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5235,8 +5231,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             updateEntityType_result result = new updateEntityType_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5293,8 +5289,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             deleteEntityType_result result = new deleteEntityType_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5350,8 +5346,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getEntityType_result result = new getEntityType_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5407,8 +5403,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getEntityTypes_result result = new getEntityTypes_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5464,8 +5460,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             createEntity_result result = new createEntity_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5522,8 +5518,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             updateEntity_result result = new updateEntity_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5580,8 +5576,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             deleteEntity_result result = new deleteEntity_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5637,8 +5633,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getEntity_result result = new getEntity_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5694,8 +5690,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             searchEntities_result result = new searchEntities_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5751,8 +5747,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getListOfSharedUsers_result result = new getListOfSharedUsers_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5808,8 +5804,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getListOfSharedGroups_result result = new getListOfSharedGroups_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5865,8 +5861,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             createPermissionType_result result = new createPermissionType_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5923,8 +5919,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             updatePermissionType_result result = new updatePermissionType_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -5981,8 +5977,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             deletePermissionType_result result = new deletePermissionType_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -6038,8 +6034,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getPermissionType_result result = new getPermissionType_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -6095,8 +6091,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             getPermissionTypes_result result = new getPermissionTypes_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -6153,8 +6149,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             shareEntityWithUsers_result result = new shareEntityWithUsers_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -6211,8 +6207,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             revokeEntitySharingFromUsers_result result = new revokeEntitySharingFromUsers_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -6269,8 +6265,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             shareEntityWithGroups_result result = new shareEntityWithGroups_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -6327,8 +6323,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             revokeEntitySharingFromGroups_result result = new revokeEntitySharingFromGroups_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -6385,8 +6381,8 @@ public class GovRegistryService {
             byte msgType = org.apache.thrift.protocol.TMessageType.REPLY;
             org.apache.thrift.TBase msg;
             userHasAccess_result result = new userHasAccess_result();
-            if (e instanceof org.apache.airavata.sharing.registry.models.GovRegistryException) {
-                        result.gre = (org.apache.airavata.sharing.registry.models.GovRegistryException) e;
+            if (e instanceof SharingRegistryException) {
+                        result.gre = (SharingRegistryException) e;
                         result.setGreIsSet(true);
                         msg = result;
             }
@@ -6789,7 +6785,7 @@ public class GovRegistryService {
     }
 
     public String success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -6869,7 +6865,7 @@ public class GovRegistryService {
 
     public createDomain_result(
       String success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -6884,7 +6880,7 @@ public class GovRegistryService {
         this.success = other.success;
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -6922,11 +6918,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public createDomain_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public createDomain_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -6960,7 +6956,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -7161,7 +7157,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -7235,7 +7231,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -7616,7 +7612,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -7698,7 +7694,7 @@ public class GovRegistryService {
 
     public updateDomain_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -7713,7 +7709,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -7751,11 +7747,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public updateDomain_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public updateDomain_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -7789,7 +7785,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -7988,7 +7984,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -8062,7 +8058,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -8438,7 +8434,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -8520,7 +8516,7 @@ public class GovRegistryService {
 
     public deleteDomain_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -8535,7 +8531,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -8573,11 +8569,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public deleteDomain_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public deleteDomain_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -8611,7 +8607,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -8810,7 +8806,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -8884,7 +8880,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -9260,7 +9256,7 @@ public class GovRegistryService {
     }
 
     public org.apache.airavata.sharing.registry.models.Domain success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -9340,7 +9336,7 @@ public class GovRegistryService {
 
     public getDomain_result(
       org.apache.airavata.sharing.registry.models.Domain success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -9355,7 +9351,7 @@ public class GovRegistryService {
         this.success = new org.apache.airavata.sharing.registry.models.Domain(other.success);
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -9393,11 +9389,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public getDomain_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public getDomain_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -9431,7 +9427,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -9636,7 +9632,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -9711,7 +9707,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -10182,7 +10178,7 @@ public class GovRegistryService {
     }
 
     public List<org.apache.airavata.sharing.registry.models.Domain> success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -10263,7 +10259,7 @@ public class GovRegistryService {
 
     public getDomains_result(
       List<org.apache.airavata.sharing.registry.models.Domain> success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -10282,7 +10278,7 @@ public class GovRegistryService {
         this.success = __this__success;
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -10335,11 +10331,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public getDomains_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public getDomains_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -10373,7 +10369,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -10585,7 +10581,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -10682,7 +10678,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -11063,7 +11059,7 @@ public class GovRegistryService {
     }
 
     public String success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -11143,7 +11139,7 @@ public class GovRegistryService {
 
     public createUser_result(
       String success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -11158,7 +11154,7 @@ public class GovRegistryService {
         this.success = other.success;
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -11196,11 +11192,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public createUser_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public createUser_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -11234,7 +11230,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -11435,7 +11431,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -11509,7 +11505,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -11890,7 +11886,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -11972,7 +11968,7 @@ public class GovRegistryService {
 
     public updatedUser_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -11987,7 +11983,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -12025,11 +12021,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public updatedUser_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public updatedUser_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -12063,7 +12059,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -12262,7 +12258,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -12336,7 +12332,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -12712,7 +12708,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -12794,7 +12790,7 @@ public class GovRegistryService {
 
     public deleteUser_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -12809,7 +12805,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -12847,11 +12843,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public deleteUser_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public deleteUser_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -12885,7 +12881,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -13084,7 +13080,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -13158,7 +13154,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -13534,7 +13530,7 @@ public class GovRegistryService {
     }
 
     public org.apache.airavata.sharing.registry.models.User success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -13614,7 +13610,7 @@ public class GovRegistryService {
 
     public getUser_result(
       org.apache.airavata.sharing.registry.models.User success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -13629,7 +13625,7 @@ public class GovRegistryService {
         this.success = new org.apache.airavata.sharing.registry.models.User(other.success);
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -13667,11 +13663,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public getUser_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public getUser_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -13705,7 +13701,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -13910,7 +13906,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -13985,7 +13981,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -14557,7 +14553,7 @@ public class GovRegistryService {
     }
 
     public List<org.apache.airavata.sharing.registry.models.User> success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -14638,7 +14634,7 @@ public class GovRegistryService {
 
     public getUsers_result(
       List<org.apache.airavata.sharing.registry.models.User> success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -14657,7 +14653,7 @@ public class GovRegistryService {
         this.success = __this__success;
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -14710,11 +14706,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public getUsers_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public getUsers_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -14748,7 +14744,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -14960,7 +14956,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -15057,7 +15053,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -15438,7 +15434,7 @@ public class GovRegistryService {
     }
 
     public String success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -15518,7 +15514,7 @@ public class GovRegistryService {
 
     public createGroup_result(
       String success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -15533,7 +15529,7 @@ public class GovRegistryService {
         this.success = other.success;
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -15571,11 +15567,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public createGroup_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public createGroup_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -15609,7 +15605,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -15810,7 +15806,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -15884,7 +15880,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -16265,7 +16261,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -16347,7 +16343,7 @@ public class GovRegistryService {
 
     public updateGroup_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -16362,7 +16358,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -16400,11 +16396,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public updateGroup_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public updateGroup_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -16438,7 +16434,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -16637,7 +16633,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -16711,7 +16707,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -17087,7 +17083,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -17169,7 +17165,7 @@ public class GovRegistryService {
 
     public deleteGroup_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -17184,7 +17180,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -17222,11 +17218,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public deleteGroup_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public deleteGroup_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -17260,7 +17256,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -17459,7 +17455,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -17533,7 +17529,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -17909,7 +17905,7 @@ public class GovRegistryService {
     }
 
     public org.apache.airavata.sharing.registry.models.UserGroup success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -17989,7 +17985,7 @@ public class GovRegistryService {
 
     public getGroup_result(
       org.apache.airavata.sharing.registry.models.UserGroup success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -18004,7 +18000,7 @@ public class GovRegistryService {
         this.success = new org.apache.airavata.sharing.registry.models.UserGroup(other.success);
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -18042,11 +18038,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public getGroup_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public getGroup_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -18080,7 +18076,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -18285,7 +18281,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -18360,7 +18356,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -19851,7 +19847,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -19933,7 +19929,7 @@ public class GovRegistryService {
 
     public addUsersToGroup_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -19948,7 +19944,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -19986,11 +19982,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public addUsersToGroup_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public addUsersToGroup_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -20024,7 +20020,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -20223,7 +20219,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -20297,7 +20293,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -20823,7 +20819,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -20905,7 +20901,7 @@ public class GovRegistryService {
 
     public removeUsersFromGroup_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -20920,7 +20916,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -20958,11 +20954,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public removeUsersFromGroup_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public removeUsersFromGroup_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -20996,7 +20992,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -21195,7 +21191,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -21269,7 +21265,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -21841,7 +21837,7 @@ public class GovRegistryService {
     }
 
     public Map<String,org.apache.airavata.sharing.registry.models.GroupChildType> success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -21923,7 +21919,7 @@ public class GovRegistryService {
 
     public getGroupMembers_result(
       Map<String,org.apache.airavata.sharing.registry.models.GroupChildType> success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -21950,7 +21946,7 @@ public class GovRegistryService {
         this.success = __this__success;
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -21999,11 +21995,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public getGroupMembers_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public getGroupMembers_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -22037,7 +22033,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -22250,7 +22246,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -22350,7 +22346,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -22827,7 +22823,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -22909,7 +22905,7 @@ public class GovRegistryService {
 
     public addChildGroupToParentGroup_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -22924,7 +22920,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -22962,11 +22958,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public addChildGroupToParentGroup_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public addChildGroupToParentGroup_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -23000,7 +22996,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -23199,7 +23195,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -23273,7 +23269,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -23750,7 +23746,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -23832,7 +23828,7 @@ public class GovRegistryService {
 
     public removeChildGroupFromParentGroup_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -23847,7 +23843,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -23885,11 +23881,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public removeChildGroupFromParentGroup_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public removeChildGroupFromParentGroup_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -23923,7 +23919,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -24122,7 +24118,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -24196,7 +24192,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -24577,7 +24573,7 @@ public class GovRegistryService {
     }
 
     public String success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -24657,7 +24653,7 @@ public class GovRegistryService {
 
     public createEntityType_result(
       String success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -24672,7 +24668,7 @@ public class GovRegistryService {
         this.success = other.success;
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -24710,11 +24706,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public createEntityType_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public createEntityType_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -24748,7 +24744,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -24949,7 +24945,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -25023,7 +25019,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -25404,7 +25400,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -25486,7 +25482,7 @@ public class GovRegistryService {
 
     public updateEntityType_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -25501,7 +25497,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -25539,11 +25535,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public updateEntityType_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public updateEntityType_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -25577,7 +25573,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -25776,7 +25772,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -25850,7 +25846,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -26226,7 +26222,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -26308,7 +26304,7 @@ public class GovRegistryService {
 
     public deleteEntityType_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -26323,7 +26319,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -26361,11 +26357,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public deleteEntityType_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public deleteEntityType_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -26399,7 +26395,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -26598,7 +26594,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -26672,7 +26668,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -27048,7 +27044,7 @@ public class GovRegistryService {
     }
 
     public org.apache.airavata.sharing.registry.models.EntityType success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -27128,7 +27124,7 @@ public class GovRegistryService {
 
     public getEntityType_result(
       org.apache.airavata.sharing.registry.models.EntityType success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -27143,7 +27139,7 @@ public class GovRegistryService {
         this.success = new org.apache.airavata.sharing.registry.models.EntityType(other.success);
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -27181,11 +27177,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public getEntityType_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public getEntityType_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -27219,7 +27215,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -27424,7 +27420,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -27499,7 +27495,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -28071,7 +28067,7 @@ public class GovRegistryService {
     }
 
     public List<org.apache.airavata.sharing.registry.models.EntityType> success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -28152,7 +28148,7 @@ public class GovRegistryService {
 
     public getEntityTypes_result(
       List<org.apache.airavata.sharing.registry.models.EntityType> success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -28171,7 +28167,7 @@ public class GovRegistryService {
         this.success = __this__success;
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -28224,11 +28220,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public getEntityTypes_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public getEntityTypes_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -28262,7 +28258,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -28474,7 +28470,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -28571,7 +28567,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -28952,7 +28948,7 @@ public class GovRegistryService {
     }
 
     public String success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -29032,7 +29028,7 @@ public class GovRegistryService {
 
     public createEntity_result(
       String success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -29047,7 +29043,7 @@ public class GovRegistryService {
         this.success = other.success;
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -29085,11 +29081,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public createEntity_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public createEntity_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -29123,7 +29119,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -29324,7 +29320,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -29398,7 +29394,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -29779,7 +29775,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -29861,7 +29857,7 @@ public class GovRegistryService {
 
     public updateEntity_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -29876,7 +29872,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -29914,11 +29910,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public updateEntity_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public updateEntity_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -29952,7 +29948,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -30151,7 +30147,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -30225,7 +30221,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -30601,7 +30597,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -30683,7 +30679,7 @@ public class GovRegistryService {
 
     public deleteEntity_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -30698,7 +30694,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -30736,11 +30732,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public deleteEntity_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public deleteEntity_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -30774,7 +30770,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -30973,7 +30969,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -31047,7 +31043,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -31423,7 +31419,7 @@ public class GovRegistryService {
     }
 
     public org.apache.airavata.sharing.registry.models.Entity success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -31503,7 +31499,7 @@ public class GovRegistryService {
 
     public getEntity_result(
       org.apache.airavata.sharing.registry.models.Entity success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -31518,7 +31514,7 @@ public class GovRegistryService {
         this.success = new org.apache.airavata.sharing.registry.models.Entity(other.success);
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -31556,11 +31552,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public getEntity_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public getEntity_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -31594,7 +31590,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -31799,7 +31795,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -31874,7 +31870,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -32711,7 +32707,7 @@ public class GovRegistryService {
     }
 
     public List<org.apache.airavata.sharing.registry.models.Entity> success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -32792,7 +32788,7 @@ public class GovRegistryService {
 
     public searchEntities_result(
       List<org.apache.airavata.sharing.registry.models.Entity> success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -32811,7 +32807,7 @@ public class GovRegistryService {
         this.success = __this__success;
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -32864,11 +32860,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public searchEntities_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public searchEntities_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -32902,7 +32898,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -33114,7 +33110,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -33211,7 +33207,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -33688,7 +33684,7 @@ public class GovRegistryService {
     }
 
     public List<org.apache.airavata.sharing.registry.models.User> success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -33769,7 +33765,7 @@ public class GovRegistryService {
 
     public getListOfSharedUsers_result(
       List<org.apache.airavata.sharing.registry.models.User> success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -33788,7 +33784,7 @@ public class GovRegistryService {
         this.success = __this__success;
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -33841,11 +33837,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public getListOfSharedUsers_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public getListOfSharedUsers_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -33879,7 +33875,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -34091,7 +34087,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -34188,7 +34184,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -34665,7 +34661,7 @@ public class GovRegistryService {
     }
 
     public List<org.apache.airavata.sharing.registry.models.UserGroup> success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -34746,7 +34742,7 @@ public class GovRegistryService {
 
     public getListOfSharedGroups_result(
       List<org.apache.airavata.sharing.registry.models.UserGroup> success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -34765,7 +34761,7 @@ public class GovRegistryService {
         this.success = __this__success;
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -34818,11 +34814,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public getListOfSharedGroups_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public getListOfSharedGroups_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -34856,7 +34852,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -35068,7 +35064,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -35165,7 +35161,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -35546,7 +35542,7 @@ public class GovRegistryService {
     }
 
     public String success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -35626,7 +35622,7 @@ public class GovRegistryService {
 
     public createPermissionType_result(
       String success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -35641,7 +35637,7 @@ public class GovRegistryService {
         this.success = other.success;
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -35679,11 +35675,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public createPermissionType_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public createPermissionType_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -35717,7 +35713,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -35918,7 +35914,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -35992,7 +35988,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -36373,7 +36369,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -36455,7 +36451,7 @@ public class GovRegistryService {
 
     public updatePermissionType_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -36470,7 +36466,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -36508,11 +36504,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public updatePermissionType_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public updatePermissionType_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -36546,7 +36542,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -36745,7 +36741,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -36819,7 +36815,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -37195,7 +37191,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -37277,7 +37273,7 @@ public class GovRegistryService {
 
     public deletePermissionType_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -37292,7 +37288,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -37330,11 +37326,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public deletePermissionType_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public deletePermissionType_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -37368,7 +37364,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -37567,7 +37563,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -37641,7 +37637,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -38017,7 +38013,7 @@ public class GovRegistryService {
     }
 
     public org.apache.airavata.sharing.registry.models.PermissionType success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -38097,7 +38093,7 @@ public class GovRegistryService {
 
     public getPermissionType_result(
       org.apache.airavata.sharing.registry.models.PermissionType success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -38112,7 +38108,7 @@ public class GovRegistryService {
         this.success = new org.apache.airavata.sharing.registry.models.PermissionType(other.success);
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -38150,11 +38146,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public getPermissionType_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public getPermissionType_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -38188,7 +38184,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -38393,7 +38389,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -38468,7 +38464,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -39040,7 +39036,7 @@ public class GovRegistryService {
     }
 
     public List<org.apache.airavata.sharing.registry.models.PermissionType> success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -39121,7 +39117,7 @@ public class GovRegistryService {
 
     public getPermissionTypes_result(
       List<org.apache.airavata.sharing.registry.models.PermissionType> success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -39140,7 +39136,7 @@ public class GovRegistryService {
         this.success = __this__success;
       }
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -39193,11 +39189,11 @@ public class GovRegistryService {
       }
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public getPermissionTypes_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public getPermissionTypes_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -39231,7 +39227,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -39443,7 +39439,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -39540,7 +39536,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -40267,7 +40263,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -40349,7 +40345,7 @@ public class GovRegistryService {
 
     public shareEntityWithUsers_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -40364,7 +40360,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -40402,11 +40398,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public shareEntityWithUsers_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public shareEntityWithUsers_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -40440,7 +40436,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -40639,7 +40635,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -40713,7 +40709,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -41340,7 +41336,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -41422,7 +41418,7 @@ public class GovRegistryService {
 
     public revokeEntitySharingFromUsers_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -41437,7 +41433,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -41475,11 +41471,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public revokeEntitySharingFromUsers_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public revokeEntitySharingFromUsers_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -41513,7 +41509,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -41712,7 +41708,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -41786,7 +41782,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -42513,7 +42509,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -42595,7 +42591,7 @@ public class GovRegistryService {
 
     public shareEntityWithGroups_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -42610,7 +42606,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -42648,11 +42644,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public shareEntityWithGroups_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public shareEntityWithGroups_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -42686,7 +42682,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -42885,7 +42881,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -42959,7 +42955,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -43586,7 +43582,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -43668,7 +43664,7 @@ public class GovRegistryService {
 
     public revokeEntitySharingFromGroups_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -43683,7 +43679,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -43721,11 +43717,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public revokeEntitySharingFromGroups_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public revokeEntitySharingFromGroups_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -43759,7 +43755,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -43958,7 +43954,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -44032,7 +44028,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }
@@ -44711,7 +44707,7 @@ public class GovRegistryService {
     }
 
     public boolean success; // required
-    public org.apache.airavata.sharing.registry.models.GovRegistryException gre; // required
+    public SharingRegistryException gre; // required
 
     /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
     public enum _Fields implements org.apache.thrift.TFieldIdEnum {
@@ -44793,7 +44789,7 @@ public class GovRegistryService {
 
     public userHasAccess_result(
       boolean success,
-      org.apache.airavata.sharing.registry.models.GovRegistryException gre)
+      SharingRegistryException gre)
     {
       this();
       this.success = success;
@@ -44808,7 +44804,7 @@ public class GovRegistryService {
       __isset_bitfield = other.__isset_bitfield;
       this.success = other.success;
       if (other.isSetGre()) {
-        this.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException(other.gre);
+        this.gre = new SharingRegistryException(other.gre);
       }
     }
 
@@ -44846,11 +44842,11 @@ public class GovRegistryService {
       __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __SUCCESS_ISSET_ID, value);
     }
 
-    public org.apache.airavata.sharing.registry.models.GovRegistryException getGre() {
+    public SharingRegistryException getGre() {
       return this.gre;
     }
 
-    public userHasAccess_result setGre(org.apache.airavata.sharing.registry.models.GovRegistryException gre) {
+    public userHasAccess_result setGre(SharingRegistryException gre) {
       this.gre = gre;
       return this;
     }
@@ -44884,7 +44880,7 @@ public class GovRegistryService {
         if (value == null) {
           unsetGre();
         } else {
-          setGre((org.apache.airavata.sharing.registry.models.GovRegistryException)value);
+          setGre((SharingRegistryException)value);
         }
         break;
 
@@ -45083,7 +45079,7 @@ public class GovRegistryService {
               break;
             case 1: // GRE
               if (schemeField.type == org.apache.thrift.protocol.TType.STRUCT) {
-                struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+                struct.gre = new SharingRegistryException();
                 struct.gre.read(iprot);
                 struct.setGreIsSet(true);
               } else { 
@@ -45157,7 +45153,7 @@ public class GovRegistryService {
           struct.setSuccessIsSet(true);
         }
         if (incoming.get(1)) {
-          struct.gre = new org.apache.airavata.sharing.registry.models.GovRegistryException();
+          struct.gre = new SharingRegistryException();
           struct.gre.read(iprot);
           struct.setGreIsSet(true);
         }

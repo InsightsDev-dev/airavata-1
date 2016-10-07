@@ -23,7 +23,7 @@ package org.apache.airavata.sharing.registry.db.repositories;
 import org.apache.airavata.sharing.registry.db.entities.SharingEntity;
 import org.apache.airavata.sharing.registry.db.entities.SharingEntityPK;
 import org.apache.airavata.sharing.registry.db.utils.DBConstants;
-import org.apache.airavata.sharing.registry.models.GovRegistryException;
+import org.apache.airavata.sharing.registry.models.SharingRegistryException;
 import org.apache.airavata.sharing.registry.models.Sharing;
 import org.apache.airavata.sharing.registry.models.SharingType;
 import org.slf4j.Logger;
@@ -39,7 +39,7 @@ public class SharingRepository extends AbstractRepository<Sharing, SharingEntity
         super(Sharing.class, SharingEntity.class);
     }
 
-    public List<Sharing> getIndirectSharedChildren(String parentId, String permissionTypeId) throws GovRegistryException {
+    public List<Sharing> getIndirectSharedChildren(String parentId, String permissionTypeId) throws SharingRegistryException {
         HashMap<String, String> filters = new HashMap<>();
         filters.put(DBConstants.SharingTable.INHERITED_PARENT_ID, parentId);
         filters.put(DBConstants.SharingTable.SHARING_TYPE, SharingType.INDIRECT_CASCADING.toString());
@@ -48,7 +48,7 @@ public class SharingRepository extends AbstractRepository<Sharing, SharingEntity
         return select(filters, 0, -1);
     }
 
-    public List<Sharing> getCascadingPermissionsForEntity(String entityId) throws GovRegistryException {
+    public List<Sharing> getCascadingPermissionsForEntity(String entityId) throws SharingRegistryException {
         HashMap<String, String> filters = new HashMap<>();
         filters.put(DBConstants.SharingTable.ENTITY_ID, entityId);
         String query = "SELECT p from " + SharingEntity.class.getSimpleName() + " as p";
@@ -60,7 +60,7 @@ public class SharingRepository extends AbstractRepository<Sharing, SharingEntity
         return select(query, 0, -1);
     }
 
-    public boolean hasAccess(String entityId, List<String> groupIds, List<String> permissionTypeIds) throws GovRegistryException {
+    public boolean hasAccess(String entityId, List<String> groupIds, List<String> permissionTypeIds) throws SharingRegistryException {
         String query = "SELECT p from " + SharingEntity.class.getSimpleName() + " as p";
         query += " WHERE ";
         query += "p." + DBConstants.SharingTable.ENTITY_ID + " = '" + entityId + "' AND ";
