@@ -64,20 +64,20 @@ public class JPAUtils {
     @PersistenceContext(unitName = PERSISTENCE_UNIT_NAME)
     private static EntityManager entityManager;
 
-    public static EntityManager getEntityManager() {
+    public static EntityManager getEntityManager() throws SharingRegistryException {
         if (factory == null) {
-//            String connectionProperties = "DriverClassName=" + readServerProperties(SHARING_REG_JDBC_DRIVER) + "," +
-//                    "Url=" + readServerProperties(SHARING_REG_JDBC_URL) + "?autoReconnect=true," +
-//                    "Username=" + readServerProperties(SHARING_REG_JDBC_USER) + "," +
-//                    "Password=" + readServerProperties(SHARING_REG_JDBC_PWD) +
-//                    ",validationQuery=" + readServerProperties(SHARING_REG_VALIDATION_QUERY);
+            String connectionProperties = "DriverClassName=" + readServerProperties(SHARING_REG_JDBC_DRIVER) + "," +
+                    "Url=" + readServerProperties(SHARING_REG_JDBC_URL) + "?autoReconnect=true," +
+                    "Username=" + readServerProperties(SHARING_REG_JDBC_USER) + "," +
+                    "Password=" + readServerProperties(SHARING_REG_JDBC_PWD) +
+                    ",validationQuery=" + readServerProperties(SHARING_REG_VALIDATION_QUERY);
 //
 
-            String connectionProperties = "DriverClassName=com.mysql.jdbc.Driver," +
-                    "Url=jdbc:mysql://localhost:3306/airavata_sharing_catalog?autoReconnect=true," +
-                    "Username=root," +
-                    "Password=," +
-                    ",validationQuery=SELECT 1 FROM CONFIGURATION";
+//            String connectionProperties = "DriverClassName=com.mysql.jdbc.Driver," +
+//                    "Url=jdbc:mysql://localhost:3306/airavata_sharing_catalog?autoReconnect=true," +
+//                    "Username=root," +
+//                    "Password=," +
+//                    ",validationQuery=SELECT 1 FROM CONFIGURATION";
 
             Map<String, String> properties = new HashMap<String, String>();
             properties.put("openjpa.ConnectionDriverName", "org.apache.commons.dbcp.BasicDataSource");

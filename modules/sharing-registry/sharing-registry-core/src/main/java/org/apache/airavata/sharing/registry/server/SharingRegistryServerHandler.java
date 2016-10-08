@@ -59,60 +59,56 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
         this.entityRepository = new EntityRepository();
         this.sharingRepository = new SharingRepository();
 
-        Domain domain = null;
-        try{
-            domain = getDomain(ServerSettings.getDefaultUserGateway());
-        } finally {
-            if(domain == null){
-                domain = new Domain();
-                domain.setDomainId(ServerSettings.getDefaultUserGateway());
-                domain.setName(ServerSettings.getDefaultUserGateway());
-                domain.setDescription("Domain entry for " + domain.name);
-                createDomain(domain);
+        if(!domainRepository.isExists(ServerSettings.getDefaultUserGateway())){
+            Domain domain = new Domain();
+            domain.setDomainId(ServerSettings.getDefaultUserGateway());
+            domain.setName(ServerSettings.getDefaultUserGateway());
+            domain.setDescription("Domain entry for " + domain.name);
+            createDomain(domain);
 
-                User user = new User();
-                user.setDomainId(domain.domainId);
-                user.setUserId(ServerSettings.getDefaultUser()+"@"+ServerSettings.getDefaultUserGateway());
-                user.setUserName(ServerSettings.getDefaultUser());
-                createUser(user);
+            User user = new User();
+            user.setDomainId(domain.domainId);
+            user.setUserId(ServerSettings.getDefaultUser()+"@"+ServerSettings.getDefaultUserGateway());
+            user.setUserName(ServerSettings.getDefaultUser());
+            createUser(user);
 
-                //Creating Entity Types for each domain
-                EntityType entityType = new EntityType();
-                entityType.setEntityTypeId(domain.domainId+":PROJECT");
-                entityType.setDomainId(domain.domainId);
-                entityType.setName("PROJECT");
-                entityType.setDescription("Project entity type");
-                createEntityType(entityType);
+            //Creating Entity Types for each domain
+            EntityType entityType = new EntityType();
+            entityType.setEntityTypeId(domain.domainId+":PROJECT");
+            entityType.setDomainId(domain.domainId);
+            entityType.setName("PROJECT");
+            entityType.setDescription("Project entity type");
+            createEntityType(entityType);
 
-                entityType = new EntityType();
-                entityType.setEntityTypeId(domain.domainId+":EXPERIMENT");
-                entityType.setDomainId(domain.domainId);
-                entityType.setName("EXPERIMENT");
-                entityType.setDescription("Experiment entity type");
-                createEntityType(entityType);
+            entityType = new EntityType();
+            entityType.setEntityTypeId(domain.domainId+":EXPERIMENT");
+            entityType.setDomainId(domain.domainId);
+            entityType.setName("EXPERIMENT");
+            entityType.setDescription("Experiment entity type");
+            createEntityType(entityType);
 
-                entityType = new EntityType();
-                entityType.setEntityTypeId(domain.domainId+":FILE");
-                entityType.setDomainId(domain.domainId);
-                entityType.setName("FILE");
-                entityType.setDescription("File entity type");
-                createEntityType(entityType);
+            entityType = new EntityType();
+            entityType.setEntityTypeId(domain.domainId+":FILE");
+            entityType.setDomainId(domain.domainId);
+            entityType.setName("FILE");
+            entityType.setDescription("File entity type");
+            createEntityType(entityType);
 
-                //Creating Permission Types for each domain
-                PermissionType permissionType = new PermissionType();
-                permissionType.setPermissionTypeId(domain.domainId+":READ");
-                permissionType.setDomainId(domain.domainId);
-                permissionType.setName("READ");
-                permissionType.setDescription("Read permission type");
-                createPermissionType(permissionType);
+            //Creating Permission Types for each domain
+            PermissionType permissionType = new PermissionType();
+            permissionType.setPermissionTypeId(domain.domainId+":READ");
+            permissionType.setDomainId(domain.domainId);
+            permissionType.setName("READ");
+            permissionType.setDescription("Read permission type");
+            createPermissionType(permissionType);
 
-                permissionType = new PermissionType();
-                permissionType.setPermissionTypeId(domain.domainId+":WRITE");
-                permissionType.setDomainId(domain.domainId);
-                permissionType.setName("WRITE");
-                permissionType.setDescription("Write permission type");
-                createPermissionType(permissionType);
-            }
+            permissionType = new PermissionType();
+            permissionType.setPermissionTypeId(domain.domainId+":WRITE");
+            permissionType.setDomainId(domain.domainId);
+            permissionType.setName("WRITE");
+            permissionType.setDescription("Write permission type");
+            createPermissionType(permissionType);
+
         }
     }
 
@@ -419,6 +415,15 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     public String createEntity(Entity entity) throws SharingRegistryException, TException {
         if(entityRepository.get(entity.entityId) != null)
             throw new SharingRegistryException("There exist Entity with given Entity id");
+
+        if(!userRepository.isExists(entity.getOwnerId())){
+            User user = new User();
+            user.setUserId(entity.getOwnerId());
+            user.setDomainId(entity.domainId);
+            user.setUserName(user.userId.split("@")[0]);
+
+            userRepository.create(user);
+        }
 
         entity.setCreatedTime(System.currentTimeMillis());
         entity.setUpdatedTime(System.currentTimeMillis());

@@ -89,6 +89,10 @@ public abstract class AbstractRepository<T, E, Id> {
         return mapper.map(entity, thriftGenericClass);
     }
 
+    public boolean isExists(Id id) throws SharingRegistryException {
+        return get(id) != null;
+    }
+
     public List<T> get(List<Id> idList) throws SharingRegistryException {
         List<T> returnList = new ArrayList<>();
         for(Id id : idList)
