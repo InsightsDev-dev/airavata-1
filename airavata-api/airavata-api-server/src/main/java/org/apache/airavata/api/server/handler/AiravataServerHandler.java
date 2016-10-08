@@ -100,6 +100,8 @@ public class AiravataServerHandler implements Airavata.Iface {
             logger.error("Error occured while reading airavata-server properties..", e);
         } catch (AiravataException e) {
             logger.error("Error occured while reading airavata-server properties..", e);
+        } catch (TException e) {
+            logger.error("Error occured while reading airavata-server properties..", e);
         }
     }
 
