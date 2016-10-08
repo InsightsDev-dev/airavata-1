@@ -20,6 +20,7 @@
 */
 package org.apache.airavata.sharing.registry;
 
+import org.apache.airavata.common.exception.ApplicationSettingsException;
 import org.apache.airavata.sharing.registry.models.*;
 import org.apache.airavata.sharing.registry.server.SharingRegistryServerHandler;
 import org.apache.thrift.TException;
@@ -36,7 +37,7 @@ import java.util.Map;
 public class DataMigrator {
     private final static Logger logger = LoggerFactory.getLogger(DataMigrator.class);
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException, TException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, TException, ApplicationSettingsException {
         Connection expCatConnection = ConnectionFactory.getInstance().getExpCatConnection();
 
         SharingRegistryServerHandler govRegistryServerHandler = new SharingRegistryServerHandler();

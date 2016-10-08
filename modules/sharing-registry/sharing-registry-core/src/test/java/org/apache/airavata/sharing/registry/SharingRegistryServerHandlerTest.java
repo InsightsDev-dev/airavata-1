@@ -21,6 +21,7 @@
 package org.apache.airavata.sharing.registry;
 
 import junit.framework.Assert;
+import org.apache.airavata.common.exception.ApplicationSettingsException;
 import org.apache.airavata.sharing.registry.models.*;
 import org.apache.airavata.sharing.registry.server.SharingRegistryServerHandler;
 import org.apache.thrift.TException;
@@ -36,7 +37,7 @@ public class SharingRegistryServerHandlerTest {
     private final static Logger logger = LoggerFactory.getLogger(SharingRegistryServerHandlerTest.class);
 
     @Test
-    public void test() throws TException {
+    public void test() throws TException, ApplicationSettingsException {
         SharingRegistryServerHandler govRegistryServerHandler = new SharingRegistryServerHandler();
 
         //Creating domain

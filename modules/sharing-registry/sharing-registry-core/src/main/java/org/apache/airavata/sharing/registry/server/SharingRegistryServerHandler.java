@@ -20,6 +20,8 @@
 */
 package org.apache.airavata.sharing.registry.server;
 
+import org.apache.airavata.common.exception.ApplicationSettingsException;
+import org.apache.airavata.common.utils.ServerSettings;
 import org.apache.airavata.sharing.registry.db.entities.GroupMembershipEntityPK;
 import org.apache.airavata.sharing.registry.db.entities.SharingEntityPK;
 import org.apache.airavata.sharing.registry.db.repositories.*;
@@ -47,7 +49,7 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     private EntityRepository entityRepository;
     private SharingRepository sharingRepository;
 
-    public SharingRegistryServerHandler(){
+    public SharingRegistryServerHandler() throws ApplicationSettingsException, TException {
         this.domainRepository = new DomainRepository();
         this.userRepository = new UserRepository();
         this.userGroupRepository = new UserGroupRepository();
@@ -56,6 +58,62 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
         this.permissionTypeRepository = new PermissionTypeRepository();
         this.entityRepository = new EntityRepository();
         this.sharingRepository = new SharingRepository();
+
+        Domain domain = null;
+        try{
+            domain = getDomain(ServerSettings.getDefaultUserGateway());
+        } finally {
+            if(domain == null){
+                domain = new Domain();
+                domain.setDomainId(ServerSettings.getDefaultUserGateway());
+                domain.setName(ServerSettings.getDefaultUserGateway());
+                domain.setDescription("Domain entry for " + domain.name);
+                createDomain(domain);
+
+                User user = new User();
+                user.setDomainId(domain.domainId);
+                user.setUserId(ServerSettings.getDefaultUser()+"@"+ServerSettings.getDefaultUserGateway());
+                user.setUserName(ServerSettings.getDefaultUser());
+                createUser(user);
+
+                //Creating Entity Types for each domain
+                EntityType entityType = new EntityType();
+                entityType.setEntityTypeId(domain.domainId+":PROJECT");
+                entityType.setDomainId(domain.domainId);
+                entityType.setName("PROJECT");
+                entityType.setDescription("Project entity type");
+                createEntityType(entityType);
+
+                entityType = new EntityType();
+                entityType.setEntityTypeId(domain.domainId+":EXPERIMENT");
+                entityType.setDomainId(domain.domainId);
+                entityType.setName("EXPERIMENT");
+                entityType.setDescription("Experiment entity type");
+                createEntityType(entityType);
+
+                entityType = new EntityType();
+                entityType.setEntityTypeId(domain.domainId+":FILE");
+                entityType.setDomainId(domain.domainId);
+                entityType.setName("FILE");
+                entityType.setDescription("File entity type");
+                createEntityType(entityType);
+
+                //Creating Permission Types for each domain
+                PermissionType permissionType = new PermissionType();
+                permissionType.setPermissionTypeId(domain.domainId+":READ");
+                permissionType.setDomainId(domain.domainId);
+                permissionType.setName("READ");
+                permissionType.setDescription("Read permission type");
+                createPermissionType(permissionType);
+
+                permissionType = new PermissionType();
+                permissionType.setPermissionTypeId(domain.domainId+":WRITE");
+                permissionType.setDomainId(domain.domainId);
+                permissionType.setName("WRITE");
+                permissionType.setDescription("Write permission type");
+                createPermissionType(permissionType);
+            }
+        }
     }
 
     /**
