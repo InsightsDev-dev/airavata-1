@@ -24,17 +24,26 @@ import junit.framework.Assert;
 import org.apache.airavata.common.exception.ApplicationSettingsException;
 import org.apache.airavata.sharing.registry.models.*;
 import org.apache.airavata.sharing.registry.server.SharingRegistryServerHandler;
+import org.apache.airavata.sharing.registry.util.Initialize;
 import org.apache.thrift.TException;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class SharingRegistryServerHandlerTest {
     private final static Logger logger = LoggerFactory.getLogger(SharingRegistryServerHandlerTest.class);
+
+    @BeforeClass
+    public static void setup() throws SharingRegistryException, SQLException {
+        Initialize initialize = new Initialize("sharing-registry-derby.sql");
+        initialize.initializeDB();
+    }
 
     @Test
     public void test() throws TException, ApplicationSettingsException {

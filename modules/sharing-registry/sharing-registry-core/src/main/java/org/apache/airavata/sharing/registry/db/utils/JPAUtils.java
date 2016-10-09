@@ -39,14 +39,14 @@ import java.util.Map;
 public class JPAUtils {
     private final static Logger logger = LoggerFactory.getLogger(JPAUtils.class);
 
-    private static final String PERSISTENCE_UNIT_NAME = "airavata-sharing-registry";
-    private static final String SHARING_REG_JDBC_DRIVER = "sharingcatalog.jdbc.driver";
-    private static final String SHARING_REG_JDBC_URL = "sharingcatalog.jdbc.url";
-    private static final String SHARING_REG_JDBC_USER = "sharingcatalog.jdbc.user";
-    private static final String SHARING_REG_JDBC_PWD = "sharingcatalog.jdbc.password";
-    private static final String SHARING_REG_VALIDATION_QUERY = "sharingcatalog.validationQuery";
-    private static final String JPA_CACHE_SIZE = "jpa.cache.size";
-    private static final String JPA_CACHE_ENABLED = "cache.enable";
+    public static final String PERSISTENCE_UNIT_NAME = "airavata-sharing-registry";
+    public static final String SHARING_REG_JDBC_DRIVER = "sharingcatalog.jdbc.driver";
+    public static final String SHARING_REG_JDBC_URL = "sharingcatalog.jdbc.url";
+    public static final String SHARING_REG_JDBC_USER = "sharingcatalog.jdbc.user";
+    public static final String SHARING_REG_JDBC_PWD = "sharingcatalog.jdbc.password";
+    public static final String SHARING_REG_VALIDATION_QUERY = "sharingcatalog.validationQuery";
+    public static final String JPA_CACHE_SIZE = "jpa.cache.size";
+    public static final String JPA_CACHE_ENABLED = "cache.enable";
 
     public static final String CONFIGURATION = "CONFIGURATION";
     public static final String START_DERBY_ENABLE = "start.derby.server.mode";
@@ -219,7 +219,7 @@ public class JPAUtils {
         }
     }
 
-    private static String readServerProperties(String propertyName) throws SharingRegistryException {
+    public static String readServerProperties(String propertyName) throws SharingRegistryException {
         try {
             return ServerSettings.getSetting(propertyName);
         } catch (ApplicationSettingsException e) {

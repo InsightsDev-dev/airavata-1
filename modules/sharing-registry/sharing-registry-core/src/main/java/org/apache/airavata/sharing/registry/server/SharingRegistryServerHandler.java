@@ -26,6 +26,7 @@ import org.apache.airavata.sharing.registry.db.entities.GroupMembershipEntityPK;
 import org.apache.airavata.sharing.registry.db.entities.SharingEntityPK;
 import org.apache.airavata.sharing.registry.db.repositories.*;
 import org.apache.airavata.sharing.registry.db.utils.DBConstants;
+import org.apache.airavata.sharing.registry.db.utils.JPAUtils;
 import org.apache.airavata.sharing.registry.models.*;
 import org.apache.airavata.sharing.registry.service.cpi.GovRegistryService;
 import org.apache.thrift.TException;
@@ -50,6 +51,8 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
     private SharingRepository sharingRepository;
 
     public SharingRegistryServerHandler() throws ApplicationSettingsException, TException {
+        JPAUtils.initializeDB();
+
         this.domainRepository = new DomainRepository();
         this.userRepository = new UserRepository();
         this.userGroupRepository = new UserGroupRepository();
@@ -422,7 +425,17 @@ public class SharingRegistryServerHandler implements GovRegistryService.Iface{
             user.setDomainId(entity.domainId);
             user.setUserName(user.userId.split("@")[0]);
 
-            userRepository.create(user);
+            createUser(user);
+
+            UserGroup userGroup = new UserGroup();
+            userGroup.setGroupId(user.userId);
+            userGroup.setDomainId(user.domainId);
+            userGroup.setOwnerId(user.userId);
+            userGroup.setName(user.userName);
+            userGroup.setDescription("Single user group for " + user.userName);
+            userGroup.setGroupType(GroupType.SINGLE_USER);
+
+            createGroup(userGroup);
         }
 
         entity.setCreatedTime(System.currentTimeMillis());

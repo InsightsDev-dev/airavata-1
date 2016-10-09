@@ -22,7 +22,7 @@ package org.apache.airavata.sharing.registry.db.repositories;
 
 import org.apache.airavata.sharing.registry.db.entities.GroupMembershipEntity;
 import org.apache.airavata.sharing.registry.db.entities.GroupMembershipEntityPK;
-import org.apache.airavata.sharing.registry.db.entities.UserEntity;
+import org.apache.airavata.sharing.registry.db.entities.SharingUserEntity;
 import org.apache.airavata.sharing.registry.db.entities.UserGroupEntity;
 import org.apache.airavata.sharing.registry.db.utils.DBConstants;
 import org.apache.airavata.sharing.registry.models.*;
@@ -42,7 +42,7 @@ public class GroupMembershipRepository extends AbstractRepository<GroupMembershi
     }
 
     public List<User> getAllChildUsers(String groupId) throws SharingRegistryException {
-        String queryString = "SELECT U FROM " + UserEntity.class.getSimpleName() + " U, " + GroupMembershipEntity.class.getSimpleName()
+        String queryString = "SELECT U FROM " + SharingUserEntity.class.getSimpleName() + " U, " + GroupMembershipEntity.class.getSimpleName()
                 + " GM WHERE GM." + DBConstants.GroupMembershipTable.CHILD_ID + " = U." + DBConstants.UserTable.USER_ID + " AND " +
                 "gm." + DBConstants.GroupMembershipTable.PARENT_ID+"='"+groupId + "' AND gm." + DBConstants.GroupMembershipTable.CHILD_TYPE
                 + "='" + GroupChildType.USER.toString() + "'";

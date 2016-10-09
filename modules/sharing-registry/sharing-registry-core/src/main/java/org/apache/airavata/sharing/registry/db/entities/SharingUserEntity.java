@@ -26,9 +26,9 @@ import org.slf4j.LoggerFactory;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "USER", schema = "")
-public class UserEntity {
-    private final static Logger logger = LoggerFactory.getLogger(UserEntity.class);
+@Table(name = "SHARING_USER", schema = "")
+public class SharingUserEntity {
+    private final static Logger logger = LoggerFactory.getLogger(SharingUserEntity.class);
     private String userId;
     private String domainId;
     private String userName;
@@ -90,7 +90,7 @@ public class UserEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UserEntity that = (UserEntity) o;
+        SharingUserEntity that = (SharingUserEntity) o;
 
         if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
         if (domainId != null ? !domainId.equals(that.domainId) : that.domainId != null) return false;

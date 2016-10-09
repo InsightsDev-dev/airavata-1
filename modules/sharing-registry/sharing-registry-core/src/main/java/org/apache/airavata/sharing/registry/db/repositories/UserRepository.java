@@ -21,15 +21,15 @@
 package org.apache.airavata.sharing.registry.db.repositories;
 
 
-import org.apache.airavata.sharing.registry.db.entities.UserEntity;
+import org.apache.airavata.sharing.registry.db.entities.SharingUserEntity;
 import org.apache.airavata.sharing.registry.models.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class UserRepository extends AbstractRepository<User, UserEntity, String> {
+public class UserRepository extends AbstractRepository<User, SharingUserEntity, String> {
     private final static Logger logger = LoggerFactory.getLogger(UserRepository.class);
 
     public UserRepository() {
-        super(User.class, UserEntity.class);
+        super(User.class, SharingUserEntity.class);
     }
 }

@@ -67,7 +67,7 @@
             </includes>
         </fileSet>
         <fileSet>
-            <directory>../airavata-sharing-registry/airavata-sharing-registry-core/src/main/resources/
+            <directory>../sharing-registry/sharing-registry-core/src/main/resources/
             </directory>
             <outputDirectory>bin/database_scripts
             </outputDirectory>
